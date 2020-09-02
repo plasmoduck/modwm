@@ -1,15 +1,19 @@
+# MODWM - Modular Dynamic Window Manager 
 ![dwm_freebsd](modwm.png)
 MODWM is a fork of dwm 6.2 (aaad5f, 2020-07-08). It has a different take on dwm patching. It uses preprocessor directives to decide whether or not to include a patch during build time. Essentially this means that this build is modular and for better or worse, contains both the patched _and_ the original code. The aim being that you can select which patches to include and the build will contain that code and nothing more. Due to the complexity of some of the patches dwm-flexipatch has diverged from mainstream dwm by making some core patches non-optional for maintenance reasons. For the classic dwm-flexipatch build refer to branch [dwm-flexipatch-1.0](https://github.com/bakkeby/dwm-flexipatch/tree/dwm-flexipatch-1.0).
 
 For example to include the `alpha` patch then you would only need to flip this setting from 0 to 1 in [patches.h](https://github.com/bakkeby/dwm-flexipatch/blob/master/patches.def.h):
+```c
+#define BAR_ALPHA_PATCH 1
+ ```
 
 This build is customised for FreeBSD (cause that's what I use). Modify config.mk to suit your system i.e Linux/NetBSD.
 
-Also included are 2 wallpapers and a statusbar 'modwm-statusbar.sh'. You can source this from your .xinitrc like so 'exec /path/to/modwm/modwm-statusbar.sh &'
-
+Also included are 2 wallpapers and a statusbar 'modwm-statusbar.sh'. You can source this from your .xinitrc like so 
 ```c
-#define BAR_ALPHA_PATCH 1
+exec /path/to/modwm/modwm-statusbar.sh &
 ```
+
 
 So if you have ever been curious about trying out dwm, but have been discouraged by manual patching, then this may be a good starting point to see what a "fully fledged" dwm can look like. Want to try out the `pertag` patch? Just flip a config and recompile. Once you have found out what works for you and what doesn't then you should be in a better position to choose patches should you want to start patching from scratch.
 
