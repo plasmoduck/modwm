@@ -918,6 +918,7 @@ static const char *sfeed[] = { "sfeed-dmenu", NULL };
 static const char *sfeedcurses[] = { "st", "sfeed-curses", NULL };
 static const char *ncmpcpp[] = { "togglescratch", "ncmpcpp", NULL };
 static const char *surftabbed[] =  { "surf-tabbed", NULL };
+static const char *websearch[] = { "dmenu_websearch", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -948,6 +949,7 @@ static Key keys[] = {
   	{ MODKEY,                       XK_Print,  spawn,          {.v = mutevol } },
   	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = sfeed } },
   	{ MODKEY|Mod1Mask,              XK_s,      spawn,          {.v = sfeedcurses } },
+	{ MODKEY,			XK_w,	   spawn,	   {.v = websearch } },
 
 	#if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
