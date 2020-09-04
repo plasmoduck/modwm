@@ -81,9 +81,9 @@ static void (*bartabmonfns[])(Monitor *) = { monocle /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "Font-Awesome:size=13", "mono:size=13:antialias=true:hinting=true" };
+static const char *fonts[]               = { "Liberation Mono:pixelsize=16:antialias=true:hinting=true" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "mono:size=11";
+static const char dmenufont[]            = "Liberation Mono:size=14";
 
 #if BAR_FLEXWINTITLE_PATCH
 static char c000000[]                    = "#000000"; // placeholder value
@@ -459,15 +459,15 @@ static const BarRule barrules[] = {
 	#endif // BAR_LTSYMBOL_PATCH
 	#if BAR_STATUS2D_PATCH && BAR_STATUSCMD_PATCH
 
-	{ 'A',      0,     BAR_ALIGN_RIGHT,  width_status2d,          draw_status2d,          click_statuscmd,         "status2d" },
+	{ -1,      0,     BAR_ALIGN_RIGHT,  width_status2d,          draw_status2d,          click_statuscmd,         "status2d" },
 	#elif BAR_STATUS2D_PATCH
-	{ 'A',      0,     BAR_ALIGN_RIGHT,  width_status2d,          draw_status2d,          click_status2d,          "status2d" },
+	{ -1',      0,     BAR_ALIGN_RIGHT,  width_status2d,          draw_status2d,          click_status2d,          "status2d" },
 	#elif BAR_POWERLINE_STATUS_PATCH
 	{  0,       0,     BAR_ALIGN_RIGHT,  width_pwrl_status,       draw_pwrl_status,       click_pwrl_status,       "powerline_status" },
 	#elif BAR_STATUS_PATCH && BAR_STATUSCMD_PATCH
 	{  0,       0,     BAR_ALIGN_RIGHT,  width_status,            draw_status,            click_statuscmd,         "status" },
 	#elif BAR_STATUS_PATCH
-	{ 'A',      0,     BAR_ALIGN_RIGHT,  width_status,            draw_status,            click_status,            "status" },
+	{ -1,      0,     BAR_ALIGN_RIGHT,  width_status,            draw_status,            click_status,            "status" },
 	#endif // BAR_STATUS2D_PATCH | BAR_STATUSCMD_PATCH
 	#if BAR_FLEXWINTITLE_PATCH
 	{ -1,       0,     BAR_ALIGN_NONE,   width_flexwintitle,      draw_flexwintitle,      click_flexwintitle,      "flexwintitle" },
@@ -484,11 +484,11 @@ static const BarRule barrules[] = {
 	#if BAR_STATUS2D_PATCH && BAR_STATUSCMD_PATCH
 	{ 'A',      1,     BAR_ALIGN_CENTER, width_status2d_es,       draw_status2d_es,       click_statuscmd_es,      "status2d_es" },
 	#elif BAR_STATUS2D_PATCH
-	{ 'A',      1,     BAR_ALIGN_CENTER, width_status2d_es,       draw_status2d_es,       click_status2d,          "status2d_es" },
+	{ -1,      1,     BAR_ALIGN_CENTER, width_status2d_es,       draw_status2d_es,       click_status2d,          "status2d_es" },
 	#elif BAR_POWERLINE_STATUS_PATCH
 	{  0,       1,     BAR_ALIGN_RIGHT,  width_pwrl_status_es,    draw_pwrl_status_es,    click_pwrl_status,       "powerline_status" },
 	#elif BAR_STATUSCMD_PATCH && BAR_STATUS_PATCH
-	{ 'A',      1,     BAR_ALIGN_CENTER, width_status_es,         draw_status_es,         click_statuscmd_es,      "status_es" },
+	{ -1,      1,     BAR_ALIGN_CENTER, width_status_es,         draw_status_es,         click_statuscmd_es,      "status_es" },
 	#elif BAR_STATUS_PATCH
 	{ 'A',      1,     BAR_ALIGN_CENTER, width_status_es,         draw_status_es,         click_status,            "status_es" },
 	#endif // BAR_STATUS2D_PATCH | BAR_STATUSCMD_PATCH

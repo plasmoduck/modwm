@@ -51,6 +51,6 @@ weather() {
 
 while true
 do
-  xsetroot -name "^b#0E0708^^c#a89984^$(playing) ^c#FE8019^^c#FB4934^    $(memory) ^c#FE8019^^c#B8BB26^    $(drive) ^c#FE8019^^c#FABD2F^   $(cpu_temp) ^c#FE8019^^c#83A598^    $(volume)% ^c#FE8019^^c#8EC07C^    $(print_date) ^c#FE8019^"
+  xsetroot -name "^b#0E0708^^c#a89984^$(playing) ^c#FE8019^^c#FB4934^   $(memory) ^c#FE8019^^c#B8BB26^   $(drive) ^c#FE8019^^c#FABD2F^  $(cpu_temp) ^c#FE8019^^c#83A598^   $(volume)% ^c#FE8019^^c#8EC07C^   $(print_date)^c#FE8019^"
 	sleep 1s
 done
