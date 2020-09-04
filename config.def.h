@@ -81,7 +81,10 @@ static void (*bartabmonfns[])(Monitor *) = { monocle /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "Liberation Mono:pixelsize=16:antialias=true:hinting=true" };
+static const char *fonts[]               = { 
+        "Liberation Mono:pixelsize=16:antialias=true:hinting=true",
+        "Font Awesome 5 Pro Solid"
+};
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "Liberation Mono:size=14";
 
@@ -339,7 +342,7 @@ static Sp scratchpads[] = {
  */
 static char *tagicons[][NUMTAGS] = {
 	[ALTERNATIVE_TAGS]        = { "", "", "", "", "", "", "", "", "" },
-	[DEFAULT_TAGS]    = { "", "", "", "", "", "", "", "", "" },
+	[DEFAULT_TAGS]    = { "", "", "", "", "", "", "", "", "" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
 
