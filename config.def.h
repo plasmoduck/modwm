@@ -127,7 +127,7 @@ static char hidbordercolor[]             = "#458588";
 static char hidfloatcolor[]              = "#f76e0c";
 
 static char urgfgcolor[]                 = "#bbbbbb";
-static char urgbgcolor[]                 = "#222222";
+static char urgbgcolor[]                 = "#0E0708";
 static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
 
