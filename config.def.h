@@ -365,28 +365,24 @@ static const int tagrows = 2;
  *  - using the RULE macro
  *
  * A traditional struct table looks like this:*/
- /*   // class      instance  title  wintype  tags mask  isfloating  monitor
- *   { "Gimp",     NULL,     NULL,  NULL,    4,         0,          -1 },
- *   { "Firefox",  NULL,     NULL,  NULL,    7,         0,          -1 },
- *   { "Hexchat",  NULL,     NULL,  NULL,    8,	       0,          -1 },
- *   { "thunar",   NULL,     NULL,  NULL,    3,	       1,          -1 },
- * The RULE macro has the default values set for each field allowing you to only
- * specify the values that are relevant for your rule, e.g.
- *
- *    RULE(.class = "Gimp", .tags = 1 << 4)
- *    RULE(.class = "Firefox", .tags = 1 << 7)
- *
- * Refer to the Rule struct definition for the list of available fields depending on
- * the patches you enable.
- */
+
+ /*   // class      instance  title  wintype  tags mask  isfloating  monitor*/
 static const Rule rules[] = {
+      { "Gimp",     NULL,     NULL,  NULL,    1 << 6,    0,          -1 },
+      { "Firefox",  NULL,     NULL,  NULL,    1 << 7,    0,          -1 },
+      { "Hexchat",  NULL,     NULL,  NULL,    1 << 8,	 0,          0 },
+      { "Thunar",   NULL,     NULL,  NULL,    1 << 2,	 0,          -1 },
+      { "Pidgin",   NULL,     NULL,  NULL,    1 << 8,	 1,   	     -1 },
+      { "Sxiv",     NULL,     NULL,  NULL,    1 << 0,    1,          -1 },
+
+/*static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 *	WM_WINDOW_ROLE(STRING) = role
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
-	RULE(.wintype = WTYPE "DIALOG", .isfloating = 1)
+/*	RULE(.wintype = WTYPE "DIALOG", .isfloating = 1)
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
@@ -396,6 +392,8 @@ static const Rule rules[] = {
 	RULE(.class = "Pidgin", .tags = 1 << 8)
 	RULE(.class = "Thunar", .tags = 1 << 2)
 	RULE(.class = "St", .tags = 0, .isterminal = 1)
+	RULE(.class = "Sxiv", .tags = 0, .isfloating = 1)
+*/
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
 	RULE(.instance = "spfm", .tags = SPTAG(1), .isfloating = 1)
