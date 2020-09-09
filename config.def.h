@@ -60,7 +60,7 @@ static const char buttonbar[]            = "";
 #endif // BAR_STATUSBUTTON_PATCH
 
 #if BAR_SYSTRAY_PATCH
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 1;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
 #endif // BAR_SYSTRAY_PATCH
 static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE; // see patch/bar_indicators.h for options
