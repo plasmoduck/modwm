@@ -53,6 +53,7 @@
 
 #if BAR_PANGO_PATCH
 #include <pango/pango.h>
+#include <pango/pangoxft.h>
 #endif // BAR_PANGO_PATCH
 
 #if SPAWNCMD_PATCH
@@ -669,7 +670,7 @@ static Atom wmatom[WMLast], netatom[NetLast];
 #endif // BAR_SYSTRAY_PATCH
 static int running = 1;
 static Cur *cursor[CurLast];
-static Clr **scheme;
+static Clr **scheme, clrborder;
 static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;

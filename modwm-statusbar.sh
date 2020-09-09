@@ -8,7 +8,7 @@
 # */
 
 playing () {
-  mpc -h /usr/home/cjg/.mpd/socket | awk 'NR==1 {song = $0} NR==2 {if ($1 == "[playing]") p=1; len=$(NF-1); sub(/.*\//, "", len)} END {printf("%s (%s) %s\n", p?"^c#83A598^ ^c#a89984^":"^c#D3869B^ ^c#a89984^", len, song)}' 
+  mpc -h /usr/home/cjg/.mpd/socket | awk 'NR==1 {song = $0} NR==2 {if ($1 == "[playing]") p=1; sub(/.*\//, "")} END {printf("%s %s\n", p?"^c#83A598^ ^c#a89984^":"^c#D3869B^ ^c#a89984^", song)}' 
 }
 
 covid19 () {
@@ -51,6 +51,6 @@ weather() {
 
 while true
 do
-  xsetroot -name "^b#0E0708^^c#a89984^$(playing) ^c#FE8019^^c#FB4934^  $(memory) ^c#FE8019^^c#B8BB26^  $(drive) ^c#FE8019^^c#FABD2F^  $(cpu_temp)° ^c#FE8019^^c#83A598^  $(volume)% ^c#FE8019^^c#8EC07C^  $(print_date)^c#FE8019^"
+  xsetroot -name "^b#282828^^c#a89984^$(playing) ^c#FE8019^^c#FB4934^  ^c#a89984^$(memory) ^c#FE8019^^c#B8BB26^  ^c#a89984^$(drive) ^c#FE8019^^c#FABD2F^ ^c#a89984^ $(cpu_temp)° ^c#FE8019^^c#83A598^ ^c#a89984^ $(volume)% ^c#FE8019^^c#8EC07C^  ^c#a89984^$(print_date)^c#FE8019^"
 	sleep 1s
 done

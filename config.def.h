@@ -1,4 +1,4 @@
-/* MODWM - modular dynamic window manager */
+/* MODWM - modular dynamic window manager *
 /* See LICENSE file for copyright and license details */
 
 /* appearance */
@@ -6,7 +6,7 @@
 static const unsigned int borderpx       = 0;   /* border pixel of windows */
 static const int corner_radius           = 10;
 #else
-static const unsigned int borderpx       = 2;   /* border pixel of windows */
+static const unsigned int borderpx       = 3;   /* border pixel of windows */
 #endif // ROUNDED_CORNERS_PATCH
 
 static const unsigned int snap           = 0;  /* snap pixel */
@@ -75,14 +75,21 @@ static const char statussep              = ';'; /* separator between status bars
 #endif // BAR_EXTRASTATUS_PATCH
 
 #if BAR_TABGROUPS_PATCH
+/* Bartabgroups properties */
+#define BARTAB_BORDERS 1       // 0 = off, 1 = on
+#define BARTAB_BOTTOMBORDER 1  // 0 = off, 1 = on
+#define BARTAB_TAGSINDICATOR 1 // 0 = off, 1 = on if >1 client/view tag, 2 = always on
+#define BARTAB_TAGSPX 5        // # pixels for tag grid boxes
+#define BARTAB_TAGSROWS 3      // # rows in tag grid (9 tags, e.g. 3x3)
 static void (*bartabmonfns[])(Monitor *) = { monocle /* , customlayoutfn */ };
+static void (*bartabfloatfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #endif // BAR_TABGROUPS_PATCH
 
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
 static const char *fonts[]               = { 
-        "Liberation Mono:pixelsize=16:antialias=true:hinting=true",
+        "Liberation Mono:pixelsize=18:antialias=true:hinting=true",
         "Font Awesome 5 Pro Solid"
 };
 #endif // BAR_PANGO_PATCH
@@ -92,32 +99,31 @@ static const char dmenufont[]            = "Liberation Mono:size=14";
 static char c000000[]                    = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
 static char normfgcolor[]                = "#C86A27";
-static char normbgcolor[]                = "#0E0708";
-static char normbordercolor[]            = "#4A4856";
+static char normbgcolor[]                = "#282828";
+static char normbordercolor[]            = "#665C54";
 static char normfloatcolor[]             = "#db8fd9";
-
 static char selfgcolor[]                 = "#E2D0A8";
-static char selbgcolor[]                 = "#0E0708";
+static char selbgcolor[]                 = "#282828";
 static char selbordercolor[]             = "#665C54";
 static char selfloatcolor[]              = "#005577";
 
 static char titlenormfgcolor[]           = "#bbbbbb";
-static char titlenormbgcolor[]           = "#0E0708";
+static char titlenormbgcolor[]           = "#282828";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
 static char titleselfgcolor[]            = "#E2D0A8";
-static char titleselbgcolor[]            = "#4A4856";
+static char titleselbgcolor[]            = "#282828";
 static char titleselbordercolor[]        = "#005577";
 static char titleselfloatcolor[]         = "#005577";
 
-static char tagsnormfgcolor[]            = "#4A4856";
-static char tagsnormbgcolor[]            = "#0E0708";
+static char tagsnormfgcolor[]            = "#665C54";
+static char tagsnormbgcolor[]            = "#282828";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
 static char tagsselfgcolor[]             = "#B8BB26";
-static char tagsselbgcolor[]             = "#0E0708";
+static char tagsselbgcolor[]             = "#282828";
 static char tagsselbordercolor[]         = "#458588";
 static char tagsselfloatcolor[]          = "#458588";
 
@@ -127,7 +133,7 @@ static char hidbordercolor[]             = "#458588";
 static char hidfloatcolor[]              = "#f76e0c";
 
 static char urgfgcolor[]                 = "#bbbbbb";
-static char urgbgcolor[]                 = "#0E0708";
+static char urgbgcolor[]                 = "#282828";
 static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
 
@@ -341,7 +347,7 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-	[ALTERNATIVE_TAGS]        = { "", "", "", "", "", "", "", "", "" },
+	[ALTERNATIVE_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 	[DEFAULT_TAGS]    = { "", "", "", "", "", "", "", "", "" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
@@ -367,33 +373,33 @@ static const int tagrows = 2;
  * A traditional struct table looks like this:*/
 
  /*   // class      instance  title  wintype  tags mask  isfloating  monitor*/
-static const Rule rules[] = {
-      { "Gimp",     NULL,     NULL,  NULL,    1 << 6,    0,          -1 },
-      { "Firefox",  NULL,     NULL,  NULL,    1 << 7,    0,          -1 },
-      { "Hexchat",  NULL,     NULL,  NULL,    1 << 8,	 0,          0 },
-      { "Thunar",   NULL,     NULL,  NULL,    1 << 2,	 0,          -1 },
-      { "Pidgin",   NULL,     NULL,  NULL,    1 << 8,	 1,   	     -1 },
-      { "Sxiv",     NULL,     NULL,  NULL,    1 << 0,    1,          -1 },
-
 /*static const Rule rules[] = {
+*      { "Gimp",     NULL,     NULL,  NULL,    1 << 4,    0,          -1 },
+*      { "Firefox",  NULL,     NULL,  NULL,    1 << 7,    0,          -1 },
+*      { "Hexchat",  NULL,     NULL,  NULL,    1 << 8,	 0,           0 },
+*      { "Thunar",   NULL,     NULL,  NULL,    1 << 2,	 0,          -1 },
+*      { "Pidgin",   NULL,     NULL,  NULL,    1 << 8,	 1,   	     -1 },
+*      { "Sxiv",     NULL,     NULL,  NULL,    1 << 0,    1,          -1 },
+*/
+static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 *	WM_WINDOW_ROLE(STRING) = role
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
-/*	RULE(.wintype = WTYPE "DIALOG", .isfloating = 1)
+	RULE(.wintype = WTYPE "DIALOG", .isfloating = 1)
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-	RULE(.class = "Gimp", .tags = 1 << 6)
+	RULE(.class = "Gimp", .tags = 1 << 4)
 	RULE(.class = "Firefox", .tags = 1 << 7)
 	RULE(.class = "Hexchat", .tags = 1 << 8)
 	RULE(.class = "Pidgin", .tags = 1 << 8)
 	RULE(.class = "Thunar", .tags = 1 << 2)
 	RULE(.class = "St", .tags = 0, .isterminal = 1)
 	RULE(.class = "Sxiv", .tags = 0, .isfloating = 1)
-*/
+
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
 	RULE(.instance = "spfm", .tags = SPTAG(1), .isfloating = 1)
@@ -754,6 +760,7 @@ static const Layout layouts[] = {
 	#endif
 };
 #else
+
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	#if FIBONACCI_DWINDLE_LAYOUT
@@ -892,7 +899,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 #endif // NODMENU_PATCH
 static const char *dmenucmd[] = {
-	"dmen.sh",
+	"dmenu_run",
 	#if !NODMENU_PATCH
 	"-m", dmenumon,
 	#endif // NODMENU_PATCH
