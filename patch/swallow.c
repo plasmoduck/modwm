@@ -1,9 +1,5 @@
 #include <X11/Xlib-xcb.h>
 #include <xcb/res.h>
-#ifdef __OpenBSD__
-#include <sys/sysctl.h>
-#include <kvm.h>
-#endif /* __OpenBSD */
 
 static xcb_connection_t *xcon;
 

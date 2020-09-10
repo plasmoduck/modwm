@@ -1,5 +1,5 @@
 /*
- * This file contains patch control flags. To activate a patch set 0 to 1.
+ * This file contains patch control flags.
  *
  * In principle you should be able to mix and match any patches
  * you may want. In cases where patches are logically incompatible
@@ -10,8 +10,8 @@
  * here for grouping purposes.
  */
 
-/*
- * Bar modules
+/**
+  * Bar modules
  */
 
 /* Enhanced taskbar that shows the titles of all visible windows in the status bar
@@ -61,7 +61,7 @@
  * https://gitlab.com/udiboy1209-suckless/dwm/-/commit/071f5063e8ac4280666828179f92788d893eea40#4b1a539194be7467cefbda22f675a3b7c19ceca7
  * https://dwm.suckless.org/patches/statuscolors/
  */
-#define BAR_POWERLINE_STATUS_PATCH 1
+#define BAR_POWERLINE_STATUS_PATCH 0
 
 /* Adds powerline arrows for the tags.
  * https://gitlab.com/udiboy1209-suckless/dwm/-/commit/071f5063e8ac4280666828179f92788d893eea40#4b1a539194be7467cefbda22f675a3b7c19ceca7
@@ -103,7 +103,7 @@
 #define BAR_STATUS2D_PATCH 1
 
 /* Supplementary patch should you want to disable alpha for the status2d section */
-#define BAR_STATUS2D_NO_ALPHA_PATCH 1
+#define BAR_STATUS2D_NO_ALPHA_PATCH 0
 
 /* Addition to the status2d patch that allows the use of terminal colors (color0 through color15)
  * from xrdb in the status, allowing programs like pywal to change statusbar colors.
@@ -145,8 +145,8 @@
  * remaining space. These options allow you explicitly add padding should
  * you need it.
  */
-#define BAR_TITLE_RIGHT_PAD_PATCH 1
-#define BAR_TITLE_LEFT_PAD_PATCH 1
+#define BAR_TITLE_RIGHT_PAD_PATCH 0
+#define BAR_TITLE_LEFT_PAD_PATCH 0
 
 /**
  * Bar options
@@ -176,13 +176,18 @@
  * Set the tagindicatortype variable in config.h to INDICATOR_TOP_BAR to enable this.
  * https://dwm.suckless.org/patches/activetagindicatorbar/
  */
-#define BAR_ACTIVETAGINDICATORBAR_PATCH 1
+#define BAR_ACTIVETAGINDICATORBAR_PATCH N/A
 
 /* Alternative patch to the activetagindicatorbar patch, adds the bar below the tag
  * icon rather than above.
  * Set the tagindicatortype variable in config.h to INDICATOR_BOTTOM_BAR to enable this.
  */
 #define BAR_ACTIVETAGINDICATORBAR_ALT1_PATCH N/A
+
+/* This patch adds a border around the status bar(s) just like the border of client windows.
+ * https://codemadness.org/paste/dwm-border-bar.patch
+ */
+#define BAR_BORDER_PATCH 1
 
 /* This patch centers the WM_NAME of the currently selected window on the status bar.
  * This is compatible with the wintitle, bartabgroups, flexwintitle and awesomebar bar
@@ -204,7 +209,7 @@
  * dwm will crash on encountering such characters. Note that you will also need a font that
  * provides color emojis for this to work.
  */
-#define BAR_COLOR_EMOJI_PATCH 1
+#define BAR_COLOR_EMOJI_PATCH 0
 
 /* Updates the position of dmenu to match that of the bar. I.e. if topbar is 0 then dmenu
  * will appear at the bottom and if 1 then dmenu will appear at the top.
@@ -224,7 +229,7 @@
  * that request workspace information. For example polybar's xworkspaces module.
  * https://dwm.suckless.org/patches/ewmhtags/
  */
-#define BAR_EWMHTAGS_PATCH 1
+#define BAR_EWMHTAGS_PATCH 0
 
 /* Allows the bar height to be explicitly set rather than being derived from font.
  * https://dwm.suckless.org/patches/bar_height/
@@ -247,7 +252,7 @@
  * https://groups.google.com/forum/m/#!topic/wmii/7bncCahYIww
  * https://docs.google.com/viewer?a=v&pid=forums&srcid=MDAwODA2MTg0MDQyMjE0OTgzMzMBMDQ3ODQzODkyMTU3NTAyMTMxNTYBX2RUMVNtOUtDQUFKATAuMQEBdjI&authuser=0
  */
-#define BAR_IGNORE_XFT_ERRORS_WHEN_DRAWING_TEXT_PATCH 1
+#define BAR_IGNORE_XFT_ERRORS_WHEN_DRAWING_TEXT_PATCH 0
 
 /* This patch adds vertical and horizontal space between the statusbar and the edge of the screen.
  * https://dwm.suckless.org/patches/barpadding/
@@ -285,7 +290,7 @@
 /* This patch adds configuration options for horizontal and vertical padding in the status bar.
  * https://dwm.suckless.org/patches/statuspadding/
  */
-#define BAR_STATUSPADDING_PATCH 1
+#define BAR_STATUSPADDING_PATCH 0
 
 /* This patch adds the ability for dwm to read colors from the linux virtual console.
  *    /sys/module/vt/parameters/default_{red,grn,blu}
@@ -310,7 +315,7 @@
 /* This patch allows windows to be resized with its aspect ratio remaining constant.
  * https://dwm.suckless.org/patches/aspectresize/
  */
-#define ASPECTRESIZE_PATCH 1
+#define ASPECTRESIZE_PATCH 0
 
 /* This patch prevents the focus to drift from the active fullscreen client when
  * using focusstack().
@@ -329,7 +334,7 @@
  * This patch takes precedence over ATTACHBELOW_PATCH.
  * https://dwm.suckless.org/patches/attachaside/
  */
-#define ATTACHASIDE_PATCH 0
+#define ATTACHASIDE_PATCH 1
 
 /* This patch adds new clients below the selected client.
  * This patch takes precedence over ATTACHBOTTOM_PATCH.
@@ -340,7 +345,7 @@
 /* This patch adds new clients at the bottom of the stack.
  * https://dwm.suckless.org/patches/attachbottom/
  */
-#define ATTACHBOTTOM_PATCH 1
+#define ATTACHBOTTOM_PATCH 0
 
 /* This patch will make dwm run "~/.local/share/dwm/autostart_blocking.sh" and
  * "~/.local/share/dwm/autostart.sh &" before entering the handler loop. One or
@@ -395,13 +400,13 @@
  * hold MOD and then press and hold 1 and 3 together.
  * https://dwm.suckless.org/patches/combo/
  */
-#define COMBO_PATCH 1
+#define COMBO_PATCH 0
 
 /* Allow dwm to execute commands from autostart array in your config.h file. When dwm exits
  * then all processes from autostart array will be killed.
  * https://dwm.suckless.org/patches/cool_autostart/
  */
-#define COOL_AUTOSTART_PATCH 1
+#define COOL_AUTOSTART_PATCH 0
 
 /* The cyclelayouts patch lets you cycle through all your layouts.
  * https://dwm.suckless.org/patches/cyclelayouts/
@@ -532,6 +537,20 @@
  */
 #define INSETS_PATCH 0
 
+/* This patch (v1.5.5) implements inter-process communication through a UNIX socket for dwm. This
+ * allows for the window manager to be queried for information, e.g. listen for events such as tag
+ * or layout changes, as well as send commands to control the window manager via other programs.
+ *
+ * You need to uncomment the corresponding lines in config.mk to use the -lyajl library
+ * when including this patch.
+ * This patch depends on the following additional library:
+ *    - yajl
+ *
+ * https://github.com/mihirlad55/dwm-ipc
+ * https://dwm.suckless.org/patches/ipc/
+ */
+#define IPC_PATCH 0
+
 /* Adds rule option for clients to avoid accidental termination by killclient for sticky windows.
  * https://dwm.suckless.org/patches/ispermanent/
  */
@@ -591,7 +610,7 @@
  * key is pressed.
  * https://dwm.suckless.org/patches/moveplace/
  */
-#define MOVEPLACE_PATCH 0
+#define MOVEPLACE_PATCH 1
 
 /* This patch allows you to move and resize dwm's clients using keyboard bindings.
  * https://dwm.suckless.org/patches/moveresize/
@@ -601,7 +620,7 @@
 /* This patch allows you to move clients around in the stack and swap them with the master.
  * https://dwm.suckless.org/patches/movestack/
  */
-#define MOVESTACK_PATCH 0
+#define MOVESTACK_PATCH 1
 
 /* Removes the border when there is only one window visible.
  * https://dwm.suckless.org/patches/noborder/
@@ -620,7 +639,7 @@
  * https://github.com/szatanjl/dwm/commit/1529909466206016f2101457bbf37c67195714c8
  * https://dwm.suckless.org/patches/alpha/dwm-fixborders-6.2.diff
  */
-#define NO_TRANSPARENT_BORDERS_PATCH 1
+#define NO_TRANSPARENT_BORDERS_PATCH 0
 
 /* This patch makes it so dwm will only exit via quit() if no windows are open.
  * This is to prevent you accidentally losing all your work.
@@ -714,6 +733,9 @@
  */
 #define SCRATCHPADS_PATCH 1
 
+/* Minor alteration of the above allowing clients to keep their size and position when shown */
+#define SCRATCHPADS_KEEP_POSITION_AND_SIZE_PATCH 0
+
 /* This alternative patch enables a scratchpad feature in dwm similar to the scratchpad
  * feature in i3wm.
  * https://github.com/GasparVardanyan/dwm-scratchpad
@@ -733,7 +755,7 @@
 /* This patch allows border pixels to be changed during runtime.
  * https://dwm.suckless.org/patches/setborderpx/
  */
-#define SETBORDERPX_PATCH 1
+#define SETBORDERPX_PATCH 0
 
 /* This patch adds keybindings for left and right circular shift through tags.
  * https://github.com/chau-bao-long/dotfiles/blob/master/suckless/dwm/shiftview.diff
@@ -936,6 +958,14 @@
  */
 #define VIEWONTAG_PATCH 0
 
+/* By default tags can be changed using MOD+<num> while MOD+Tab toggles between the current and
+ * the previous tag. This patch changes this so that if you hit MOD+<num> for the tag you are
+ * currently on, then it works the same as MOD+Tab and switches back to the previous tag.
+ * Idea ref.
+ * https://www.reddit.com/r/suckless/comments/ik27vd/key_toggle_between_next_and_previous_tag_dwm/
+ */
+#define VIEW_SAME_TAG_GIVES_PREVIOUS_TAG_PATCH 0
+
 /* This patch warps the mouse cursor to the center of the currently focused window or screen
  * when the mouse cursor is (a) on a different screen or (b) on top of a different window.
  * https://dwm.suckless.org/patches/warp/
@@ -1043,7 +1073,7 @@
 /* Grid layout where nmaster controls the number of rows.
  * https://dwm.suckless.org/patches/nrowgrid/
  */
-#define NROWGRID_LAYOUT 1
+#define NROWGRID_LAYOUT 0
 
 /* The default tile layout.
  * This can be optionally disabled in favour of other layouts.
