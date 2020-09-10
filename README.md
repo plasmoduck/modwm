@@ -26,6 +26,14 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 
 ### Changelog:
 
+2020-09-09 - Added the bar border patch
+
+2020-09-08 - Added ipc v1.5.5 patch
+
+2020-09-07 - Scratchpads improvement (multi-monitor support)
+
+2020-09-05 - Assortment of fullscreen improvements
+
 2020-08-27 - Added aspectresize patch
 
 2020-08-25 - Unified tag icon handling while adding support for different icons per monitor. Added alttagsdecoration patch.
@@ -207,6 +215,9 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
    - [awesomebar](https://dwm.suckless.org/patches/awesomebar/)
       - enhanced taskbar that allows focus / hiding / unhiding of windows by clicking on the status bar
 
+   - [bar_border](https://codemadness.org/paste/dwm-border-bar.patch)
+      - adds a border around the bar similarly to how client windows have borders
+  
    - [bar_height](https://dwm.suckless.org/patches/bar_height/)
       - allows the bar height to be explicitly set rather than being derived from font
 
@@ -356,6 +367,10 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
    - [insets](https://dwm.suckless.org/patches/insets/)
       - lets custom insets from each edge of the screen to be defined
       - an example use case would be to make space for an external bar
+
+   - [ipc](https://github.com/mihirlad55/dwm-ipc)
+       - implements inter-process communication through a UNIX socket for dwm
+       - allows for the window manager to be queried for information, e.g. listen for events such as tag or layout changes, as well as send commands to control the window manager via other programs
 
    - [ispermanent](https://dwm.suckless.org/patches/ispermanent/)
       - adds rule option for clients to avoid accidental termination by killclient for sticky windows
