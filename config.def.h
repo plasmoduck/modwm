@@ -1,4 +1,14 @@
-/* See LICENSE file for copyright and license details. */
+/*  ___  ______________ _    ____  ___
+ *  |  \/  |  _  |  _  | |  | |  \/  |
+ *  | .  . | | | | | | | |  | | .  . |
+ *  | |\/| | | | | | | | |/\| | |\/| |
+ *  | |  | \ \_/ | |/ /\  /\  | |  | |
+ *  \_|  |_/\___/|___/  \/  \/\_|  |_/
+ *
+ * MODWM - Modular Dynamic Window Manager.
+ * ---------------------------------------
+ * See LICENSE file for copyright and license details.
+ * /
 
 /* appearance */
 #if ROUNDED_CORNERS_PATCH
@@ -78,7 +88,7 @@ static char c000000[]                    = "#000000"; // placeholder value
 static char normfgcolor[]                = "#C86A27";
 static char normbgcolor[]                = "#282828";
 static char normbordercolor[]            = "#665C54";
-static char normfloatcolor[]             = "#db8fd9";
+static char normfloatcolor[]             = "#3A3A3A";
 static char selfgcolor[]                 = "#E2D0A8";
 static char selbgcolor[]                 = "#282828";
 static char selbordercolor[]             = "#665C54";
