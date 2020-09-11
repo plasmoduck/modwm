@@ -97,12 +97,12 @@ static char selbgcolor[]                 = "#282828";
 static char selbordercolor[]             = "#665C54";
 static char selfloatcolor[]              = "#005577";
 
-static char titlenormfgcolor[]           = "#bbbbbb";
+static char titlenormfgcolor[]           = "#FB4934";
 static char titlenormbgcolor[]           = "#282828";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
-static char titleselfgcolor[]            = "#83A598";
+static char titleselfgcolor[]            = "#B8BB26";
 static char titleselbgcolor[]            = "#282828";
 static char titleselbordercolor[]        = "#005577";
 static char titleselfloatcolor[]         = "#005577";
