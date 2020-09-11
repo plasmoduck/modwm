@@ -18,6 +18,9 @@ static const int corner_radius           = 10;
 static const unsigned int borderpx       = 3;   /* border pixel of windows */
 #endif // ROUNDED_CORNERS_PATCH
 static const unsigned int snap           = 0;  /* snap pixel */
+#if SWALLOW_PATCH
+static const int swallowfloating         = 0;   /* 1 means swallow floating windows by default */
+#endif // SWALLOW_PATCH
 #if VANITYGAPS_PATCH
 static const unsigned int gappih         = 20;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 20;  /* vert inner gap between windows */
@@ -335,7 +338,7 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
+	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
 	[ALTERNATIVE_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
@@ -383,16 +386,17 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-	RULE(.class = "Firefox", .tags = 1 << 1, .monitor = 0)
-        RULE(.class = "Hexchat", .tags = 1 << 2, .monitor = 1)
-        RULE(.class = "Pidgin", .tags = 1 << 3, .monitor = 0)
-        RULE(.class = "Thunar", .tags = 1 << 4)
+	
+    RULE(.class = "Firefox", .tags = 1 << 1, .monitor = 0)
+    RULE(.class = "sfeed_curses", .tags = 1 << 1, .monitor = 1)
+    RULE(.class = "Hexchat", .tags = 1 << 2, .monitor = 1)
+    RULE(.class = "Pidgin", .tags = 1 << 3, .monitor = 0)
+    RULE(.class = "Thunar", .tags = 1 << 4)
 	RULE(.class = "Gimp", .tags = 1 << 5)
-        RULE(.class = "vlc", .tags = 1 << 6, .monitor = 1)
+    RULE(.class = "vlc", .tags = 1 << 6, .monitor = 1)
 	RULE(.class = "st-256color", .tags = 0, .isterminal = 1)
-        RULE(.class = "Sxiv", .tags = 0, .iscentered = 1, .isfloating = 1)
-
-
+    RULE(.class = "Sxiv", .tags = 0, .iscentered = 1, .isfloating = 1)
+    
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
 	RULE(.instance = "spfm", .tags = SPTAG(1), .isfloating = 1)
@@ -736,7 +740,7 @@ static const char *dmenucmd[] = {
 static const char *termcmd[]  = { "st", NULL };
 static const char *firefox[] = { "firefox", NULL };
 static const char *hexchat[] = { "hexchat", NULL };
-static const char *emoji[] = { "emoji", NULL };
+static const char *emoji[] = { "/home/cjg/bin/emoji", NULL };
 static const char *files[] = { "thunar", NULL };
 static const char *upvol[]   = { "mixer", "vol", "+3",     NULL };
 static const char *downvol[] = { "mixer", "vol", "-3",     NULL };
@@ -747,11 +751,11 @@ static const char *mpctgl[] = { "mpc", "-h", "/usr/home/cjg/.mpd/socket", "toggl
 static const char *mpcstp[] = { "mpc", "-h", "/usr/home/cjg/.mpd/socket", "stop", NULL };
 static const char *mpcprv[] = { "mpc", "-h", "/usr/home/cjg/.mpd/socket", "prev", NULL };
 static const char *slock[] = { "slock", NULL };
-static const char *sfeed[] = { "sfeed-dmenu", NULL };
+static const char *sfeed[] = { "/home/cjg/bin/sfeed-dmenu", NULL };
 static const char *sfeedcurses[] = { "st", "sfeed-curses", NULL };
 static const char *ncmpcpp[] = { "togglescratch", "ncmpcpp", NULL };
-static const char *surftabbed[] =  { "surf-tabbed", NULL };
-static const char *websearch[] = { "dmenu_websearch", NULL };
+static const char *surftabbed[] =  { "/home/cjg/bin/surf-tabbed", NULL };
+static const char *websearch[] = { "/homne/cjg/bin/dmenu_websearch", NULL };
 static const char *wallpaper[] = { "/home/cjg/bin/wallpaper", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
@@ -768,23 +772,23 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } },
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
-	{ MODKEY,                       XK_s,      spawn,          {.v = firefox } },
-        { MODKEY,                       XK_x,      spawn,          {.v = hexchat } },
-        { MODKEY,                       XK_e,      spawn,          {.v = emoji } },
-        { MODKEY,                       XK_g,      spawn,          {.v = gimp } },
-        { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = files } },
-        { MODKEY|ShiftMask,             XK_End,    spawn,          {.v = slock } },
-        { MODKEY,                       XK_F12,    spawn,          {.v = mpcnxt } },
-        { MODKEY,                       XK_F9,     spawn,          {.v = mpctgl } },
-        { MODKEY,                       XK_F10,    spawn,          {.v = mpcstp } },
-        { MODKEY,                       XK_F11,    spawn,          {.v = mpcprv } },
-        { MODKEY,                       XK_Pause,  spawn,          {.v = upvol   } },
-        { MODKEY,                       XK_Scroll_Lock,    spawn,  {.v = downvol } },
-        { MODKEY,                       XK_Print,  spawn,          {.v = mutevol } },
-        { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = sfeed } },
-        { MODKEY|Mod1Mask,              XK_s,      spawn,          {.v = sfeedcurses } },
-        { MODKEY,                       XK_w,      spawn,          {.v = websearch } },
-        { MODKEY|ShiftMask,             XK_w,      spawn,          {.v = wallpaper } },
+	{ MODKEY,                       XK_s,          spawn,          {.v = firefox } },
+    { MODKEY,                       XK_x,          spawn,          {.v = hexchat } },
+    { MODKEY,                       XK_e,          spawn,          {.v = emoji } },
+    { MODKEY,                       XK_g,          spawn,          {.v = gimp } },
+    { MODKEY|ShiftMask,             XK_f,          spawn,          {.v = files } },
+    { MODKEY|ShiftMask,             XK_End,        spawn,          {.v = slock } },
+    { MODKEY,                       XK_F12,        spawn,          {.v = mpcnxt } },
+    { MODKEY,                       XK_F9,         spawn,          {.v = mpctgl } },
+    { MODKEY,                       XK_F10,        spawn,          {.v = mpcstp } },
+    { MODKEY,                       XK_F11,        spawn,          {.v = mpcprv } },
+    { MODKEY,                       XK_Pause,      spawn,          {.v = upvol   } },
+    { MODKEY,                       XK_Scroll_Lock, spawn,         {.v = downvol } },
+    { MODKEY,                       XK_Print,      spawn,          {.v = mutevol } },
+    { MODKEY|ShiftMask,             XK_s,          spawn,          {.v = sfeed } },
+    { MODKEY|Mod1Mask,              XK_s,          spawn,          {.v = sfeedcurses } },
+    { MODKEY,                       XK_w,          spawn,          {.v = websearch } },
+    { MODKEY|ShiftMask,             XK_w,          spawn,          {.v = wallpaper } },
 
 	#if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
