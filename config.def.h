@@ -301,12 +301,12 @@ static const char *const autostart[] = {
 #if SCRATCHPADS_PATCH
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[] = {"keepassxc", NULL };
+const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "ncmpcpp", NULL };
 static Sp scratchpads[] = {
    /* name          cmd  */
    {"spterm",      spcmd1},
    {"spranger",    spcmd2},
-   {"keepassxc",   spcmd3},
+   {"spmusic",   spcmd3},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -388,7 +388,9 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
 	
     RULE(.class = "Firefox", .tags = 1 << 1, .monitor = 0)
-    RULE(.class = "sfeed_curses", .tags = 1 << 1, .monitor = 1)
+    RULE(.title = "sfeed_curses", .tags = 1 << 0, .monitor = 1)
+    RULE(.title = "neomutt", .tags = 1 << 0, .monitor = 1)
+    RULE(.title = "irssi", .tags = 1 << 0, .monitor = 0)
     RULE(.class = "Hexchat", .tags = 1 << 2, .monitor = 1)
     RULE(.class = "Pidgin", .tags = 1 << 3, .monitor = 0)
     RULE(.class = "Thunar", .tags = 1 << 4)
@@ -400,7 +402,7 @@ static const Rule rules[] = {
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
 	RULE(.instance = "spfm", .tags = SPTAG(1), .isfloating = 1)
-	RULE(.instance = "keepassxc", .tags = SPTAG(2))
+	RULE(.instance = "spmusic", .tags = SPTAG(2), .isfloating = 1)
 	#endif // SCRATCHPADS_PATCH
 };
 
@@ -755,8 +757,9 @@ static const char *sfeed[] = { "/home/cjg/bin/sfeed-dmenu", NULL };
 static const char *sfeedcurses[] = { "st", "sfeed-curses", NULL };
 static const char *ncmpcpp[] = { "togglescratch", "ncmpcpp", NULL };
 static const char *surftabbed[] =  { "/home/cjg/bin/surf-tabbed", NULL };
-static const char *websearch[] = { "/homne/cjg/bin/dmenu_websearch", NULL };
+static const char *websearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
 static const char *wallpaper[] = { "/home/cjg/bin/wallpaper", NULL };
+static const char *neomutt[] = { "st", "neomutt", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -789,7 +792,7 @@ static Key keys[] = {
     { MODKEY|Mod1Mask,              XK_s,          spawn,          {.v = sfeedcurses } },
     { MODKEY,                       XK_w,          spawn,          {.v = websearch } },
     { MODKEY|ShiftMask,             XK_w,          spawn,          {.v = wallpaper } },
-
+    { MODKEY|ShiftMask,              XK_m,          spawn,           {.v = neomutt } },
 	#if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
@@ -942,9 +945,9 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_m,          togglemax,              {0} },
 	#endif // MAXIMIZE_PATCH
 	#if SCRATCHPADS_PATCH
-	{ MODKEY,                       XK_grave,      togglescratch,          {.ui = 0 } },
+	{ MODKEY|ShiftMask,             XK_grave,      togglescratch,          {.ui = 0 } },
 	{ MODKEY|ControlMask,           XK_grave,      togglescratch,          {.ui = 1 } },
-	{ MODKEY|ShiftMask,             XK_grave,      togglescratch,          {.ui = 2 } },
+	{ MODKEY,             		XK_grave,      togglescratch,          {.ui = 2 } },
 	#endif // SCRATCHPADS_PATCH
 	#if UNFLOATVISIBLE_PATCH
 	{ MODKEY|Mod4Mask,              XK_space,      unfloatvisible,         {0} },

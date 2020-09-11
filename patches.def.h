@@ -910,7 +910,7 @@
  * or previous (left) monitor from the currently selected monitor.
  * https://dwm.suckless.org/patches/tagothermonitor/
  */
-#define TAGOTHERMONITOR_PATCH 1
+#define TAGOTHERMONITOR_PATCH 0
 
 /* This patch allows you to swap all visible windows on one monitor with those of an
  * adjacent monitor.
