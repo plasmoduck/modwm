@@ -78,7 +78,7 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "monospace:size=12", "Font Awesome:size=12" };
+static const char *fonts[]               = { "monospace:size=12" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "monospace:size=10";
 
@@ -99,7 +99,7 @@ static char titlenormbgcolor[]           = "#282828";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
-static char titleselfgcolor[]            = "#E2D0A8";
+static char titleselfgcolor[]            = "#83A598";
 static char titleselbgcolor[]            = "#282828";
 static char titleselbordercolor[]        = "#005577";
 static char titleselfloatcolor[]         = "#005577";
@@ -335,7 +335,7 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
+	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
 	[ALTERNATIVE_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
@@ -383,13 +383,15 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-	RULE(.class = "Gimp", .tags = 1 << 4)
-        RULE(.class = "Firefox", .tags = 1 << 7)
-        RULE(.class = "Hexchat", .tags = 1 << 8)
-        RULE(.class = "Pidgin", .tags = 1 << 8)
-        RULE(.class = "Thunar", .tags = 1 << 2)
-        RULE(.class = "St", .tags = 0, .isterminal = 1)
+	RULE(.class = "Firefox", .tags = 1 << 1, .monitor = 0)
+        RULE(.class = "Hexchat", .tags = 1 << 2, .monitor = 1)
+        RULE(.class = "Pidgin", .tags = 1 << 3, .monitor = 0)
+        RULE(.class = "Thunar", .tags = 1 << 4)
+	RULE(.class = "Gimp", .tags = 1 << 5)
+        RULE(.class = "vlc", .tags = 1 << 6, .monitor = 1)
+	RULE(.class = "st-256color", .tags = 0, .isterminal = 1)
         RULE(.class = "Sxiv", .tags = 0, .iscentered = 1, .isfloating = 1)
+
 
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
