@@ -1,20 +1,23 @@
 # MODWM - Modular Dynamic Window Manager 
 ![modwm](modwm.png)
-MODWM is a fork of dwm 6.2 (aaad5f, 2020-07-08). It has a different take on dwm patching. It uses preprocessor directives to decide whether or not to include a patch during build time. Essentially this means that this build is modular and for better or worse, contains both the patched _and_ the original code. The aim being that you can select which patches to include and the build will contain that code and nothing more. Due to the complexity of some of the patches MODWM has diverged from mainstream dwm by making some core patches non-optional for maintenance reasons. Credit to bakkeby for his upstream work on [dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch/)
+MODWM is a fork of dwm 6.2 (aaad5f, 2020-07-08). It has a different take on dwm patching. It uses preprocessor directives to decide whether or not to include a patch during build time. Essentially this means that this build is modular and for better or worse, contains both the patched _and_ the original code. The aim being that you can select which patches to include and the build will contain that code and nothing more. Due to the complexity of some of the patches MODWM has diverged from mainstream dwm by making some core patches non-optional for maintenance reasons. Credit to bakkeby for his upstream work on [dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch/) & the [suckless guys](https://suckless.org/) for [dwm](https://dwm.suckless.org/) which this project wouldn't be possible without.
 
-For example to include the `alpha` patch then you would only need to flip this setting from 0 to 1 in [patches.h](https://github.com/bakkeby/dwm-flexipatch/blob/master/patches.def.h):
+#EXAMPLE
+To include the `alpha` patch module you would only need to flip this setting from 0 to 1 in [patches.h](https://github.com/plasmoduck/modwm/blob/master/patches.def.h):
 ```c
 #define BAR_ALPHA_PATCH 1
  ```
+#BUILDING
+This build is customised for FreeBSD (cause that's what I use). Modify the build flags in [config.mk](https://github.com/plasmoduck/modwm/blob/ma    ster/config.mk) to suit your system, Linux for example.
 
-This build is customised for FreeBSD (cause that's what I use). Modify config.mk to suit your system i.e Linux/NetBSD.
-
-Also included are 2 wallpapers and a statusbar 'statusbar.sh'. You can source this from your .xinitrc like so 
+#STATUSBAR
+Also included is a statusbar 'statusbar.sh'. You can source this from your .xinitrc like so 
 ```c
 exec /path/to/modwm/statusbar.sh &
 ```
 
-For more quality suckless software check out my suckless utilities [collection](https://github.com/plasmoduck/suckless/)
+#EXTRA GOODIES
+For more quality suckless software to complement MODWM, check out my suckless utilities [collection](https://github.com/plasmoduck/suckless/)
 
 So if you have ever been curious about trying out dwm, but have been discouraged by manual patching, then this may be a good starting point to see what a "fully fledged" dwm can look like. Want to try out the `pertag` patch? Just flip a config and recompile. Once you have found out what works for you and what doesn't then you should be in a better position to choose patches should you want to start patching from scratch.
 
@@ -25,6 +28,8 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 ---
 
 ### Changelog:
+
+2020-09-13 - Added extra keybidings for [suckless tools](https://github.com/plasmoduck/suckless/)
 
 2020-09-09 - Added the bar border patch
 
