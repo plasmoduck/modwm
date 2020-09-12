@@ -7,8 +7,19 @@ To include the `alpha` patch module you would only need to flip this setting fro
 ```c
 #define BAR_ALPHA_PATCH 1
  ```
+
+## CONFIGURE
+Configuration of MODWM is done by its two config files [patches.def.h](https://github.com/plasmoduck/modwm/blob/master/patches.def.h) & [config.def.h](https://github.com/plasmoduck/modwm/blob/master/config.def.h). Simply edit patches.def.h & select which modules you want, then edit config.def.h to configure them.
+
 ## BUILDING
-This build is customised for FreeBSD (cause that's what I use). Modify the build flags in [config.mk](https://github.com/plasmoduck/modwm/blob/ma    ster/config.mk) to suit your system, Linux for example.
+This build is customised for FreeBSD (cause that's what I use). Modify the build flags in [config.mk](https://github.com/plasmoduck/modwm/blob/master/config.mk) to suit your system, Linux for example. Then run:
+```c
+#doas/sudo make install
+```
+Then you can put something like this at the end of your ~/.xinitrc file:
+```c
+exec dwm
+```
 
 ## STATUSBAR
 Also included is a statusbar 'statusbar.sh'. You can source this from your .xinitrc like so 
