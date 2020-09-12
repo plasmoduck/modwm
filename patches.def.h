@@ -1,18 +1,16 @@
-/*
- * This file contains patch control flags.
+/*  ___  ______________ _    ____  ___
+ *  |  \/  |  _  |  _  | |  | |  \/  |
+ *  | .  . | | | | | | | |  | | .  . |
+ *  | |\/| | | | | | | | |/\| | |\/| |
+ *  | |  | \ \_/ | |/ /\  /\  | |  | |
+ *  \_|  |_/\___/|___/  \/  \/\_|  |_/
  *
- * In principle you should be able to mix and match any patches
- * you may want. In cases where patches are logically incompatible
- * one patch may take precedence over the other as noted in the
- * relevant descriptions.
- *
- * Although layouts typically come as patches they are differentiated
- * here for grouping purposes.
- */
-
-/**
-  * Bar modules
- */
+ * MODWM - Modular Dynamic Window Manager.
+ * ---------------------------------------
+ * See LICENSE file for copyright and license details.
+ * /
+ 
+ /*Bar modules*/
 
 /* Enhanced taskbar that shows the titles of all visible windows in the status bar
  * and allows focus / hiding / unhiding of windows by clicking on the status bar.
