@@ -1,11 +1,20 @@
-dwm - dynamic window manager
-============================
-dwm is an extremely fast, small, and dynamic window manager for X.
+/*  ___  ______________ _    ____  ___
+ *  |  \/  |  _  |  _  | |  | |  \/  |
+ *  | .  . | | | | | | | |  | | .  . |
+ *  | |\/| | | | | | | | |/\| | |\/| |
+ *  | |  | \ \_/ | |/ /\  /\  | |  | |
+ *  \_|  |_/\___/|___/  \/  \/\_|  |_/
+ *
+ * MODWM - Modular Dynamic Window Manager.
+ * --------------------------------------- 
+ * /
+
+MODWM is an extremely fast, small, and dynamic window manager for X.
 
 
 Requirements
 ------------
-In order to build dwm you need the Xlib header files.
+In order to build MODWM you need the Xlib header files.
 
 
 Installation
@@ -19,7 +28,7 @@ necessary as root):
     make clean install
 
 
-Running dwm
+Running modwm
 -----------
 Add the following line to your .xinitrc to start dwm using startx:
 

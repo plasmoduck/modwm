@@ -1,4 +1,14 @@
-/* See LICENSE file for copyright and license details. */
+/*  ___  ______________ _    ____  ___
+ *  |  \/  |  _  |  _  | |  | |  \/  |
+ *  | .  . | | | | | | | |  | | .  . |
+ *  | |\/| | | | | | | | |/\| | |\/| |
+ *  | |  | \ \_/ | |/ /\  /\  | |  | |
+ *  \_|  |_/\___/|___/  \/  \/\_|  |_/
+ *
+ * MODWM - Modular Dynamic Window Manager.
+ * ---------------------------------------
+ * See LICENSE file for copyright and license details.
+ * /
 
 #if BAR_PANGO_PATCH
 #include <pango/pango.h>

@@ -1,6 +1,16 @@
-/* See LICENSE file for copyright and license details.
+/*  ___  ______________ _    ____  ___
+ *  |  \/  |  _  |  _  | |  | |  \/  |
+ *  | .  . | | | | | | | |  | | .  . |
+ *  | |\/| | | | | | | | |/\| | |\/| |
+ *  | |  | \ \_/ | |/ /\  /\  | |  | |
+ *  \_|  |_/\___/|___/  \/  \/\_|  |_/
  *
- * dynamic window manager is designed like any other X client as well. It is
+ * MODWM - Modular Dynamic Window Manager.
+ * ---------------------------------------
+ * See LICENSE file for copyright and license details.
+ */
+
+/* dynamic window manager is designed like any other X client as well. It is
  * driven through handling X events. In contrast to other X clients, a window
  * manager selects for SubstructureRedirectMask on the root window, to receive
  * events about window (dis-)appearance. Only one X connection at a time is
@@ -20,6 +30,7 @@
  *
  * To understand everything else, start reading main().
  */
+
 #include <errno.h>
 #include <locale.h>
 #include <signal.h>
