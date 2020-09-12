@@ -15,7 +15,7 @@
 static const unsigned int borderpx       = 0;   /* border pixel of windows */
 static const int corner_radius           = 10;
 #else
-static const unsigned int borderpx       = 3;   /* border pixel of windows */
+static const unsigned int borderpx       = 4;  /* border pixel of windows */
 #endif // ROUNDED_CORNERS_PATCH
 static const unsigned int snap           = 0;  /* snap pixel */
 #if SWALLOW_PATCH
@@ -59,10 +59,10 @@ static const int horizpadbar             = 2;   /* horizontal padding for status
 static const int vertpadbar              = 0;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[]            = "<O>";
+static const char buttonbar[]            = "";
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 1;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
 #endif // BAR_SYSTRAY_PATCH
 static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE; // see patch/bar_indicators.h for options
@@ -90,11 +90,11 @@ static char c000000[]                    = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
 static char normfgcolor[]                = "#C86A27";
 static char normbgcolor[]                = "#282828";
-static char normbordercolor[]            = "#665C54";
+static char normbordercolor[]            = "#665c54";
 static char normfloatcolor[]             = "#3A3A3A";
 static char selfgcolor[]                 = "#E2D0A8";
 static char selbgcolor[]                 = "#282828";
-static char selbordercolor[]             = "#665C54";
+static char selbordercolor[]             = "#665c54";
 static char selfloatcolor[]              = "#005577";
 
 static char titlenormfgcolor[]           = "#FB4934";
@@ -729,11 +729,11 @@ static const char *dmenucmd[] = {
 	#if !NODMENU_PATCH
 	"-m", dmenumon,
 	#endif // NODMENU_PATCH
-	"-fn", dmenufont,
+/*	"-fn", dmenufont,
 	"-nb", normbgcolor,
 	"-nf", normfgcolor,
 	"-sb", selbgcolor,
-	"-sf", selfgcolor,
+	"-sf", selfgcolor,*/
 	#if BAR_DMENUMATCHTOP_PATCH
 	topbar ? NULL : "-b",
 	#endif // BAR_DMENUMATCHTOP_PATCH
