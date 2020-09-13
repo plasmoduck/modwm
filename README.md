@@ -40,7 +40,9 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 
 ### Changelog:
 
-2020-09-13 - Added extra keybidings for [suckless tools](https://github.com/plasmoduck/suckless/)
+2020-09-13 - Add Siji tiling glyphs for the layouts button. Please install [Siji](https://github.com/stark/siji) font to render properly.
+
+2020-09-12 - Added extra keybidings for [suckless tools](https://github.com/plasmoduck/suckless/)
 
 2020-09-09 - Added the bar border patch
 
