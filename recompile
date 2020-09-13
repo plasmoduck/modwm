@@ -1,5 +1,0 @@
-#!/bin/sh
-# Small script to clean up, compile & install modwm
-doas rm config.h patches.h dwm
-doas make clean install
-doas rm config.h patches.h dwm
