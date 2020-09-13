@@ -23,10 +23,7 @@ exec dwm
 ```
 
 ## STATUSBAR
-Also included is a statusbar 'statusbar.sh'. You can source this from your .xinitrc like so 
-```c
-exec /path/to/modwm/statusbar.sh &
-```
+MODWM also includes a builtin statusbar. You can customize it by editing the file 'statusbar'. Normally the statusbar is sourced from ~/.xinitrc like so ``exec /path/to/modwm/statusbar.sh &``. If you prefer to use .xinitrc edit the 'Makefile' and remove 'statusbar' from the 'install: all' section.
 
 ## EXTRA GOODIES
 For more quality suckless software to complement MODWM, check out my suckless utilities [collection](https://github.com/plasmoduck/suckless/)
