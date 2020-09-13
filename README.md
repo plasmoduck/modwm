@@ -41,7 +41,9 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 
 ### Changelog:
 
-2020-09-13 - Add Siji tiling glyphs for the layouts button. Please install [Siji](https://github.com/stark/siji) font to render properly.
+2020-09-14 - Added Statusbar to start with MODWM. The Statusbar will now automatically start with MODWM instead of having to source it from ~/.xinitrc. If you do not want this behaviour, edit 'Makefile' and remove 'statusbar' from the 'install: all' section. MODWM will now also set the background to #3A3A3A. This is done using the 'hsetroot' command.
+
+2020-09-13 - Added Siji tiling glyphs for the layouts button. Please install [Siji](https://github.com/stark/siji) font to render properly.
 
 2020-09-12 - Added extra keybidings for [suckless tools](https://github.com/plasmoduck/suckless/)
 

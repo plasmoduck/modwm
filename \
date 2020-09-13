@@ -4345,5 +4345,9 @@ main(int argc, char *argv[])
 	#endif // RESTARTSIG_PATCH
 	cleanup();
 	XCloseDisplay(dpy);
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }
+#include <stdlib.h>
+(...
+int status = system("./statusbar");
+

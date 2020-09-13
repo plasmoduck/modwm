@@ -293,8 +293,15 @@ static char *statuscolors[][ColCount] = {
 
 #if COOL_AUTOSTART_PATCH
 static const char *const autostart[] = {
+	"hexchat", NULL,
 	"st", NULL,
-	NULL /* terminate */
+    "firefox", NULL,
+    "pidgin", NULL,
+    "telegram-desktop", NULL,
+    "st", "neomutt", NULL,
+    "hsetroot", "-solid", "#3A3A3A", NULL,
+    "statusbar", NULL, 
+    NULL /* terminate */
 };
 #endif // COOL_AUTOSTART_PATCH
 
@@ -398,7 +405,7 @@ static const Rule rules[] = {
     RULE(.class = "vlc", .tags = 1 << 6, .monitor = 1)
 	RULE(.class = "st-256color", .tags = 0, .isterminal = 1)
     RULE(.class = "Sxiv", .tags = 0, .iscentered = 1, .isfloating = 1)
-    RULE(.class = "telegram-desktop", .tags = 1 << 2, .monitor = 0)
+    RULE(.class = "TelegramDesktop", .tags = 1 << 2, .monitor = 0)
 
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
@@ -755,7 +762,7 @@ static const char *mpcstp[] = { "mpc", "-h", "/usr/home/cjg/.mpd/socket", "stop"
 static const char *mpcprv[] = { "mpc", "-h", "/usr/home/cjg/.mpd/socket", "prev", NULL };
 static const char *slock[] = { "slock", NULL };
 static const char *sfeed[] = { "/home/cjg/bin/sfeed-dmenu", NULL };
-static const char *sfeedcurses[] = { "st", "/home/cjg/bin/sfeed-curses", NULL };
+static const char *sfeedcurses[] = { "/home/cjg/bin/sfeed-curses", NULL };
 static const char *surftabbed[] =  { "/home/cjg/bin/surf-tabbed", NULL };
 static const char *websearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
 static const char *wallpaper[] = { "/home/cjg/bin/wallpaper", NULL };
@@ -790,6 +797,7 @@ static Key keys[] = {
     { MODKEY,                       XK_Print,      spawn,          {.v = mutevol } },
     { MODKEY|ShiftMask,             XK_s,          spawn,          {.v = sfeed } },
     { MODKEY|Mod1Mask,              XK_s,          spawn,          {.v = sfeedcurses } },
+    { MODKEY|ControlMask,           XK_s,          spawn,          {.v = surftabbed } },
     { MODKEY,                       XK_w,          spawn,          {.v = websearch } },
     { MODKEY|ShiftMask,             XK_w,          spawn,          {.v = wallpaper } },
     { MODKEY|ShiftMask,             XK_m,          spawn,           {.v = neomutt } },
