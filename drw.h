@@ -8,7 +8,7 @@
  * MODWM - Modular Dynamic Window Manager.
  * ---------------------------------------
  * See LICENSE file for copyright and license details.
- * /
+ */
 
 #if BAR_PANGO_PATCH
 #include <pango/pango.h>

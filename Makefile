@@ -1,22 +1,13 @@
-/*  ___  ______________ _    ____  ___
- *  |  \/  |  _  |  _  | |  | |  \/  |
- *  | .  . | | | | | | | |  | | .  . |
- *  | |\/| | | | | | | | |/\| | |\/| |
- *  | |  | \ \_/ | |/ /\  /\  | |  | |
- *  \_|  |_/\___/|___/  \/  \/\_|  |_/
- *
- * MODWM - Modular Dynamic Window Manager.
- * ---------------------------------------
- * See LICENSE file for copyright and license details.
- * /
-
+#  MODWM - Modular Dynamic Window Manager.
+#  ---------------------------------------
+#  See LICENSE file for copyright and license details.
 
 include config.mk
 
 SRC = drw.c dwm.c util.c
 OBJ = ${SRC:.c=.o}
 
-# FreeBSD users, prefix all ifdef, else and endif statements with a . for this to work (e.g. .ifdef)
+# FreeBSD users, prefix all ifdef, else and endif statements with . for this to work (e.g. .ifdef)
 
 .ifdef YAJLLIBS
 all: options dwm dwm-msg

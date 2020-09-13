@@ -300,12 +300,12 @@ static const char *const autostart[] = {
 
 #if SCRATCHPADS_PATCH
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
+const char *spcmd2[] = {"st", "-n", "spotify", "-g", "144x41", "-e", "spt", NULL };
 const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "ncmpcpp", NULL };
 static Sp scratchpads[] = {
    /* name          cmd  */
    {"spterm",      spcmd1},
-   {"spranger",    spcmd2},
+   {"spotify",    spcmd2},
    {"spmusic",   spcmd3},
 };
 #endif // SCRATCHPADS_PATCH
@@ -338,7 +338,7 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
+	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
 	[ALTERNATIVE_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
@@ -391,17 +391,18 @@ static const Rule rules[] = {
     RULE(.title = "sfeed_curses", .tags = 1 << 0, .monitor = 1)
     RULE(.title = "neomutt", .tags = 1 << 0, .monitor = 1)
     RULE(.title = "irssi", .tags = 1 << 0, .monitor = 0)
-    RULE(.class = "Hexchat", .tags = 1 << 2, .monitor = 1)
-    RULE(.class = "Pidgin", .tags = 1 << 3, .monitor = 0)
+    RULE(.class = "Hexchat", .tags = 1 << 3, .monitor = 1)
+    RULE(.class = "Pidgin", .tags = 1 << 2, .monitor = 0)
     RULE(.class = "Thunar", .tags = 1 << 4)
 	RULE(.class = "Gimp", .tags = 1 << 5)
     RULE(.class = "vlc", .tags = 1 << 6, .monitor = 1)
 	RULE(.class = "st-256color", .tags = 0, .isterminal = 1)
     RULE(.class = "Sxiv", .tags = 0, .iscentered = 1, .isfloating = 1)
-    
+    RULE(.class = "telegram-desktop", .tags = 1 << 2, .monitor = 0)
+
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
-	RULE(.instance = "spfm", .tags = SPTAG(1), .isfloating = 1)
+	RULE(.instance = "spotify", .tags = SPTAG(1), .isfloating = 1)
 	RULE(.instance = "spmusic", .tags = SPTAG(2), .isfloating = 1)
 	#endif // SCRATCHPADS_PATCH
 };
@@ -754,8 +755,7 @@ static const char *mpcstp[] = { "mpc", "-h", "/usr/home/cjg/.mpd/socket", "stop"
 static const char *mpcprv[] = { "mpc", "-h", "/usr/home/cjg/.mpd/socket", "prev", NULL };
 static const char *slock[] = { "slock", NULL };
 static const char *sfeed[] = { "/home/cjg/bin/sfeed-dmenu", NULL };
-static const char *sfeedcurses[] = { "st", "sfeed-curses", NULL };
-static const char *ncmpcpp[] = { "togglescratch", "ncmpcpp", NULL };
+static const char *sfeedcurses[] = { "st", "/home/cjg/bin/sfeed-curses", NULL };
 static const char *surftabbed[] =  { "/home/cjg/bin/surf-tabbed", NULL };
 static const char *websearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
 static const char *wallpaper[] = { "/home/cjg/bin/wallpaper", NULL };
@@ -792,7 +792,7 @@ static Key keys[] = {
     { MODKEY|Mod1Mask,              XK_s,          spawn,          {.v = sfeedcurses } },
     { MODKEY,                       XK_w,          spawn,          {.v = websearch } },
     { MODKEY|ShiftMask,             XK_w,          spawn,          {.v = wallpaper } },
-    { MODKEY|ShiftMask,              XK_m,          spawn,           {.v = neomutt } },
+    { MODKEY|ShiftMask,             XK_m,          spawn,           {.v = neomutt } },
 	#if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
