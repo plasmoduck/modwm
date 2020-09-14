@@ -300,7 +300,6 @@ static const char *const autostart[] = {
     "telegram-desktop", NULL,
     "st", "neomutt", NULL,
     "hsetroot", "-solid", "#3A3A3A", NULL,
-    "statusbar", NULL, 
     NULL /* terminate */
 };
 #endif // COOL_AUTOSTART_PATCH
@@ -345,7 +344,7 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
+	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
 	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
@@ -418,8 +417,8 @@ static const Rule rules[] = {
 #if PERTAG_PATCH
 static const MonitorRule monrules[] = {
 	/* monitor  tag   layout  mfact  nmaster  showbar  topbar */
-	{  1,       -1,   2,      -1,    -1,      -1,      -1     }, // use a different layout for the second monitor
-	{  -1,      -1,   0,      -1,    -1,      -1,      -1     }, // default
+	{   1,       9,   3,      -1,    -1,      -1,      -1     }, // use a different layout for the second monitor
+	{  -1,       -1,   0,      -1,    -1,      -1,      -1     }, // default
 };
 #else
 static const MonitorRule monrules[] = {
