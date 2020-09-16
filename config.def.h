@@ -299,7 +299,7 @@ static const char *const autostart[] = {
     "pidgin", NULL,
     "telegram-desktop", NULL,
     "st", "neomutt", NULL,
-    "hsetroot", "-solid", "#3A3A3A", NULL,
+    "hsetroot", "-solid", "#2F2F2F", NULL,
     NULL /* terminate */
 };
 #endif // COOL_AUTOSTART_PATCH
