@@ -103,7 +103,7 @@ static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
 static char titleselfgcolor[]            = "#B8BB26";
-static char titleselbgcolor[]            = "#282828";
+static char titleselbgcolor[]            = "#2f2f2f";
 static char titleselbordercolor[]        = "#005577";
 static char titleselfloatcolor[]         = "#005577";
 
@@ -113,7 +113,7 @@ static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
 static char tagsselfgcolor[]             = "#B8BB26";
-static char tagsselbgcolor[]             = "#282828";
+static char tagsselbgcolor[]             = "#2f2f2f";
 static char tagsselbordercolor[]         = "#458588";
 static char tagsselfloatcolor[]          = "#458588";
 
