@@ -62,7 +62,7 @@ static const int vertpadbar              = 0;   /* vertical padding for statusba
 static const char buttonbar[]            = "";
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
-static const unsigned int systrayspacing = 1;   /* systray spacing */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
 #endif // BAR_SYSTRAY_PATCH
 static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE; // see patch/bar_indicators.h for options
@@ -310,9 +310,9 @@ const char *spcmd2[] = {"st", "-n", "spotify", "-g", "144x41", "-e", "spt", NULL
 const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "ncmpcpp", NULL };
 static Sp scratchpads[] = {
    /* name          cmd  */
-   {"spterm",      spcmd1},
-   {"spotify",    spcmd2},
-   {"spmusic",   spcmd3},
+   {"spterm",       spcmd1},
+   {"spotify",      spcmd2},
+   {"spmusic",      spcmd3},
 };
 #endif // SCRATCHPADS_PATCH
 
@@ -345,7 +345,7 @@ static Sp scratchpads[] = {
  */
 static char *tagicons[][NUMTAGS] = {
 	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
-	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" },
+	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
 
@@ -766,6 +766,7 @@ static const char *surftabbed[] =  { "/home/cjg/bin/surf-tabbed", NULL };
 static const char *websearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
 static const char *wallpaper[] = { "/home/cjg/bin/wallpaper", NULL };
 static const char *neomutt[] = { "st", "neomutt", NULL };
+static const char *screenshot[] = { "/home/cjg/bin/screenshot", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -778,29 +779,30 @@ static Key keys[] = {
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
-	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } },
-	{ MODKEY,                       XK_b,          togglebar,              {0} },
-	{ MODKEY,                       XK_s,          spawn,          {.v = firefox } },
-    { MODKEY,                       XK_x,          spawn,          {.v = hexchat } },
-    { MODKEY,                       XK_e,          spawn,          {.v = emoji } },
-    { MODKEY,                       XK_g,          spawn,          {.v = gimp } },
-    { MODKEY|ShiftMask,             XK_f,          spawn,          {.v = files } },
-    { MODKEY|ShiftMask,             XK_End,        spawn,          {.v = slock } },
-    { MODKEY,                       XK_F12,        spawn,          {.v = mpcnxt } },
-    { MODKEY,                       XK_F9,         spawn,          {.v = mpctgl } },
-    { MODKEY,                       XK_F10,        spawn,          {.v = mpcstp } },
-    { MODKEY,                       XK_F11,        spawn,          {.v = mpcprv } },
-    { MODKEY,                       XK_Pause,      spawn,          {.v = upvol   } },
-    { MODKEY,                       XK_Scroll_Lock, spawn,         {.v = downvol } },
-    { MODKEY,                       XK_Print,      spawn,          {.v = mutevol } },
-    { MODKEY|ShiftMask,             XK_s,          spawn,          {.v = sfeed } },
-    { MODKEY|Mod1Mask,              XK_s,          spawn,          {.v = sfeedcurses } },
-    { MODKEY|ControlMask,           XK_s,          spawn,          {.v = surftabbed } },
-    { MODKEY,                       XK_w,          spawn,          {.v = websearch } },
-    { MODKEY|ShiftMask,             XK_w,          spawn,          {.v = wallpaper } },
-    { MODKEY|ShiftMask,             XK_m,          spawn,           {.v = neomutt } },
-	#if FOCUSMASTER_PATCH
+    { MODKEY,                       XK_p,           spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_Return,      spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_b,           togglebar,      {0} },
+	{ MODKEY,                       XK_s,           spawn,          {.v = firefox } },
+    { MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
+    { MODKEY,                       XK_e,           spawn,          {.v = emoji } },
+    { MODKEY,                       XK_g,           spawn,          {.v = gimp } },
+    { MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
+    { MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
+    { MODKEY,                       XK_F12,         spawn,          {.v = mpcnxt } },
+    { MODKEY,                       XK_F9,          spawn,          {.v = mpctgl } },
+    { MODKEY,                       XK_F10,         spawn,          {.v = mpcstp } },
+    { MODKEY,                       XK_F11,         spawn,          {.v = mpcprv } },
+    { MODKEY,                       XK_Pause,       spawn,          {.v = upvol   } },
+    { MODKEY,                       XK_Scroll_Lock, spawn,          {.v = downvol } },
+    { MODKEY,                       XK_Print,       spawn,          {.v = mutevol } },
+    { MODKEY|ShiftMask,             XK_s,           spawn,          {.v = sfeed } },
+    { MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeedcurses } },
+    { MODKEY|ControlMask,           XK_s,           spawn,          {.v = surftabbed } },
+    { MODKEY,                       XK_w,           spawn,          {.v = websearch } },
+    { MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
+    { MODKEY|ShiftMask,             XK_m,           spawn,          {.v = neomutt } },
+    { MODKEY|ShiftMask,             XK_Print,       spawn,          {.v = screenshot } },
+    #if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
 	#if STACKER_PATCH
