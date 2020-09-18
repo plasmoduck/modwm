@@ -22,10 +22,10 @@ static const unsigned int snap           = 0;  /* snap pixel */
 static const int swallowfloating         = 0;   /* 1 means swallow floating windows by default */
 #endif // SWALLOW_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih         = 20;  /* horiz inner gap between windows */
-static const unsigned int gappiv         = 20;  /* vert inner gap between windows */
-static const unsigned int gappoh         = 20;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 20;  /* vert outer gap between windows and screen edge */
+static const unsigned int gappih         = 15;  /* horiz inner gap between windows */
+static const unsigned int gappiv         = 15;  /* vert inner gap between windows */
+static const unsigned int gappoh         = 15;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 15;  /* vert outer gap between windows and screen edge */
 static const int smartgaps               = 0;   /* 1 means no outer gap when there is only one window */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
@@ -45,7 +45,7 @@ static const int bar_height              = 0;   /* 0 means derive from font, >= 
 #endif // BAR_HEIGHT_PATCH
 #if BAR_PADDING_PATCH
 static const int vertpad                 = 10;  /* vertical padding of bar */
-static const int sidepad                 = 20;  /* horizontal padding of bar */
+static const int sidepad                 = 15;  /* horizontal padding of bar */
 #endif // BAR_PADDING_PATCH
 #if FOCUSONCLICK_PATCH
 static const int focusonwheel            = 0;
