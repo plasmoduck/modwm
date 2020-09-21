@@ -344,8 +344,8 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
-	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" },
+	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
+	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
 
@@ -1209,10 +1209,11 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,                   Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,              Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,              Button3,        toggletag,      {0} },
+    { ClkStatusText,        0,                   Button4,        spawn,          {.v = upvol } },
+    { ClkStatusText,        0,                   Button4,        spawn,          {.v = downvol } }, 
 	{ ClkWinTitle,          0,                   Button4,        spawn,          {.v = upvol } },
-        { ClkWinTitle,          0,                   Button5,        spawn,          {.v = downvol } },
-        { ClkWinTitle,          0,                   Button3,        spawn,          {.v = surftabbed } },
-
+    { ClkWinTitle,          0,                   Button5,        spawn,          {.v = downvol } },
+    { ClkWinTitle,          0,                   Button3,        spawn,          {.v = surftabbed } },
 };
 
 #if DWMC_PATCH
