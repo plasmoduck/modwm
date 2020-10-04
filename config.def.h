@@ -59,7 +59,7 @@ static const int horizpadbar             = -5;   /* horizontal padding for statu
 static const int vertpadbar              = 3;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[]            = "";
+static const char buttonbar[]            = "";
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
 static const unsigned int systrayspacing = 2;   /* systray spacing */
