@@ -59,7 +59,7 @@ static const int horizpadbar             = -5;   /* horizontal padding for statu
 static const int vertpadbar              = 3;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[]            = "";
+static const char buttonbar[]            = "";
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -293,13 +293,6 @@ static char *statuscolors[][ColCount] = {
 
 #if COOL_AUTOSTART_PATCH
 static const char *const autostart[] = {
-	"hexchat", NULL,
-	"st", NULL,
-    "firefox", NULL,
-    "pidgin", NULL,
-    "telegram-desktop", NULL,
-    "st", "neomutt", NULL,
-    "hsetroot", "-solid", "#2F2F2F", NULL,
     NULL /* terminate */
 };
 #endif // COOL_AUTOSTART_PATCH
@@ -399,12 +392,14 @@ static const Rule rules[] = {
     RULE(.title = "irssi", .tags = 1 << 0, .monitor = 0)
     RULE(.class = "Hexchat", .tags = 1 << 3, .monitor = 1)
     RULE(.class = "Pidgin", .tags = 1 << 2, .monitor = 0)
+    RULE(.title = "finch", .tags = 1 << 2, .monitor = 0)
     RULE(.class = "Thunar", .tags = 1 << 4)
 	RULE(.class = "Gimp", .tags = 1 << 5)
     RULE(.class = "vlc", .tags = 1 << 6, .monitor = 1)
 	RULE(.class = "st-256color", .tags = 0, .isterminal = 1)
     RULE(.class = "Sxiv", .tags = 0, .iscentered = 1, .isfloating = 1)
     RULE(.class = "TelegramDesktop", .tags = 1 << 2, .monitor = 0)
+    RULE(.title = "telegramtui", .tags = 1 << 2, .monitor = 0)
 
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
@@ -780,7 +775,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
     { MODKEY,                       XK_p,           spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return,      spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_Return,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,           togglebar,      {0} },
 	{ MODKEY,                       XK_s,           spawn,          {.v = firefox } },
     { MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
