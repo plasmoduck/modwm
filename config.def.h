@@ -88,7 +88,7 @@ static const char dmenufont[]            = "monospace:size=10";
 #if BAR_FLEXWINTITLE_PATCH
 static char c000000[]                    = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
-static char normfgcolor[]                = "#C86A27";
+static char normfgcolor[]                = "#FB4934";
 static char normbgcolor[]                = "#282828";
 static char normbordercolor[]            = "#665c54";
 static char normfloatcolor[]             = "#3A3A3A";
@@ -97,12 +97,12 @@ static char selbgcolor[]                 = "#282828";
 static char selbordercolor[]             = "#665c54";
 static char selfloatcolor[]              = "#005577";
 
-static char titlenormfgcolor[]           = "#FB4934";
+static char titlenormfgcolor[]           = "#8EC07C";
 static char titlenormbgcolor[]           = "#282828";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
-static char titleselfgcolor[]            = "#B8BB26";
+static char titleselfgcolor[]            = "#D3869B";
 static char titleselbgcolor[]            = "#2f2f2f";
 static char titleselbordercolor[]        = "#005577";
 static char titleselfloatcolor[]         = "#005577";
@@ -338,7 +338,8 @@ static Sp scratchpads[] = {
  */
 static char *tagicons[][NUMTAGS] = {
 	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
-	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" },
+/*	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, */
+    [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
 
@@ -387,6 +388,7 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
 	
     RULE(.class = "Firefox", .tags = 1 << 1, .monitor = 0)
+    RULE(.class = "tabbed", .tags = 1 << 1, .monitor = 0)
     RULE(.title = "sfeed_curses", .tags = 1 << 0, .monitor = 1)
     RULE(.title = "neomutt", .tags = 1 << 0, .monitor = 1)
     RULE(.title = "irssi", .tags = 1 << 0, .monitor = 0)
@@ -762,6 +764,7 @@ static const char *websearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
 static const char *wallpaper[] = { "/home/cjg/bin/wallpaper", NULL };
 static const char *neomutt[] = { "st", "neomutt", NULL };
 static const char *screenshot[] = { "/home/cjg/bin/screenshot", NULL };
+static const char *xkill[] = { "xkill", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -775,7 +778,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
     { MODKEY,                       XK_p,           spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return,      spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,           togglebar,      {0} },
 	{ MODKEY,                       XK_s,           spawn,          {.v = firefox } },
     { MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
@@ -1172,7 +1175,7 @@ static Button buttons[] = {
 	/* click                event mask           button          function        argument */
 	#if BAR_STATUSBUTTON_PATCH
 	{ ClkButton,            0,                   Button1,        spawn,          {.v = dmenucmd } },
-	#endif // BAR_STATUSBUTTON_PATCH
+    #endif // BAR_STATUSBUTTON_PATCH
 	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,                   Button3,        setlayout,      {.v = &layouts[2]} },
 	#if BAR_WINTITLEACTIONS_PATCH
