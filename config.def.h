@@ -1,4 +1,4 @@
-/*  ___  ______________ _    ____  ___
+/*  ___  _________________  _____  ___
  *  |  \/  |  _  |  _  | |  | |  \/  |
  *  | .  . | | | | | | | |  | | .  . |
  *  | |\/| | | | | | | | |/\| | |\/| |
@@ -112,7 +112,7 @@ static char tagsnormbgcolor[]            = "#282828";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
-static char tagsselfgcolor[]             = "#FABD2F";
+static char tagsselfgcolor[]             = "#B8BB26";
 static char tagsselbgcolor[]             = "#2f2f2f";
 static char tagsselbordercolor[]         = "#458588";
 static char tagsselfloatcolor[]          = "#458588";
@@ -767,6 +767,7 @@ static const char *screenshot[] = { "/home/cjg/bin/screenshot", NULL };
 static const char *xkill[] = { "xkill", NULL };
 static const char *mpdmenu[] = { "/home/cjg/bin/mpdmenu", NULL };
 static const char *dmenu_websearch[] = { "/home/cjg/bin/dmenu_websearch" };
+static const char *reboot[] = { "/home/cjg/bin/prompt" };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -785,6 +786,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_s,           spawn,          {.v = firefox } },
     { MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
     { MODKEY,                       XK_e,           spawn,          {.v = emoji } },
+    { MODKEY|ShiftMask,             XK_r,           spawn,          {.v = reboot } },
     { MODKEY,                       XK_g,           spawn,          {.v = dmenu_websearch } },
     { MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
     { MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
