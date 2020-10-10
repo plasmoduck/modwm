@@ -81,14 +81,14 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "Dejava sans mono:size=12", "Wuncon Siji:size=12" };
+static const char *fonts[]               = { "Fantasque Sans Mono:size=13", "Wuncon Siji:size=12" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "monospace:size=10";
 
 #if BAR_FLEXWINTITLE_PATCH
 static char c000000[]                    = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
-static char normfgcolor[]                = "#FB4934";
+static char normfgcolor[]                = "#83A598";
 static char normbgcolor[]                = "#282828";
 static char normbordercolor[]            = "#665c54";
 static char normfloatcolor[]             = "#3A3A3A";
@@ -112,7 +112,7 @@ static char tagsnormbgcolor[]            = "#282828";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
-static char tagsselfgcolor[]             = "#B8BB26";
+static char tagsselfgcolor[]             = "#FABD2F";
 static char tagsselbgcolor[]             = "#2f2f2f";
 static char tagsselbordercolor[]         = "#458588";
 static char tagsselfloatcolor[]          = "#458588";
@@ -339,7 +339,7 @@ static Sp scratchpads[] = {
 static char *tagicons[][NUMTAGS] = {
 	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
 /*	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, */
-    [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" },
+    [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
 
@@ -530,7 +530,7 @@ static const int decorhints  = 1;    /* 1 means respect decoration hints */
 #if FLEXTILE_DELUXE_LAYOUT
 static const Layout layouts[] = {
 	/* symbol     arrange function, { nmaster, nstack, layout, master axis, stack axis, secondary stack axis } */
-	{ " ",  flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle
+	{ " ",  flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle
     { " ",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL } }, // centeredmast>
     { " ",      NULL,             {0} },    /* no layout function means floating behavior */
     { "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
@@ -765,6 +765,8 @@ static const char *wallpaper[] = { "/home/cjg/bin/wallpaper", NULL };
 static const char *neomutt[] = { "st", "neomutt", NULL };
 static const char *screenshot[] = { "/home/cjg/bin/screenshot", NULL };
 static const char *xkill[] = { "xkill", NULL };
+static const char *mpdmenu[] = { "/home/cjg/bin/mpdmenu", NULL };
+static const char *dmenu_websearch[] = { "/home/cjg/bin/dmenu_websearch" };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -783,7 +785,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_s,           spawn,          {.v = firefox } },
     { MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
     { MODKEY,                       XK_e,           spawn,          {.v = emoji } },
-    { MODKEY,                       XK_g,           spawn,          {.v = gimp } },
+    { MODKEY,                       XK_g,           spawn,          {.v = dmenu_websearch } },
+    { MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
     { MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
     { MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
     { MODKEY,                       XK_F12,         spawn,          {.v = mpcnxt } },
@@ -793,8 +796,8 @@ static Key keys[] = {
     { MODKEY,                       XK_Pause,       spawn,          {.v = upvol   } },
     { MODKEY,                       XK_Scroll_Lock, spawn,          {.v = downvol } },
     { MODKEY,                       XK_Print,       spawn,          {.v = mutevol } },
-    { MODKEY|ShiftMask,             XK_s,           spawn,          {.v = sfeed } },
-    { MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeedcurses } },
+    { MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
+    { MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
     { MODKEY|ControlMask,           XK_s,           spawn,          {.v = surftabbed } },
     { MODKEY,                       XK_w,           spawn,          {.v = websearch } },
     { MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
