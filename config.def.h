@@ -89,7 +89,7 @@ static const char dmenufont[]            = "monospace:size=10";
 static char c000000[]                    = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
 static char normfgcolor[]                = "#83A598";
-static char normbgcolor[]                = "#282828";
+static char normbgcolor[]                = "#2f2f2f";
 static char normbordercolor[]            = "#665c54";
 static char normfloatcolor[]             = "#3A3A3A";
 static char selfgcolor[]                 = "#E2D0A8";
@@ -98,7 +98,7 @@ static char selbordercolor[]             = "#665c54";
 static char selfloatcolor[]              = "#005577";
 
 static char titlenormfgcolor[]           = "#8EC07C";
-static char titlenormbgcolor[]           = "#282828";
+static char titlenormbgcolor[]           = "#2f2f2f";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
@@ -108,7 +108,7 @@ static char titleselbordercolor[]        = "#005577";
 static char titleselfloatcolor[]         = "#005577";
 
 static char tagsnormfgcolor[]            = "#665C54";
-static char tagsnormbgcolor[]            = "#282828";
+static char tagsnormbgcolor[]            = "#2f2f2f";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
