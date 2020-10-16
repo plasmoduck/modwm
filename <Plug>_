@@ -15,17 +15,17 @@
 static const unsigned int borderpx       = 0;   /* border pixel of windows */
 static const int corner_radius           = 10;
 #else
-static const unsigned int borderpx       = 4;  /* border pixel of windows */
+static const unsigned int borderpx       = 3;  /* border pixel of windows */
 #endif // ROUNDED_CORNERS_PATCH
 static const unsigned int snap           = 0;  /* snap pixel */
 #if SWALLOW_PATCH
 static const int swallowfloating         = 0;   /* 1 means swallow floating windows by default */
 #endif // SWALLOW_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih         = 25;  /* horiz inner gap between windows */
-static const unsigned int gappiv         = 25;  /* vert inner gap between windows */
-static const unsigned int gappoh         = 25;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 25;  /* vert outer gap between windows and screen edge */
+static const unsigned int gappih         = 15;  /* horiz inner gap between windows */
+static const unsigned int gappiv         = 15;  /* vert inner gap between windows */
+static const unsigned int gappoh         = 15;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 15;  /* vert outer gap between windows and screen edge */
 static const int smartgaps               = 0;   /* 1 means no outer gap when there is only one window */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
@@ -45,7 +45,7 @@ static const int bar_height              = 0;   /* 0 means derive from font, >= 
 #endif // BAR_HEIGHT_PATCH
 #if BAR_PADDING_PATCH
 static const int vertpad                 = 10;  /* vertical padding of bar */
-static const int sidepad                 = 25;  /* horizontal padding of bar */
+static const int sidepad                 = 15;  /* horizontal padding of bar */
 #endif // BAR_PADDING_PATCH
 #if FOCUSONCLICK_PATCH
 static const int focusonwheel            = 0;
@@ -94,7 +94,7 @@ static char normbordercolor[]            = "#665c54";
 static char normfloatcolor[]             = "#3A3A3A";
 static char selfgcolor[]                 = "#E2D0A8";
 static char selbgcolor[]                 = "#282828";
-static char selbordercolor[]             = "#6C635C";
+static char selbordercolor[]             = "#665c54";
 static char selfloatcolor[]              = "#005577";
 
 static char titlenormfgcolor[]           = "#8EC07C";
@@ -766,9 +766,8 @@ static const char *neomutt[] = { "st", "neomutt", NULL };
 static const char *screenshot[] = { "/home/cjg/bin/screenshot", NULL };
 static const char *xkill[] = { "xkill", NULL };
 static const char *mpdmenu[] = { "/home/cjg/bin/mpdmenu", NULL };
-static const char *dmenuwebsearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
-static const char *reboot[] = { "/home/cjg/bin/prompt", NULL };
-static const char *maim[] = { "/home/cjg/bin/maimpick", NULL };
+static const char *dmenu_websearch[] = { "/home/cjg/bin/dmenu_websearch" };
+static const char *reboot[] = { "/home/cjg/bin/prompt" };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -788,7 +787,7 @@ static Key keys[] = {
     { MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
     { MODKEY,                       XK_e,           spawn,          {.v = emoji } },
     { MODKEY|ShiftMask,             XK_r,           spawn,          {.v = reboot } },
-    { MODKEY,                       XK_g,           spawn,          {.v = dmenuwebsearch } },
+    { MODKEY,                       XK_g,           spawn,          {.v = dmenu_websearch } },
     { MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
     { MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
     { MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
@@ -799,13 +798,13 @@ static Key keys[] = {
     { MODKEY,                       XK_Pause,       spawn,          {.v = upvol   } },
     { MODKEY,                       XK_Scroll_Lock, spawn,          {.v = downvol } },
     { MODKEY,                       XK_Print,       spawn,          {.v = mutevol } },
-    { MODKEY|ShiftMask,             XK_Print,       spawn,          {.v = maim } },
     { MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
     { MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
     { MODKEY|ControlMask,           XK_s,           spawn,          {.v = surftabbed } },
     { MODKEY,                       XK_w,           spawn,          {.v = websearch } },
     { MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
     { MODKEY|ShiftMask,             XK_m,           spawn,          {.v = neomutt } },
+    { MODKEY|ShiftMask,             XK_Print,       spawn,          {.v = screenshot } },
     #if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
