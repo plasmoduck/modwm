@@ -81,7 +81,7 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "Fantasque Sans Mono:size=14", "Wuncon Siji:size=10" };
+static const char *fonts[]               = { "Jetbrains Mono:size=12", "Wuncon Siji:size=10" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "monospace:size=10";
 
@@ -107,13 +107,13 @@ static char titleselbgcolor[]            = "#2f2f2f";
 static char titleselbordercolor[]        = "#005577";
 static char titleselfloatcolor[]         = "#005577";
 
-static char tagsnormfgcolor[]            = "#665C54";
+static char tagsnormfgcolor[]            = "#575249";
 static char tagsnormbgcolor[]            = "#2f2f2f";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
-static char tagsselfgcolor[]             = "#B8BB26";
-static char tagsselbgcolor[]             = "#2f2f2f";
+static char tagsselfgcolor[]             = "#FBF1C7";
+static char tagsselbgcolor[]             = "#444444";
 static char tagsselbordercolor[]         = "#458588";
 static char tagsselfloatcolor[]          = "#458588";
 
@@ -339,7 +339,7 @@ static Sp scratchpads[] = {
 static char *tagicons[][NUMTAGS] = {
 	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
 /*	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, */
-    [ALTERNATIVE_TAGS]    = { "st", "surf", "purple", "irc", "nnn", "gimp", "mpv", "git", "brew" },
+    [ALTERNATIVE_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
 
@@ -530,7 +530,7 @@ static const int decorhints  = 1;    /* 1 means respect decoration hints */
 #if FLEXTILE_DELUXE_LAYOUT
 static const Layout layouts[] = {
 	/* symbol     arrange function, { nmaster, nstack, layout, master axis, stack axis, secondary stack axis } */
-	  { "",      flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle 
+	  { "",      flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle 
     { "",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL } }, // centeredmast>
     { "",      NULL,             {0} },    /* no layout function means floating behavior */
     { "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
