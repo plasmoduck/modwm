@@ -22,8 +22,11 @@ Then you can put something like this at the end of your ~/.xinitrc file:
 exec dwm
 ```
 
+## THEMES
+MODWM supports color schemes, you can find some examples in the 'colors' directory.
+
 ## STATUSBAR
-MODWM also includes a statusbar. You can customize it by editing the file 'statusbar'. Then source it from your ~/.xinitrc like so ``exec /path/to/modwm/statusbar.sh &``
+MODWM also includes a statusbar. You can customize it by editing the file in the 'statusbars' directory. Then source it from your ~/.xinitrc like so ``exec /path/to/modwm/statusbars/gruvbox_statusbar.sh &``
 
 ## EXTRA GOODIES
 For more quality suckless software to complement MODWM, check out my suckless utilities [collection](https://github.com/plasmoduck/suckless/)
@@ -37,6 +40,9 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 ---
 
 ### Changelog:
+
+2020-10-23 - Added 'colors' to support changing color schemes on the fly. Source them in config.def.h by #include "colors/gruvbox.h"
+	     Also added 'statusbars' directory so support themed statusbars.
 
 2020-10-14 - Changed color scheme and added some extra key bindings for my ~/bin files
 

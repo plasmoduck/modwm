@@ -81,52 +81,15 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "Jetbrains Mono:size=12", "Wuncon Siji:size=12" };
+static const char *fonts[]               = { "Jetbrains Mono:size=10", "Wuncon Siji:size=12" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "Jetbrains  Mono:size=10";
 
 #if BAR_FLEXWINTITLE_PATCH
 static char c000000[]                    = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
-static char normfgcolor[]                = "#F92672";
-static char normbgcolor[]                = "#21221D";
-static char normbordercolor[]            = "#C3B39E";
-static char normfloatcolor[]             = "#3A3A3A";
-static char selfgcolor[]                 = "#E2D0A8";
-static char selbgcolor[]                 = "#282828";
-static char selbordercolor[]             = "#C3B39E";
-static char selfloatcolor[]              = "#005577";
 
-static char titlenormfgcolor[]           = "#AE81FF";
-static char titlenormbgcolor[]           = "#21221D";
-static char titlenormbordercolor[]       = "#444444";
-static char titlenormfloatcolor[]        = "#db8fd9";
-
-static char titleselfgcolor[]            = "#A6E22E";
-static char titleselbgcolor[]            = "#2F2F2F";
-static char titleselbordercolor[]        = "#005577";
-static char titleselfloatcolor[]         = "#005577";
-
-static char tagsnormfgcolor[]            = "#F4BF75";
-static char tagsnormbgcolor[]            = "#21221D";
-static char tagsnormbordercolor[]        = "#444444";
-static char tagsnormfloatcolor[]         = "#db8fd9";
-
-static char tagsselfgcolor[]             = "#D5C4A1";
-static char tagsselbgcolor[]             = "#4B493D";
-static char tagsselbordercolor[]         = "#458588";
-static char tagsselfloatcolor[]          = "#458588";
-
-static char hidfgcolor[]                 = "#458588";
-static char hidbgcolor[]                 = "#222222";
-static char hidbordercolor[]             = "#458588";
-static char hidfloatcolor[]              = "#f76e0c";
-
-static char urgfgcolor[]                 = "#bbbbbb";
-static char urgbgcolor[]                 = "#282828";
-static char urgbordercolor[]             = "#F92672";
-static char urgfloatcolor[]              = "#db8fd9";
-
+#include "colors/gruvbox.h"
 
 #if BAR_FLEXWINTITLE_PATCH
 static char normTTBbgcolor[]             = "#330000";
@@ -339,7 +302,7 @@ static Sp scratchpads[] = {
 static char *tagicons[][NUMTAGS] = {
 /*	[ALTERNATIVE_TAGS]        = { "", "", "", "", "", "", "", "", "" }, */
 	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
-    [DEFAULT_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+    	[DEFAULT_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
 
@@ -530,18 +493,18 @@ static const int decorhints  = 1;    /* 1 means respect decoration hints */
 #if FLEXTILE_DELUXE_LAYOUT
 static const Layout layouts[] = {
 	/* symbol     arrange function, { nmaster, nstack, layout, master axis, stack axis, secondary stack axis } */
-	  { "",      flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle 
-    { "",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL } }, // centeredmast>
-    { "",      NULL,             {0} },    /* no layout function means floating behavior */
-    { "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
-    { "",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // columns (col) layout
-    { "",      flextile,         { -1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // floating master
-    { "",      flextile,         { -1, -1, NO_SPLIT, MONOCLE, 0, 0, NULL } }, // monocle
-    { "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL } }, // deck
-    { "",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // bstack
-    { "",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // bstackhoriz
-    { "",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID, 0, 0, NULL } }, // gappless grid
-    { "",      flextile,         { -1, -1, NO_SPLIT, SPIRAL, 0, 0, NULL } }, // fibonacci spiral
+	{ "",      flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle 
+    	{ "",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL } }, // centeredmast>
+    	{ "",      NULL,             {0} },    /* no layout function means floating behavior */
+    	{ "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
+	{ "",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // columns (col) layout
+	{ "",      flextile,         { -1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // floating master
+	{ "",      flextile,         { -1, -1, NO_SPLIT, MONOCLE, 0, 0, NULL } }, // monocle
+	{ "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL } }, // deck
+	{ "",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // bstack
+	{ "",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // bstackhoriz
+	{ "",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID, 0, 0, NULL } }, // gappless grid
+	{ "",      flextile,         { -1, -1, NO_SPLIT, SPIRAL, 0, 0, NULL } }, // fibonacci spiral
 
 
 	#if TILE_LAYOUT
@@ -770,6 +733,8 @@ static const char *dmenuwebsearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
 static const char *reboot[] = { "/home/cjg/bin/prompt", NULL };
 static const char *maim[] = { "/home/cjg/bin/maimpick", NULL };
 static const char *flash[] = { "nc_flash_window", NULL };
+static const char *layoutmenu_cmd = "layoutmenu.sh";
+static const char *shutdown[] = { "/home/cjg/bin/dmenu_shutdown", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -808,7 +773,8 @@ static Key keys[] = {
     	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
     	{ MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
     	{ MODKEY|ShiftMask,             XK_m,           spawn,          {.v = neomutt } },
-    	#if FOCUSMASTER_PATCH
+	{ MODKEY|ControlMask,		XK_End,		spawn,		{.v = shutdown } },
+	#if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
 	#if STACKER_PATCH
@@ -1185,7 +1151,7 @@ static Button buttons[] = {
 	{ ClkButton,            0,                   Button1,        spawn,          {.v = dmenucmd } },
     #endif // BAR_STATUSBUTTON_PATCH
 	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,                   Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkLtSymbol,          0,                   Button3,        layoutmenu,     {0} },
 	#if BAR_WINTITLEACTIONS_PATCH
 	{ ClkWinTitle,          0,                   Button1,        togglewin,      {0} },
 	{ ClkWinTitle,          0,                   Button3,        showhideclient, {0} },

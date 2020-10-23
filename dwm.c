@@ -568,6 +568,7 @@ static void keydefpress(XEvent *e);
 static void keypress(XEvent *e);
 #endif // KEYMODES_PATCH
 static void killclient(const Arg *arg);
+static void layoutmenu(const Arg *arg);
 static void manage(Window w, XWindowAttributes *wa);
 static void mappingnotify(XEvent *e);
 static void maprequest(XEvent *e);
@@ -2044,6 +2045,24 @@ killclient(const Arg *arg)
 	#if SWAPFOCUS_PATCH && PERTAG_PATCH
 	selmon->pertag->prevclient[selmon->pertag->curtag] = NULL;
 	#endif // SWAPFOCUS_PATCH
+}
+
+void
+layoutmenu(const Arg *arg) {
+	FILE *p;
+	char c[3], *s;
+	int i;
+
+	if (!(p = popen(layoutmenu_cmd, "r")))
+		 return;
+	s = fgets(c, sizeof(c), p);
+	pclose(p);
+
+	if (!s || *s == '\0' || c == '\0')
+		 return;
+
+	i = atoi(c);
+	setlayout(&((Arg) { .v = &layouts[i] }));
 }
 
 void
