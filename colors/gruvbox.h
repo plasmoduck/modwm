@@ -23,7 +23,7 @@ static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
 static char tagsselfgcolor[]             = "#2B2928";
-static char tagsselbgcolor[]             = "#FBF1C7";
+static char tagsselbgcolor[]             = "#D5C4A1";
 static char tagsselbordercolor[]         = "#458588";
 static char tagsselfloatcolor[]          = "#458588";
 
