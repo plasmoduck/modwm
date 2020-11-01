@@ -4,22 +4,23 @@
  *  | |\/| | | | | | | | |/\| | |\/| |
  *  | |  | \ \_/ | |/ /\  /\  | |  | |
  *  \_|  |_/\___/|___/  \/  \/\_|  |_/
- *
+ 
+ *         ATOMIC EDITION 
  * MODWM - Modular Dynamic Window Manager.
  * ---------------------------------------
- * See LICENSE file for copyright and license details.
- * /
+ * 
+ * See LICENSE file for copyright and license details. */
 
 /* appearance */
 #if ROUNDED_CORNERS_PATCH
 static const unsigned int borderpx       = 0;   /* border pixel of windows */
-static const int corner_radius           = 10;
+static const int corner_radius           = 5;
 #else
-static const unsigned int borderpx       = 2;  /* border pixel of windows */
+static const unsigned int borderpx       = 3;  /* border pixel of windows */
 #endif // ROUNDED_CORNERS_PATCH
 static const unsigned int snap           = 0;  /* snap pixel */
 #if SWALLOW_PATCH
-static const int swallowfloating         = 0;   /* 1 means swallow floating windows by default */
+static const int swallowfloating         = 1;   /* 1 means swallow floating windows by default */
 #endif // SWALLOW_PATCH
 #if VANITYGAPS_PATCH
 static const unsigned int gappih         = 25;  /* horiz inner gap between windows */
@@ -55,18 +56,18 @@ static int floatposgrid_x                = 5;  /* float grid columns */
 static int floatposgrid_y                = 5;  /* float grid rows */
 #endif // FLOATPOS_PATCH
 #if BAR_STATUSPADDING_PATCH
-static const int horizpadbar             = -5;   /* horizontal padding for statusbar */
+static const int horizpadbar             = 0;   /* horizontal padding for statusbar */
 static const int vertpadbar              = 3;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[]            = ""; /* dmenu icon   */ 
+static const char buttonbar[]            = ""; /* dmenu icon   */ 
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
 #endif // BAR_SYSTRAY_PATCH
 static int tagindicatortype              = INDICATOR_BOTTOM_BAR; // see patch/bar_indicators.h for options
-static int floatindicatortype            = INDICATOR_BOX_FULL; // see patch/bar_indicators.h for options
+static int floatindicatortype            = INDICATOR_BOTTOM_BAR_SLIM; // see patch/bar_indicators.h for options
 #if ONLYQUITONEMPTY_PATCH
 static const int quit_empty_window_count = 2;   /* only allow dwm to quit if no windows are open, value here represents number of deamons */
 #endif // ONLYQUITONEMPTY_PATCH
@@ -81,9 +82,9 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "Jetbrains Mono:size=10", "Wuncon Siji:size=12" };
+static const char *fonts[]               = { "JetBrains Mono:size=11", "Wuncon Siji:size=12" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "Jetbrains  Mono:size=10";
+static const char dmenufont[]            = "JetBrains Mono:size=11";
 
 #if BAR_FLEXWINTITLE_PATCH
 static char c000000[]                    = "#000000"; // placeholder value
@@ -128,7 +129,7 @@ static char selfloatbgcolor[]            = "#117799";
 #endif // BAR_FLEXWINTITLE_PATCH
 
 #if BAR_ALPHA_PATCH
-static const unsigned int baralpha = 0xde;
+static const unsigned int baralpha = 0xdd;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int alphas[][3] = {
 	/*                       fg      bg        border     */
@@ -349,8 +350,7 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-	
-    RULE(.class = "Firefox", .tags = 1 << 1, .monitor = 0)
+	RULE(.class = "Firefox", .tags = 1 << 1, .monitor = 0)
     RULE(.class = "tabbed", .tags = 1 << 1, .monitor = 0)
     RULE(.title = "sfeed_curses", .tags = 1 << 0, .monitor = 1)
     RULE(.title = "neomutt", .tags = 1 << 0, .monitor = 1)
@@ -365,6 +365,9 @@ static const Rule rules[] = {
     RULE(.class = "Sxiv", .tags = 0, .iscentered = 1, .isfloating = 1)
     RULE(.class = "TelegramDesktop", .tags = 1 << 2, .monitor = 0)
     RULE(.title = "telegramtui", .tags = 1 << 2, .monitor = 0)
+    RULE(.class = "Gcolor2", .tags = 0, .iscentered = 1, .isfloating = 1)
+	RULE(.class = "mpv", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "800W 500H")
+    RULE(.class = "MPlayer", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "800W 500H")
 
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)

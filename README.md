@@ -15,7 +15,7 @@ Configuration of MODWM is done by its two config files [patches.def.h](https://g
 ## BUILDING
 This build is customised for FreeBSD (cause that's what I use). Modify the build flags in [config.mk](https://github.com/plasmoduck/modwm/blob/master/config.mk) to suit your system, Linux for example. Then run:
 ```c
-doas/sudo make install
+make install
 ```
 Then you can put something like this at the end of your ~/.xinitrc file:
 ```c

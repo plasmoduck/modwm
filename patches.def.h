@@ -85,7 +85,7 @@
 /* This patch adds a clickable button to the left hand side of the statusbar.
  * https://dwm.suckless.org/patches/statusbutton/
  */
-#define BAR_STATUSBUTTON_PATCH 1
+#define BAR_STATUSBUTTON_PATCH 0
 
 /* This patch adds the ability to execute shell commands based on the mouse button and position
  * when clicking the status bar. Refer to the website for usage.
@@ -376,7 +376,7 @@
  * adding wintype as a client rule filter, hence this no longer works out of the box. This
  * patch restores previous behaviour with the center patch.
  */
-#define CENTER_TRANSIENT_WINDOWS_PATCH 0
+#define CENTER_TRANSIENT_WINDOWS_PATCH 1
 
 /* As above, except that the transient window is centered within the position of the parent
  * window, rather than at the center of the screen. This takes precedence over the above patch.
@@ -476,7 +476,7 @@
  * The size and position can be specified using absolute, relative or fixed co-ordinates and
  * https://github.com/bakkeby/patches/wiki/floatpos/
  */
-#define FLOATPOS_PATCH 0
+#define FLOATPOS_PATCH 1 
 
 /* Add-on functionality for the above: make the float positions respect outer (vanity)gaps. */
 #define FLOATPOS_RESPECT_GAPS_PATCH 0
@@ -969,7 +969,7 @@
  * when the mouse cursor is (a) on a different screen or (b) on top of a different window.
  * https://dwm.suckless.org/patches/warp/
  */
-#define WARP_PATCH 0
+#define WARP_PATCH 1
 
 /* Sometimes a single application opens different windows depending on the task
  * at hand and this is often reflected in the WM_WINDOW_ROLE(STRING) x property.
