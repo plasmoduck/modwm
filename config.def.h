@@ -366,8 +366,8 @@ static const Rule rules[] = {
     RULE(.class = "TelegramDesktop", .tags = 1 << 2, .monitor = 0)
     RULE(.title = "telegramtui", .tags = 1 << 2, .monitor = 0)
     RULE(.class = "Gcolor2", .tags = 0, .iscentered = 1, .isfloating = 1)
-	RULE(.class = "mpv", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "800W 500H")
-    RULE(.class = "MPlayer", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "800W 500H")
+	RULE(.class = "mpv", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "896W 504H")
+    RULE(.class = "MPlayer", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "896W 504H")
 
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
@@ -496,7 +496,7 @@ static const int decorhints  = 1;    /* 1 means respect decoration hints */
 #if FLEXTILE_DELUXE_LAYOUT
 static const Layout layouts[] = {
 	/* symbol     arrange function, { nmaster, nstack, layout, master axis, stack axis, secondary stack axis } */
-	{ "",      flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle 
+	{ "[ ]",      flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle 
     	{ "",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL } }, // centeredmast>
     	{ "",      NULL,             {0} },    /* no layout function means floating behavior */
     	{ "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
@@ -738,6 +738,7 @@ static const char *maim[] = { "/home/cjg/bin/maimpick", NULL };
 static const char *flash[] = { "nc_flash_window", NULL };
 static const char *layoutmenu_cmd = "layoutmenu.sh";
 static const char *shutdown[] = { "/home/cjg/bin/dmenu_shutdown", NULL };
+static const char *dpkg[] = { "/home/cjg/bin/dpkg", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -750,34 +751,35 @@ static Key keys[] = {
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
-    	{ MODKEY,                       XK_p,           spawn,          {.v = dmenucmd } },
+   	{ MODKEY,                       XK_p,           spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,           togglebar,      {0} },
 	{ MODKEY,                       XK_s,           spawn,          {.v = firefox } },
-    	{ MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
-    	{ MODKEY,                       XK_e,           spawn,          {.v = emoji } },
-    	{ MODKEY|ShiftMask,             XK_r,           spawn,          {.v = reboot } },
-    	{ MODKEY,                       XK_g,           spawn,          {.v = dmenuwebsearch } },
-	{ MODKEY,			XK_f,		spawn,		{.v = flash } },
-	{ MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
-    	{ MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
-    	{ MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
-    	{ MODKEY,                       XK_F12,         spawn,          {.v = mpcnxt } },
-    	{ MODKEY,                       XK_F9,          spawn,          {.v = mpctgl } },
-    	{ MODKEY,                       XK_F10,         spawn,          {.v = mpcstp } },
-    	{ MODKEY,                       XK_F11,         spawn,          {.v = mpcprv } },
-    	{ MODKEY,                       XK_Pause,       spawn,          {.v = upvol   } },
-    	{ MODKEY,                       XK_Scroll_Lock, spawn,          {.v = downvol } },
-    	{ MODKEY,                       XK_Print,       spawn,          {.v = mutevol } },
-    	{ MODKEY|ShiftMask,             XK_Print,       spawn,          {.v = maim } },
-    	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
-    	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
-    	{ MODKEY|ControlMask,           XK_s,           spawn,          {.v = surftabbed } },
-    	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
-    	{ MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
-    	{ MODKEY|ShiftMask,             XK_m,           spawn,          {.v = neomutt } },
-	{ MODKEY|ControlMask,		XK_End,		spawn,		{.v = shutdown } },
-	#if FOCUSMASTER_PATCH
+   	{ MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
+   	{ MODKEY,                       XK_e,           spawn,          {.v = emoji } },
+   	{ MODKEY|ShiftMask,             XK_r,           spawn,          {.v = reboot } },
+   	{ MODKEY,                       XK_g,           spawn,          {.v = dmenuwebsearch } },
+   	{ MODKEY,			            XK_f,		    spawn,		    {.v = flash } },
+    { MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
+   	{ MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
+   	{ MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
+   	{ MODKEY,                       XK_F12,         spawn,          {.v = mpcnxt } },
+   	{ MODKEY,                       XK_F9,          spawn,          {.v = mpctgl } },
+   	{ MODKEY,                       XK_F10,         spawn,          {.v = mpcstp } },
+   	{ MODKEY,                       XK_F11,         spawn,          {.v = mpcprv } },
+   	{ MODKEY,                       XK_Pause,       spawn,          {.v = upvol   } },
+   	{ MODKEY,                       XK_Scroll_Lock, spawn,          {.v = downvol } },
+   	{ MODKEY,                       XK_Print,       spawn,          {.v = mutevol } },
+   	{ MODKEY|ShiftMask,             XK_Print,       spawn,          {.v = maim } },
+   	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
+   	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
+   	{ MODKEY|ControlMask,           XK_s,           spawn,          {.v = surftabbed } },
+   	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
+   	{ MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
+   	{ MODKEY|ShiftMask,             XK_m,           spawn,          {.v = neomutt } },
+	{ MODKEY|ControlMask,		    XK_End,		    spawn,		    {.v = shutdown } },
+    { MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
+    #if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
 	#if STACKER_PATCH
@@ -1166,9 +1168,9 @@ static Button buttons[] = {
 	{ ClkStatusText,        0,                   Button3,        sigdwmblocks,   {.i = 3 } },
 	#elif BAR_STATUSCMD_PATCH
 	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = mpcnxt } },
-        { ClkStatusText,        0,                   Button2,        spawn,          {.v = mpctgl } },
-        { ClkStatusText,        0,                   Button3,        spawn,          {.v = mpcprv } },
-	#else
+    { ClkStatusText,        0,                   Button2,        spawn,          {.v = mpdmenu } },
+    { ClkStatusText,        0,                   Button3,        spawn,          {.v = mpcprv } },
+    #else
 	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = termcmd } },
 	#endif // BAR_STATUSCMD_PATCH
 	{ ClkClientWin,         MODKEY,              Button1,        movemouse,      {0} },
