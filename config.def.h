@@ -67,7 +67,7 @@ static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
 #endif // BAR_SYSTRAY_PATCH
 static int tagindicatortype              = INDICATOR_BOTTOM_BAR; // see patch/bar_indicators.h for options
-static int floatindicatortype            = INDICATOR_BOTTOM_BAR_SLIM; // see patch/bar_indicators.h for options
+static int floatindicatortype		 = INDICATOR_BOTTOM_BAR_SLIM; // see patch/bar_indicators.h for options
 #if ONLYQUITONEMPTY_PATCH
 static const int quit_empty_window_count = 2;   /* only allow dwm to quit if no windows are open, value here represents number of deamons */
 #endif // ONLYQUITONEMPTY_PATCH
