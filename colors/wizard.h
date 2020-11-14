@@ -3,7 +3,7 @@ static char normbgcolor[]                = "#3A2C2C";
 static char normbordercolor[]            = "#83A598";
 static char normfloatcolor[]             = "#3A3A3A";
 static char selfgcolor[]                 = "#E2D0A8";
-static char selbgcolor[]                 = "#282828";
+static char selbgcolor[]                 = "#A94640";
 static char selbordercolor[]             = "#D55B4C";
 static char selfloatcolor[]              = "#005577";
 

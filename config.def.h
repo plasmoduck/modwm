@@ -60,7 +60,7 @@ static const int horizpadbar             = 0;   /* horizontal padding for status
 static const int vertpadbar              = 3;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[]            = ""; /* dmenu icon   */ 
+static const char buttonbar[]            = ""; /* dmenu icon   */ 
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -90,7 +90,7 @@ static const char dmenufont[]            = "JetBrains Mono:size=11";
 static char c000000[]                    = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
 
-#include "colors/wizard.h"
+#include "colors/gruvbox.h"
 
 #if BAR_FLEXWINTITLE_PATCH
 static char normTTBbgcolor[]             = "#330000";
@@ -760,7 +760,7 @@ static Key keys[] = {
    	{ MODKEY|ShiftMask,             XK_r,           spawn,          {.v = reboot } },
    	{ MODKEY,                       XK_g,           spawn,          {.v = dmenuwebsearch } },
    	{ MODKEY,			            XK_f,		    spawn,		    {.v = flash } },
-    { MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
+    	{ MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
    	{ MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
    	{ MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
    	{ MODKEY,                       XK_F12,         spawn,          {.v = mpcnxt } },
@@ -777,9 +777,10 @@ static Key keys[] = {
    	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
    	{ MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
    	{ MODKEY|ShiftMask,             XK_m,           spawn,          {.v = neomutt } },
-	{ MODKEY|ControlMask,		    XK_End,		    spawn,		    {.v = shutdown } },
-    { MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
-    #if FOCUSMASTER_PATCH
+	{ MODKEY|ControlMask,		XK_End,		spawn,		{.v = shutdown } },
+	{ MODKEY|ControlMask,           XK_Delete,         spawn,          {.v = shutdown } },
+	{ MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
+    	#if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
 	#if STACKER_PATCH

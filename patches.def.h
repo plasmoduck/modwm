@@ -61,10 +61,10 @@
  */
 #define BAR_POWERLINE_STATUS_PATCH 0
 
-/* Adds powerline arrows for the tags.
+/* Adds powerline arrows for the tags. Don't forget to change BAR_TAGS_PATCH 0
  * https://gitlab.com/udiboy1209-suckless/dwm/-/commit/071f5063e8ac4280666828179f92788d893eea40#4b1a539194be7467cefbda22f675a3b7c19ceca7
  */
-#define BAR_POWERLINE_TAGS_PATCH 0
+#define BAR_POWERLINE_TAGS_PATCH 0 
 
 /* Alters the tags powerline to use forward slash instead of arrows */
 #define BAR_POWERLINE_TAGS_SLASH_PATCH 0
@@ -85,7 +85,7 @@
 /* This patch adds a clickable button to the left hand side of the statusbar.
  * https://dwm.suckless.org/patches/statusbutton/
  */
-#define BAR_STATUSBUTTON_PATCH 1 
+#define BAR_STATUSBUTTON_PATCH 0 
 
 /* This patch adds the ability to execute shell commands based on the mouse button and position
  * when clicking the status bar. Refer to the website for usage.

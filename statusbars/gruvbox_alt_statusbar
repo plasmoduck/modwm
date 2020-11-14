@@ -15,7 +15,7 @@
 #  ---------------------------------------------------------------------------- 
 
 playing () {
-	mpc -h /usr/home/cjg/.mpd/socket | awk 'NR==1 {song = $0} NR==2 {if ($1 == "[playing]") p=1; sub(/.*\//, "")} END {printf("%s %s\n", p?"^c#F9CC69^ ^c#FFFFFF^":"^c#B24D47^ ^c#FFFFFF^", song)}' 
+	mpc -h /usr/home/cjg/.mpd/socket | awk 'NR==1 {song = $0} NR==2 {if ($1 == "[playing]") p=1; sub(/.*\//, "")} END {printf("%s %s\n", p?"^c#7C9A8D^ ^c#a89984^":"^c#BF919D^ ^c#a89984^", song)}' 
 }
 
 memory (){
@@ -44,6 +44,6 @@ print_date (){
 
 while true
 do
-	xsetroot -name "^b#6A87A1^ ^c#FFFFFF^$(playing) ^b#F9CC69^^c#FFFFFF^  $(cpu)% ^b#D89F57^^c#FFFFFF^  $(memory) ^b#C87750^^c#FFFFFF^  $(drive) ^b#C34448^^c#FFFFFF^  $(volume)% ^b#A94640^^c#FFFFFF^  $(print_date) "
+xsetroot -name "^b#2B2928^ ^c#a89984^$(playing) ^b#CC5E50^^c#a89984^  $(cpu)% ^b#A9AC43^^c#a89984^  $(memory) ^b#CBA650^^c#a89984^  $(drive) ^b#7C9A8D^^c#a89984^  $(volume)% ^b#BF919D^^c#FFFFFF^  $(print_date) "
 	sleep 1
 done
