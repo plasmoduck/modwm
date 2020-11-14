@@ -84,7 +84,7 @@ static const char font[]                 = "monospace 10";
 #else
 static const char *fonts[]               = { "JetBrains Mono:size=11", "Wuncon Siji:size=12" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "JetBrains Mono:size=11";
+static const char dmenufont[]            = "JetBrains Mono:size=10";
 
 #if BAR_FLEXWINTITLE_PATCH
 static char c000000[]                    = "#000000"; // placeholder value

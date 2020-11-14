@@ -17,13 +17,13 @@ static char titleselbgcolor[]            = "#2B2928";
 static char titleselbordercolor[]        = "#005577";
 static char titleselfloatcolor[]         = "#005577";
 
-static char tagsnormfgcolor[]            = "#7E7563";
+static char tagsnormfgcolor[]            = "#FFFFFF";
 static char tagsnormbgcolor[]            = "#2B2928";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
-static char tagsselfgcolor[]             = "#2B2928";
-static char tagsselbgcolor[]             = "#7E7563";
+static char tagsselfgcolor[]             = "#FFFFFF";
+static char tagsselbgcolor[]             = "#CC5E50";
 static char tagsselbordercolor[]         = "#458588";
 static char tagsselfloatcolor[]          = "#458588";
 
