@@ -39,7 +39,7 @@ volume (){
 }
 
 print_date (){
-	date +"%H:%M"
+	date "+%H:%M"
 }
 
 while true

@@ -60,7 +60,7 @@ static const int horizpadbar             = 0;   /* horizontal padding for status
 static const int vertpadbar              = 3;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[]            = ""; /* dmenu icon   */ 
+static const char buttonbar[]            = ""; /* dmenu icon   */ 
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -729,16 +729,16 @@ static const char *surftabbed[] =  { "/home/cjg/bin/surf-tabbed", NULL };
 static const char *websearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
 static const char *wallpaper[] = { "/home/cjg/bin/wallpaper", NULL };
 static const char *neomutt[] = { "st", "neomutt", NULL };
-static const char *screenshot[] = { "/home/cjg/bin/screenshot", NULL };
 static const char *xkill[] = { "xkill", NULL };
 static const char *mpdmenu[] = { "/home/cjg/bin/mpdmenu", NULL };
 static const char *dmenuwebsearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
 static const char *reboot[] = { "/home/cjg/bin/prompt", NULL };
-static const char *maim[] = { "/home/cjg/bin/maimpick", NULL };
+static const char *screenshot[] = { "/home/cjg/bin/screenshot", NULL };
 static const char *flash[] = { "nc_flash_window", NULL };
 static const char *layoutmenu_cmd = "layoutmenu.sh";
 static const char *shutdown[] = { "/home/cjg/bin/dmenu_shutdown", NULL };
 static const char *dpkg[] = { "/home/cjg/bin/dpkg", NULL };
+static const char *podcasts[] = { "/home/cjg/bin/feed-selection.sh", NULL};
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -760,7 +760,7 @@ static Key keys[] = {
    	{ MODKEY|ShiftMask,             XK_r,           spawn,          {.v = reboot } },
    	{ MODKEY,                       XK_g,           spawn,          {.v = dmenuwebsearch } },
    	{ MODKEY,			            XK_f,		    spawn,		    {.v = flash } },
-    	{ MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
+    { MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
    	{ MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
    	{ MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
    	{ MODKEY,                       XK_F12,         spawn,          {.v = mpcnxt } },
@@ -770,17 +770,17 @@ static Key keys[] = {
    	{ MODKEY,                       XK_Pause,       spawn,          {.v = upvol   } },
    	{ MODKEY,                       XK_Scroll_Lock, spawn,          {.v = downvol } },
    	{ MODKEY,                       XK_Print,       spawn,          {.v = mutevol } },
-   	{ MODKEY|ShiftMask,             XK_Print,       spawn,          {.v = maim } },
+   	{ MODKEY|ShiftMask,             XK_Print,       spawn,          {.v = screenshot } },
    	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
    	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
    	{ MODKEY|ControlMask,           XK_s,           spawn,          {.v = surftabbed } },
    	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
    	{ MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
-   	{ MODKEY|ShiftMask,             XK_m,           spawn,          {.v = neomutt } },
-	{ MODKEY|ControlMask,		XK_End,		spawn,		{.v = shutdown } },
-	{ MODKEY|ControlMask,           XK_Delete,         spawn,          {.v = shutdown } },
+	{ MODKEY|ControlMask,		    XK_End,		    spawn,		    {.v = shutdown } },
+	{ MODKEY|ControlMask,           XK_Delete,      spawn,          {.v = shutdown } },
 	{ MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
-    	#if FOCUSMASTER_PATCH
+	{ MODKEY|ShiftMask,		XK_m,		spawn,		{.v = podcasts } },
+	#if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
 	#if STACKER_PATCH
