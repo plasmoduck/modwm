@@ -82,7 +82,7 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "JetBrains Mono:size=11", "Wuncon Siji:size=12" };
+static const char *fonts[]               = { "JetBrains Mono:pixelsize=18" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "JetBrains Mono:size=10";
 
@@ -301,10 +301,9 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-/*	[ALTERNATIVE_TAGS]        = { "", "", "", "", "", "", "", "", "" }, */
-	[ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
-    	[DEFAULT_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
+        [DEFAULT_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+        [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
+    	[ALT_TAGS_DECORATION] = { "", "", "", "", "", "", "", "", "" },
 };
 
 #if BAR_TAGGRID_PATCH
@@ -497,19 +496,19 @@ static const int decorhints  = 1;    /* 1 means respect decoration hints */
 static const Layout layouts[] = {
 	/* symbol     arrange function, { nmaster, nstack, layout, master axis, stack axis, secondary stack axis } */
 	{ "",      flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle 
-    	{ "",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL } }, // centeredmast>
-    	{ "",      NULL,             {0} },    /* no layout function means floating behavior */
-    	{ "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
+	{ "",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL } }, // centeredmast>
+    { "",      NULL,             {0} },    /* no layout function means floating behavior */
+    { "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
 	{ "",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // columns (col) layout
 	{ "",      flextile,         { -1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // floating master
 	{ "",      flextile,         { -1, -1, NO_SPLIT, MONOCLE, 0, 0, NULL } }, // monocle
-	{ "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL } }, // deck
-	{ "",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // bstack
-	{ "",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // bstackhoriz
-	{ "",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID, 0, 0, NULL } }, // gappless grid
+	{ "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL } }, // deck
+	{ "",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // bstack
+	{ "",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // bstackhoriz
+	{ "",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID, 0, 0, NULL } }, // gappless grid
 	{ "",      flextile,         { -1, -1, NO_SPLIT, SPIRAL, 0, 0, NULL } }, // fibonacci spiral
 
-
+/*
 	#if TILE_LAYOUT
 	{ "[]=",      tile,             {0} },
 	#endif
@@ -554,7 +553,7 @@ static const Layout layouts[] = {
 	#endif
 	#if CYCLELAYOUTS_PATCH
 	{ NULL,       NULL,             {0} },
-	#endif
+	#endif */
 };
 #else
 static const Layout layouts[] = {
@@ -738,7 +737,8 @@ static const char *flash[] = { "nc_flash_window", NULL };
 static const char *layoutmenu_cmd = "layoutmenu.sh";
 static const char *shutdown[] = { "/home/cjg/bin/dmenu_shutdown", NULL };
 static const char *dpkg[] = { "/home/cjg/bin/dpkg", NULL };
-static const char *podcasts[] = { "/home/cjg/bin/feed-selection.sh", NULL};
+static const char *podcasts[] = { "/home/cjg/bin/feed-selection.sh", NULL };
+static const char *brightness[] = { "/home/cjg/bin/brightness.sh", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -759,28 +759,28 @@ static Key keys[] = {
    	{ MODKEY,                       XK_e,           spawn,          {.v = emoji } },
    	{ MODKEY|ShiftMask,             XK_r,           spawn,          {.v = reboot } },
    	{ MODKEY,                       XK_g,           spawn,          {.v = dmenuwebsearch } },
-   	{ MODKEY,			            XK_f,		    spawn,		    {.v = flash } },
-    { MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
+   	{ MODKEY,			XK_f,		spawn,		{.v = flash } },
+    	{ MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
    	{ MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
    	{ MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
-   	{ MODKEY,                       XK_F12,         spawn,          {.v = mpcnxt } },
-   	{ MODKEY,                       XK_F9,          spawn,          {.v = mpctgl } },
-   	{ MODKEY,                       XK_F10,         spawn,          {.v = mpcstp } },
-   	{ MODKEY,                       XK_F11,         spawn,          {.v = mpcprv } },
-   	{ MODKEY,                       XK_Pause,       spawn,          {.v = upvol   } },
-   	{ MODKEY,                       XK_Scroll_Lock, spawn,          {.v = downvol } },
-   	{ MODKEY,                       XK_Print,       spawn,          {.v = mutevol } },
-   	{ MODKEY|ShiftMask,             XK_Print,       spawn,          {.v = screenshot } },
-   	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
+   	{ NULL,                         XK_F12,         spawn,          {.v = mpcnxt } },
+   	{ NULL,                         XK_F9,          spawn,          {.v = mpctgl } },
+   	{ NULL,                         XK_F10,         spawn,          {.v = mpcstp } },
+   	{ NULL,                         XK_F11,         spawn,          {.v = mpcprv } },
+   	{ NULL,                         XK_Pause,       spawn,          {.v = upvol   } },
+   	{ NULL,                         XK_Scroll_Lock, spawn,          {.v = downvol } },
+   	{ NULL,                         XK_Print,       spawn,          {.v = mutevol } },
+   	{ NULL,                         XK_F7,          spawn,          {.v = brightness } },
+    	{ MODKEY,                       XK_Print,       spawn,          {.v = screenshot } },
+    	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
    	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
    	{ MODKEY|ControlMask,           XK_s,           spawn,          {.v = surftabbed } },
    	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
    	{ MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
-	{ MODKEY|ControlMask,		    XK_End,		    spawn,		    {.v = shutdown } },
 	{ MODKEY|ControlMask,           XK_Delete,      spawn,          {.v = shutdown } },
 	{ MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
-	{ MODKEY|ShiftMask,		XK_m,		spawn,		{.v = podcasts } },
-	#if FOCUSMASTER_PATCH
+	{ MODKEY|ShiftMask,		        XK_m,		    spawn,		    {.v = podcasts } },
+    	#if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
 	#if STACKER_PATCH

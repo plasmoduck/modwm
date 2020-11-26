@@ -17,7 +17,7 @@
  * Awesomebar takes precedence over fancybar.
  * https://dwm.suckless.org/patches/awesomebar/
  */
-#define BAR_AWESOMEBAR_PATCH 0
+#define BAR_AWESOMEBAR_PATCH 0 
 
 /* This patch depends on statuscmd patch and adds integration with a (patched) dwmblocks
  * instance to give a clickable status bar.
@@ -227,7 +227,7 @@
  * that request workspace information. For example polybar's xworkspaces module.
  * https://dwm.suckless.org/patches/ewmhtags/
  */
-#define BAR_EWMHTAGS_PATCH 0
+#define BAR_EWMHTAGS_PATCH 1
 
 /* Allows the bar height to be explicitly set rather than being derived from font.
  * https://dwm.suckless.org/patches/bar_height/
@@ -479,7 +479,7 @@
 #define FLOATPOS_PATCH 1 
 
 /* Add-on functionality for the above: make the float positions respect outer (vanity)gaps. */
-#define FLOATPOS_RESPECT_GAPS_PATCH 0
+#define FLOATPOS_RESPECT_GAPS_PATCH 1
 
 /* This patch provides the ability to focus the tag on the immediate left or right of the
  * currently focused tag. It also allows to send the focused window either on the left or
@@ -609,7 +609,7 @@
  * key is pressed.
  * https://dwm.suckless.org/patches/moveplace/
  */
-#define MOVEPLACE_PATCH 1
+#define MOVEPLACE_PATCH 0
 
 /* This patch allows you to move and resize dwm's clients using keyboard bindings.
  * https://dwm.suckless.org/patches/moveresize/

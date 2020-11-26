@@ -1,4 +1,4 @@
-static char normfgcolor[]                = "#DD6253";
+static char normfgcolor[]                = "#CBA650";
 static char normbgcolor[]                = "#2B2928";
 static char normbordercolor[]            = "#83A598";
 static char normfloatcolor[]             = "#3A3A3A";
