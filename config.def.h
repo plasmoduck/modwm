@@ -493,6 +493,7 @@ static const int decorhints  = 1;    /* 1 means respect decoration hints */
 #endif
 
 #if FLEXTILE_DELUXE_LAYOUT
+#include "tatami.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function, { nmaster, nstack, layout, master axis, stack axis, secondary stack axis } */
 	{ "",      flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle 
@@ -507,7 +508,7 @@ static const Layout layouts[] = {
 	{ "",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // bstackhoriz
 	{ "",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID, 0, 0, NULL } }, // gappless grid
 	{ "",      flextile,         { -1, -1, NO_SPLIT, SPIRAL, 0, 0, NULL } }, // fibonacci spiral
-
+    { "",       tatami,           { -1, -1, SPLIT_VERTICAL, 0, NULL } }, // tatami
 /*
 	#if TILE_LAYOUT
 	{ "[]=",      tile,             {0} },
