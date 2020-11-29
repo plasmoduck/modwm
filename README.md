@@ -42,6 +42,8 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 
 ### Changelog:
 
+2020-11-30 - Added Tatami layout and layout menu patch. Install xmenu for layout menu to work.
+
 2020-10-23 - Added 'colors' to support changing color schemes on the fly. Source them in config.def.h by #include "colors/gruvbox.h"
 	     Also added 'statusbars' directory so support themed statusbars. Please install 'font-awesome' to see glyphs.
 
