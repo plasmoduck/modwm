@@ -60,7 +60,7 @@ static const int horizpadbar             = 0;   /* horizontal padding for status
 static const int vertpadbar              = 3;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[]            = ""; /* dmenu icon   */ 
+static const char buttonbar[]            = ""; /* dmenu icon   */ 
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -82,7 +82,7 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "JetBrains Mono:pixelsize=18" };
+static const char *fonts[]               = { "Jetbrains Mono:pixelsize=16" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "JetBrains Mono:size=10";
 
@@ -302,8 +302,8 @@ static Sp scratchpads[] = {
  */
 static char *tagicons[][NUMTAGS] = {
         [DEFAULT_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-        [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
-    	[ALT_TAGS_DECORATION] = { "", "", "", "", "", "", "", "", "" },
+        [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
+    	[ALT_TAGS_DECORATION] = { "", "", "", "", "", "", "", "", "" },
 };
 
 #if BAR_TAGGRID_PATCH
