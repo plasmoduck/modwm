@@ -44,6 +44,6 @@ print_date (){
 
 while true
 do
-    xsetroot -name " ^b#2B2928^^c#a89984^$(playing) ^c#FE8019^^c#DD6253^  ^c#a89984^$(cpu)% ^c#FE8019^^c#DBB253^  ^c#a89984^$(memory) ^c#FE8019^^c#B6B945^  ^c#a89984^$(drive) ^c#FE8019^^c#83A598^  ^c#a89984^$(volume)% ^c#FE8019^^c#CE9BA9^  ^c#a89984^$(print_date) ^c#FE8019^"
+    xsetroot -name " ^b#2B2928^^c#a89984^$(playing) ^c#D68A49^^c#DD6253^  ^c#a89984^$(cpu)% ^c#D68A49^^c#DBB253^  ^c#a89984^$(memory) ^c#D68A49^^c#B6B945^  ^c#a89984^$(drive) ^c#D68A49^^c#83A598^  ^c#a89984^$(volume)% ^c#D68A49^^c#CE9BA9^  ^c#a89984^$(print_date) ^c#D68A49^"
 	sleep 1
 done
