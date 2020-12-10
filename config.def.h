@@ -60,7 +60,7 @@ static const int horizpadbar             = 0;   /* horizontal padding for status
 static const int vertpadbar              = 3;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[]            = ""; /* dmenu icon   */ 
+static const char buttonbar[]            = ""; /* dwm icon:   */ 
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -302,7 +302,7 @@ static Sp scratchpads[] = {
  */
 static char *tagicons[][NUMTAGS] = {
         [DEFAULT_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-        [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
+        [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
     	[ALT_TAGS_DECORATION] = { "", "", "", "", "", "", "", "", "" },
 };
 
@@ -739,6 +739,9 @@ static const char *shutdown[] = { "/home/cjg/bin/dmenu_shutdown", NULL };
 static const char *dpkg[] = { "/home/cjg/bin/dpkg", NULL };
 static const char *podcasts[] = { "/home/cjg/bin/feed-selection.sh", NULL };
 static const char *brightness[] = { "/home/cjg/bin/brightness.sh", NULL };
+static const char *xmenu[] = { "/home/cjg/bin/xmenu.sh", NULL };
+static const char *todo[] = { "/home/cjg/bin/todo", NULL };
+static const char *passmenu[] = { "/home/cjg/bin/passmenu2", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -760,7 +763,7 @@ static Key keys[] = {
    	{ MODKEY|ShiftMask,             XK_r,           spawn,          {.v = reboot } },
    	{ MODKEY,                       XK_g,           spawn,          {.v = dmenuwebsearch } },
    	{ MODKEY,			XK_f,		spawn,		{.v = flash } },
-    	{ MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
+	{ MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
    	{ MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
    	{ MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
    	{ NULL,                         XK_F12,         spawn,          {.v = mpcnxt } },
@@ -771,15 +774,17 @@ static Key keys[] = {
    	{ NULL,                         XK_Scroll_Lock, spawn,          {.v = downvol } },
    	{ NULL,                         XK_Print,       spawn,          {.v = mutevol } },
    	{ NULL,                         XK_F7,          spawn,          {.v = brightness } },
-    	{ MODKEY,                       XK_Print,       spawn,          {.v = screenshot } },
-    	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
+	{ NULL,				XK_F6,		spawn,		{.v = todo } },
+	{ MODKEY,                       XK_Print,       spawn,          {.v = screenshot } },
+	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
    	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
    	{ MODKEY|ControlMask,           XK_s,           spawn,          {.v = surftabbed } },
    	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
    	{ MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
 	{ MODKEY|ControlMask,           XK_Delete,      spawn,          {.v = shutdown } },
 	{ MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
-	{ MODKEY|ShiftMask,		        XK_m,		    spawn,		    {.v = podcasts } },
+	{ MODKEY|ShiftMask,		XK_m,		spawn,		{.v = podcasts } },
+	{ MODKEY,			XK_Insert,	spawn,		{.v = passmenu } },
     	#if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
@@ -906,7 +911,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_F5,         xrdb,                   {.v = NULL } },
 	#endif // XRDB_PATCH
 	{ MODKEY,                       XK_t,          setlayout,              {.v = &layouts[0]} },
-	{ MODKEY|ControlMask,            XK_f,          setlayout,              {.v = &layouts[1]} },
+	{ MODKEY|ControlMask,           XK_f,          setlayout,              {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,          setlayout,              {.v = &layouts[2]} },
 	#if COLUMNS_LAYOUT
 	{ MODKEY,                       XK_c,          setlayout,              {.v = &layouts[3]} },
@@ -1154,7 +1159,8 @@ static Command commands[] = {
 static Button buttons[] = {
 	/* click                event mask           button          function        argument */
 	#if BAR_STATUSBUTTON_PATCH
-	{ ClkButton,            0,                   Button1,        spawn,          {.v = dmenucmd } },
+	{ ClkButton,            0,                   Button3,        spawn,          {.v = dmenucmd } },
+    { ClkButton,            0,                   Button1,        spawn,          {.v = xmenu } },
     #endif // BAR_STATUSBUTTON_PATCH
 	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,                   Button3,        layoutmenu,     {0} },
