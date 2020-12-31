@@ -1,7 +1,7 @@
 # MODWM - Modular Dynamic Window Manager 
 ![modwm](modwm.png)
 ###   [Configure](https://github.com/plasmoduck/modwm#configure) - [Building](https://github.com/plasmoduck/modwm#building) - [Statusbar](https://github.com/plasmoduck/modwm#statusbar) - [Extra Goodies](https://github.com/plasmoduck/modwm#extra-goodies) - [Changelog](https://github.com/plasmoduck/modwm#changelog) - [Patches](https://github.com/plasmoduck/modwm#patches-included)
-MODWM is a fork of dwm 6.2 (aaad5f, 2020-07-08). It has a different take on dwm patching. Giving you two config files [patches.def.h](https://github.com/plasmoduck/modwm/blob/master/patches.def.h) to select modules & [config.def.h](https://github.com/plasmoduck/modwm/blob/master/config.def.h) to configure them. It uses preprocessor directives to decide whether or not to include a patch during build time. Essentially this means that this build is modular and for better or worse, contains both the patched _and_ the original code. The aim being that you can select which patches to include and the build will contain that code and nothing more. Due to the complexity of some of the patches MODWM has diverged from mainstream dwm by making some core patches non-optional for maintenance reasons. Credit to bakkeby for his upstream work on [dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch/) & the [suckless guys](https://suckless.org/) for [dwm](https://dwm.suckless.org/) which this project wouldn't be possible without.
+MODWM is a fork of dwm 6.2 (aaad5f, 2020-07-08). It has a different take on dwm patching. Giving you two config files [patches.def.h](https://github.com/plasmoduck/modwm/blob/master/patches.def.h) to select modules & [config.def.h](https://github.com/plasmoduck/modwm/blob/master/config.def.h) to configure them. It uses preprocessor directives to decide whether or not to include a patch during build time. Essentially this means that this build is modular and for better or worse, contains both the patched _and_ the original code. The aim being that you can select which patches to include and the build will contain that code and nothing more. Due to the complexity of some of the patches MODWM has diverged from mainstream dwm by making some core patches non-optional for maintenance reasons. Credit to bakkeby for his upstream work on [dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch/) & the [suckless team](https://suckless.org/) for [dwm](https://dwm.suckless.org/) which this project wouldn't be possible without.
 
 ## EXAMPLE
 To include the `alpha` patch module you would only need to flip this setting from 0 to 1 in [patches.h](https://github.com/plasmoduck/modwm/blob/master/patches.def.h):
@@ -34,13 +34,15 @@ For more quality suckless software to complement MODWM, check out my suckless ut
 ## SUMMARY
 So if you have ever been curious about trying out dwm, but have been discouraged by manual patching, then this may be a good starting point to see what a "fully fledged" dwm can look like. Want to try out the `pertag` patch? Just flip a config and recompile. Once you have found out what works for you and what doesn't then you should be in a better position to choose patches should you want to start patching from scratch.
 
-Alternatively if you have found the patches you want, but don't want the rest of the flexipatch entanglement on your plate then you may want to have a look at [flexipatch-finalizer](https://github.com/bakkeby/flexipatch-finalizer); a custom pre-processor tool that removes all the unused flexipatch code leaving you with a build that contains the patches you selected.
+Alternatively if you have found the patches you want, but don't want the rest of the modwm entanglement on your plate then you may want to have a look at [flexipatch-finalizer](https://github.com/bakkeby/flexipatch-finalizer); a custom pre-processor tool that removes all the unused modwm code leaving you with a build that contains the patches you selected.
 
 Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on the dwm window manager, how to install it and how it works.
 
 ---
 
 ### Changelog:
+
+2020-12-31 - Added new "underline" window title indicator for tiled windows.
 
 2020-11-30 - Added Tatami layout and layout menu patch. Install xmenu for layout menu to work.
 
@@ -81,7 +83,7 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 
 2020-07-19 - Added barmodules patch - making extrabar, leftlayout, staticstatus and statusallmons patches redundant, added powerline patch
 
-2020-07-18 - **Note**: Up until now building dwm-flexipath without any patches selected would have given you something more or less identical with mainstream dwm. In order to reduce complexity when it comes to maintainance future versions of dwm-flexipatch may diverge from this by making some patches non-optional. For the classic dwm-flexipatch and its many patch integration hints refer to branch [dwm-flexipatch-1.0](https://github.com/bakkeby/dwm-flexipatch/tree/dwm-flexipatch-1.0) which will be subject to bug fixes and mainstream dwm updates as far as feasible.
+2020-07-18 - **Note**: Up until now building modwm without any patches selected would have given you something more or less identical with mainstream dwm. In order to reduce complexity when it comes to maintainance future versions of dwm-flexipatch may diverge from this by making some patches non-optional. For the classic dwm-flexipatch and its many patch integration hints refer to branch [dwm-flexipatch-1.0](https://github.com/bakkeby/dwm-flexipatch/tree/dwm-flexipatch-1.0) which will be subject to bug fixes and mainstream dwm updates as far as feasible.
 
 2020-07-05 - Extrabar compatibility improvements (staticstatus, status2d, dwmblocks) and fix for systray randomly causing dwm to crash when first systray application starts
 

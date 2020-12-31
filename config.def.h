@@ -5,7 +5,7 @@
  *  | |  | \ \_/ | |/ /\  /\  | |  | |
  *  \_|  |_/\___/|___/  \/  \/\_|  |_/
  
- *         ATOMIC EDITION 
+ *         FreeBSD EDITION 
  * MODWM - Modular Dynamic Window Manager.
  * ---------------------------------------
  * 
@@ -63,11 +63,12 @@ static const int vertpadbar              = 3;   /* vertical padding for statusba
 static const char buttonbar[]            = ""; /* dwm icon:   */ 
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 5;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
 #endif // BAR_SYSTRAY_PATCH
-static int tagindicatortype              = INDICATOR_BOTTOM_BAR; // see patch/bar_indicators.h for options
-static int floatindicatortype		 = INDICATOR_BOTTOM_BAR_SLIM; // see patch/bar_indicators.h for options
+static int tiledindicatortype            = INDICATOR_BOTTOM_BAR_SLIM;
+static int tagindicatortype              = INDICATOR_BOTTOM_BAR_SLIM; // see patch/bar_indicators.h for options
+static int floatindicatortype		 = INDICATOR_TOP_LEFT_SQUARE; // see patch/bar_indicators.h for options
 #if ONLYQUITONEMPTY_PATCH
 static const int quit_empty_window_count = 2;   /* only allow dwm to quit if no windows are open, value here represents number of deamons */
 #endif // ONLYQUITONEMPTY_PATCH
@@ -82,7 +83,7 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "Jetbrains Mono:pixelsize=16" };
+static const char *fonts[]               = { "JetBrains Mono:pixelsize=19" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "JetBrains Mono:size=10";
 
@@ -301,8 +302,8 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-        [DEFAULT_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-        [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
+        [ALTERNATIVE_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+        [DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" }, 
     	[ALT_TAGS_DECORATION] = { "", "", "", "", "", "", "", "", "" },
 };
 
@@ -345,28 +346,31 @@ static const Rule rules[] = {
 	 *	WM_WINDOW_ROLE(STRING) = role
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
-	RULE(.wintype = WTYPE "DIALOG", .isfloating = 1)
-	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
-	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
-	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
+	RULE(.wintype = WTYPE "DIALOG", .isfloating = 0)
+	RULE(.wintype = WTYPE "UTILITY", .isfloating = 0)
+	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 0)
+	RULE(.wintype = WTYPE "SPLASH", .isfloating = 0)
 	RULE(.class = "Firefox", .tags = 1 << 1, .monitor = 0)
-    RULE(.class = "tabbed", .tags = 1 << 1, .monitor = 0)
-    RULE(.title = "sfeed_curses", .tags = 1 << 0, .monitor = 1)
-    RULE(.title = "neomutt", .tags = 1 << 0, .monitor = 1)
-    RULE(.title = "irssi", .tags = 1 << 0, .monitor = 0)
-    RULE(.class = "Hexchat", .tags = 1 << 3, .monitor = 1)
-    RULE(.class = "Pidgin", .tags = 1 << 2, .monitor = 0)
-    RULE(.title = "finch", .tags = 1 << 2, .monitor = 0)
-    RULE(.class = "Thunar", .tags = 1 << 4)
+        RULE(.class = "tabbed", .tags = 1 << 1, .monitor = 0)
+        RULE(.title = "sfeed_curses", .tags = 1 << 8, .monitor = 0)
+        RULE(.title = "neomutt", .tags = 1 << 8, .monitor = 0)
+        RULE(.title = "weechat", .tags = 1 << 3, .monitor = 0)
+        RULE(.title = "youtube-viewer", .tags = 1 << 6, .monitor = 0)
+        RULE(.title = "/usr/local/bin/spt", .tags = 1 << 7, .monitor = 0) 
+        RULE(.title = "finchy", .tags = 1 << 2, .monitor = 0)
+        RULE(.class = "Hexchat", .tags = 1 << 3, .monitor = 0)
+        RULE(.class = "Pidgin", .tags = 1 << 2, .monitor = 0)
+        RULE(.title = "finchy", .tags = 1 << 2, .monitor = 0)
+        RULE(.class = "Thunar", .tags = 1 << 4)
 	RULE(.class = "Gimp", .tags = 1 << 5)
-    RULE(.class = "vlc", .tags = 1 << 6, .monitor = 1)
+        RULE(.class = "vlc", .tags = 1 << 6, .monitor = 1)
 	RULE(.class = "st-256color", .tags = 0, .isterminal = 1)
-    RULE(.class = "Sxiv", .tags = 0, .iscentered = 1, .isfloating = 1)
-    RULE(.class = "TelegramDesktop", .tags = 1 << 2, .monitor = 0)
-    RULE(.title = "telegramtui", .tags = 1 << 2, .monitor = 0)
-    RULE(.class = "Gcolor2", .tags = 0, .iscentered = 1, .isfloating = 1)
-	RULE(.class = "mpv", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "896W 504H")
-    RULE(.class = "MPlayer", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "896W 504H")
+        RULE(.class = "Sxiv", .tags = 0, .isterminal = 1, .iscentered = 1, .isfloating = 1)
+        RULE(.class = "TelegramDesktop", .tags = 1 << 2, .monitor = 0)
+        RULE(.title = "telegramtui", .tags = 1 << 2, .monitor = 0)
+        RULE(.class = "Gcolor2", .tags = 0, .iscentered = 1, .isfloating = 1)
+	RULE(.class = "mpv", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "1096W 704H")
+        RULE(.class = "MPlayer", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "1096W 704H")
 
 	#if SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
@@ -498,8 +502,8 @@ static const Layout layouts[] = {
 	/* symbol     arrange function, { nmaster, nstack, layout, master axis, stack axis, secondary stack axis } */
 	{ "",      flextile,         { -1, -1, NO_SPLIT, DWINDLE, 0, 0, NULL } }, // fibonacci dwindle 
 	{ "",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL } }, // centeredmast>
-    { "",      NULL,             {0} },    /* no layout function means floating behavior */
-    { "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
+        { "",      NULL,             {0} },    /* no layout function means floating behavior */
+        { "",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
 	{ "",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // columns (col) layout
 	{ "",      flextile,         { -1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // floating master
 	{ "",      flextile,         { -1, -1, NO_SPLIT, MONOCLE, 0, 0, NULL } }, // monocle
@@ -508,7 +512,7 @@ static const Layout layouts[] = {
 	{ "",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // bstackhoriz
 	{ "",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID, 0, 0, NULL } }, // gappless grid
 	{ "",      flextile,         { -1, -1, NO_SPLIT, SPIRAL, 0, 0, NULL } }, // fibonacci spiral
-    { "",       tatami,           { -1, -1, SPLIT_VERTICAL, 0, NULL } }, // tatami
+        { "",       tatami,           { -1, -1, SPLIT_VERTICAL, 0, NULL } }, // tatami
 /*
 	#if TILE_LAYOUT
 	{ "[]=",      tile,             {0} },
@@ -717,8 +721,8 @@ static const char *slock[] = { "slock", NULL };
 static const char *gimp[] = { "gimp", NULL };
 static const char *flash[] = { "nc_flash_window", NULL };
 static const char *neomutt[] = { "st", "neomutt", NULL };
-static const char *upvol[]   = { "mixer", "vol", "+3",     NULL };
-static const char *downvol[] = { "mixer", "vol", "-3",     NULL };
+static const char *upvol[]   = { "/home/cjg/bin/volume.sh", "up", NULL };
+static const char *downvol[] = { "/home/cjg/bin/volume.sh", "down", NULL };
 static const char *mutevol[] = { "mixer", "vol", "toggle", NULL };
 static const char *mpcnxt[] = { "mpc", "-h", "/usr/home/cjg/.mpd/socket", "next", NULL };
 static const char *mpctgl[] = { "mpc", "-h", "/usr/home/cjg/.mpd/socket", "toggle", NULL };
@@ -738,11 +742,12 @@ static const char *layoutmenu_cmd = "/home/cjg/bin/layoutmenu.sh";
 static const char *shutdown[] = { "/home/cjg/bin/dmenu_shutdown", NULL };
 static const char *dpkg[] = { "/home/cjg/bin/dpkg", NULL };
 static const char *podcasts[] = { "/home/cjg/bin/feed-selection.sh", NULL };
-static const char *brightness[] = { "/home/cjg/bin/brightness.sh", NULL };
-static const char *xmenu[] = { "/home/cjg/bin/xmenu.sh", NULL };
+static const char *brightnessup[] = { "/home/cjg/bin/brightnessControl.sh", "up", NULL };
+static const char *brightnessdown[] = { "/home/cjg/bin/brightnessControl.sh", "down", NULL };
+static const char *dmenu_list[] = { "/home/cjg/bin/dmenu_list", NULL };
 static const char *todo[] = { "/home/cjg/bin/todo", NULL };
 static const char *passmenu[] = { "/home/cjg/bin/passmenu2", NULL };
-
+static const char *cheese[] = { "/usr/local/bin/cheese", NULL };
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 static const char *statuscmds[] = { "notify-send Mouse$BUTTON" };
@@ -766,24 +771,22 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
    	{ MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
    	{ MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
-   	{ NULL,                         XK_F12,         spawn,          {.v = mpcnxt } },
-   	{ NULL,                         XK_F9,          spawn,          {.v = mpctgl } },
-   	{ NULL,                         XK_F10,         spawn,          {.v = mpcstp } },
-   	{ NULL,                         XK_F11,         spawn,          {.v = mpcprv } },
-   	{ NULL,                         XK_Pause,       spawn,          {.v = upvol   } },
-   	{ NULL,                         XK_Scroll_Lock, spawn,          {.v = downvol } },
-   	{ NULL,                         XK_Print,       spawn,          {.v = mutevol } },
-   	{ NULL,                         XK_F7,          spawn,          {.v = brightness } },
-	{ NULL,				XK_F6,		spawn,		{.v = todo } },
+   	{ NULL,                         0xffc0,         spawn,          {.v = upvol   } },
+   	{ NULL,                         0xffbf,         spawn,          {.v = downvol } },
+   	{ NULL,                         XK_F1,          spawn,          {.v = mutevol } },
+   	{ NULL,                         XK_F5,          spawn,          {.v = brightnessdown } },
+        { NULL,                         XK_F6,          spawn,          {.v = brightnessup } },
+        { NULL,                         XK_F7,          spawn,          {.v = cheese } },
+	{ NULL,				XK_F10,		spawn,		{.v = surftabbed } },
+        { NULL,                         0xffc9,         spawn,          {.v = mpctgl } },
 	{ MODKEY,                       XK_Print,       spawn,          {.v = screenshot } },
 	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
    	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
-   	{ MODKEY|ControlMask,           XK_s,           spawn,          {.v = surftabbed } },
    	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
    	{ MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
 	{ MODKEY|ControlMask,           XK_Delete,      spawn,          {.v = shutdown } },
 	{ MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
-	{ MODKEY|ShiftMask,		XK_m,		spawn,		{.v = podcasts } },
+	{ MODKEY|ShiftMask,		XK_m,		spawn,		{.v = dmenu_list} },
 	{ MODKEY,			XK_Insert,	spawn,		{.v = passmenu } },
     	#if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
@@ -937,9 +940,9 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_m,          togglemax,              {0} },
 	#endif // MAXIMIZE_PATCH
 	#if SCRATCHPADS_PATCH
-	{ MODKEY|ShiftMask,             XK_grave,      togglescratch,          {.ui = 0 } },
+	{ MODKEY|ShiftMask,             XK_grave,      togglescratch,          {.ui = 2 } },
 	{ MODKEY|ControlMask,           XK_grave,      togglescratch,          {.ui = 1 } },
-	{ MODKEY,             		XK_grave,      togglescratch,          {.ui = 2 } },
+	{ MODKEY,             		XK_grave,      togglescratch,          {.ui = 0 } },
 	#endif // SCRATCHPADS_PATCH
 	#if UNFLOATVISIBLE_PATCH
 	{ MODKEY|Mod4Mask,              XK_space,      unfloatvisible,         {0} },
@@ -1105,8 +1108,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_numbersign, setborderpx,            {.i = 0 } },
 	#endif // SETBORDERPX_PATCH
 	#if CYCLELAYOUTS_PATCH
-	{ MODKEY|ControlMask,           XK_comma,      cyclelayout,            {0} },
-	{ MODKEY|ControlMask,           XK_period,     cyclelayout,            {0} },
+	{ MODKEY|ControlMask,           XK_comma,      cyclelayout,            {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period,     cyclelayout,            {.i = +1 } },
 	#endif // CYCLELAYOUTS_PATCH
 	#if MDPCONTROL_PATCH
 	{ MODKEY,                       XK_F1,         mpdchange,              {.i = -1} },
@@ -1160,8 +1163,8 @@ static Button buttons[] = {
 	/* click                event mask           button          function        argument */
 	#if BAR_STATUSBUTTON_PATCH
 	{ ClkButton,            0,                   Button3,        spawn,          {.v = dmenucmd } },
-    { ClkButton,            0,                   Button1,        spawn,          {.v = xmenu } },
-    #endif // BAR_STATUSBUTTON_PATCH
+        { ClkButton,            0,                   Button1,        spawn,          {.v = dmenu_list } },
+        #endif // BAR_STATUSBUTTON_PATCH
 	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,                   Button3,        layoutmenu,     {0} },
 	#if BAR_WINTITLEACTIONS_PATCH
@@ -1175,9 +1178,9 @@ static Button buttons[] = {
 	{ ClkStatusText,        0,                   Button3,        sigdwmblocks,   {.i = 3 } },
 	#elif BAR_STATUSCMD_PATCH
 	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = mpcnxt } },
-    { ClkStatusText,        0,                   Button2,        spawn,          {.v = mpdmenu } },
-    { ClkStatusText,        0,                   Button3,        spawn,          {.v = mpcprv } },
-    #else
+        { ClkStatusText,        0,                   Button2,        spawn,          {.v = mpdmenu } },
+        { ClkStatusText,        0,                   Button3,        spawn,          {.v = mpcprv } },
+        #else
 	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = termcmd } },
 	#endif // BAR_STATUSCMD_PATCH
 	{ ClkClientWin,         MODKEY,              Button1,        movemouse,      {0} },
