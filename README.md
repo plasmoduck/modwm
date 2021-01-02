@@ -33,7 +33,7 @@ exec dwm
 MODWM supports color schemes, you can find some examples in the 'colors' directory.
 
 ## STATUSBAR
-MODWM also includes a statusbar. It uses 'siji' to draw glyphs (icons) so please install it. You can customize the statusbar by editing the file in the 'statusbars' directory. Then source it from your ~/.xinitrc like so ``exec /path/to/modwm/statusbars/gruvbox_no_music..statusbar &``
+MODWM also includes a statusbar. It uses 'siji' to draw glyphs (icons) so please install it. You can customize the statusbar by editing the file in the 'statusbars' directory. Then source it from your ~/.xinitrc like so ``exec /path/to/modwm/statusbars/gruvbox.statusbar &``
 
 ## EXTRA GOODIES
 For more quality suckless software to complement MODWM, check out my suckless utilities [collection](https://github.com/plasmoduck/suckless/)
@@ -49,7 +49,7 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 
 ### Changelog:
 
-2021-01-02 - Added Wireless AP name and signal to /statusbars/gruvbox_no_music.statusbar this is the default statusbar now.
+2021-01-02 - Added Wireless AP name and signal to /statusbars/gruvbox.statusbar this is the default statusbar now.
 
 2020-12-31 - Added new "underline" window title indicator for tiled windows.
 
