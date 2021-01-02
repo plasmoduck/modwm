@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 #  _____ _        _             _
 # /  ___| |      | |           | |
 # \ `--.| |_ __ _| |_ _   _ ___| |__   __ _ _ __
@@ -60,8 +60,15 @@ print_date (){
 	date "+%H:%M"
 }
 
+wifi (){
+        ifconfig wlan0 | grep ssid | cut -w -f 3
+}
+signal (){
+        ifconfig wlan0 | grep txpower | cut -w -f 3
+}
+
 while true
 do
-    xsetroot -name "^b#2B2928^^c#FB4934^^c#D5C4A1^$(cpu)% ^c#E78A4E^ ^c#D5C4A1^$(cpu_temp)° ^c#FABD2F^ ^c#D5C4A1^$(memory) ^c#B8BB26^ ^c#D5C4A1^$(drive) ^c#83A598^ ^c#D5C4A1^$(volume)% ^c#8EC07C^ ^c#D5C4A1^$(battery)% ^c#D3869B^ ^c#D5C4A1^$(print_date)"
+    xsetroot -name "^b#2B2928^^c#665C54^ ^c#D5C4A1^$(wifi)-$(signal)% ^c#FB4934^ ^c#D5C4A1^$(cpu)% ^c#E78A4E^ ^c#D5C4A1^$(cpu_temp)° ^c#FABD2F^ ^c#D5C4A1^$(memory) ^c#B8BB26^ ^c#D5C4A1^$(drive) ^c#83A598^ ^c#D5C4A1^$(volume)% ^c#8EC07C^ ^c#D5C4A1^$(battery)% ^c#D3869B^ ^c#D5C4A1^$(print_date)"
 	sleep 10
 done

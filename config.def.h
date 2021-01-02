@@ -5,7 +5,7 @@
  *  | |  | \ \_/ | |/ /\  /\  | |  | |
  *  \_|  |_/\___/|___/  \/  \/\_|  |_/
  
- *         FreeBSD EDITION 
+ *         ATOMIC EDITION 
  * MODWM - Modular Dynamic Window Manager.
  * ---------------------------------------
  * 
@@ -302,8 +302,8 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-        [ALTERNATIVE_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-        [DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" }, 
+        [DEFAULT_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+        [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
     	[ALT_TAGS_DECORATION] = { "", "", "", "", "", "", "", "", "" },
 };
 

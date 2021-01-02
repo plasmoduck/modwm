@@ -12,6 +12,10 @@ To include the `alpha` patch module you would only need to flip this setting fro
 #define BAR_ALPHA_PATCH 1
  ```
 
+## DEPENDENCIES
+Fonts: JetBrains Mono & Siji
+Layout Menu: xmenu
+
 ## CONFIGURE
 Configuration of MODWM is done by its two config files [patches.def.h](https://github.com/plasmoduck/modwm/blob/master/patches.def.h) & [config.def.h](https://github.com/plasmoduck/modwm/blob/master/config.def.h). Simply edit patches.def.h & select which modules you want, then edit config.def.h to configure them.
 
@@ -29,7 +33,7 @@ exec dwm
 MODWM supports color schemes, you can find some examples in the 'colors' directory.
 
 ## STATUSBAR
-MODWM also includes a statusbar. It uses 'font-awesome' to draw glyphs (icons) so please install it. You can customize the statusbar by editing the file in the 'statusbars' directory. Then source it from your ~/.xinitrc like so ``exec /path/to/modwm/statusbars/gruvbox_statusbar.sh &``
+MODWM also includes a statusbar. It uses 'siji' to draw glyphs (icons) so please install it. You can customize the statusbar by editing the file in the 'statusbars' directory. Then source it from your ~/.xinitrc like so ``exec /path/to/modwm/statusbars/gruvbox_no_music..statusbar &``
 
 ## EXTRA GOODIES
 For more quality suckless software to complement MODWM, check out my suckless utilities [collection](https://github.com/plasmoduck/suckless/)
@@ -45,12 +49,14 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 
 ### Changelog:
 
+2021-01-02 - Added Wireless AP name and signal to /statusbars/gruvbox_no_music.statusbar this is the default statusbar now.
+
 2020-12-31 - Added new "underline" window title indicator for tiled windows.
 
 2020-11-30 - Added Tatami layout and layout menu patch. Install xmenu for layout menu to work.
 
 2020-10-23 - Added 'colors' to support changing color schemes on the fly. Source them in config.def.h by #include "colors/gruvbox.h"
-	     Also added 'statusbars' directory so support themed statusbars. Please install 'font-awesome' to see glyphs.
+	     Also added 'statusbars' directory to support themed statusbars. Please install 'siji' to see glyphs.
 
 2020-10-14 - Changed color scheme and added some extra key bindings for my ~/bin files
 
