@@ -32,8 +32,8 @@ static char hidbgcolor[]                 = "#222222";
 static char hidbordercolor[]             = "#458588";
 static char hidfloatcolor[]              = "#f76e0c";
 
-static char urgfgcolor[]                 = "#bbbbbb";
-static char urgbgcolor[]                 = "#282828";
+static char urgfgcolor[]                 = "#B8BB26";
+static char urgbgcolor[]                 = "#2B2928";
 static char urgbordercolor[]             = "#F92672";
 static char urgfloatcolor[]              = "#db8fd9";
 

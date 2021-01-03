@@ -352,6 +352,7 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 0)
 	RULE(.class = "Firefox", .tags = 1 << 1, .monitor = 0)
         RULE(.class = "tabbed", .tags = 1 << 1, .monitor = 0)
+        RULE(.class = "Surf", .tags = 0, .monitor = 0, .iscentered = 1, .isfloating = 1, .floatpos = "1596W 904H")
         RULE(.title = "sfeed_curses", .tags = 1 << 8, .monitor = 0)
         RULE(.title = "neomutt", .tags = 1 << 8, .monitor = 0)
         RULE(.title = "weechat", .tags = 1 << 3, .monitor = 0)
@@ -369,7 +370,7 @@ static const Rule rules[] = {
         RULE(.class = "TelegramDesktop", .tags = 1 << 2, .monitor = 0)
         RULE(.title = "telegramtui", .tags = 1 << 2, .monitor = 0)
         RULE(.class = "Gcolor2", .tags = 0, .iscentered = 1, .isfloating = 1)
-	RULE(.class = "mpv", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "1096W 704H")
+	RULE(.class = "mpv", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "1596W 904H")
         RULE(.class = "MPlayer", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "1096W 704H")
 
 	#if SCRATCHPADS_PATCH
