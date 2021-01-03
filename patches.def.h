@@ -276,7 +276,7 @@
  * https://lists.suckless.org/hackers/2004/17285.html
  * https://dwm.suckless.org/patches/pango/
  */
-#define BAR_PANGO_PATCH 0
+#define BAR_PANGO_PATCH 0 
 
 /* This patch enables colored text in the status bar. It changes the way colors are defined
  * in config.h allowing multiple color combinations for use in the status script.
