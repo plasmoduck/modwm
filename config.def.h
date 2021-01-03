@@ -370,7 +370,7 @@ static const Rule rules[] = {
         RULE(.class = "TelegramDesktop", .tags = 1 << 2, .monitor = 0)
         RULE(.title = "telegramtui", .tags = 1 << 2, .monitor = 0)
         RULE(.class = "Gcolor2", .tags = 0, .iscentered = 1, .isfloating = 1)
-	RULE(.class = "mpv", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "1596W 904H")
+	RULE(.class = "mpv", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "1596W 902H")
         RULE(.class = "MPlayer", .tags = 0, .iscentered = 1, .isfloating = 1, .floatpos = "1096W 704H")
 
 	#if SCRATCHPADS_PATCH
@@ -749,6 +749,9 @@ static const char *dmenu_list[] = { "/home/cjg/bin/dmenu_list", NULL };
 static const char *todo[] = { "/home/cjg/bin/todo", NULL };
 static const char *passmenu[] = { "/home/cjg/bin/passmenu2", NULL };
 static const char *cheese[] = { "/usr/local/bin/cheese", NULL };
+static const char *rofi[] = {"rofi", "-show", "run", NULL };
+static const char *drun[] = {"rofi", "-show", "drun", NULL };
+static const char *layoutsmenu[] = {"/home/cjg/bin/layoutmenu.sh", NULL };
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 static const char *statuscmds[] = { "notify-send Mouse$BUTTON" };
@@ -766,7 +769,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_s,           spawn,          {.v = firefox } },
    	{ MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
    	{ MODKEY,                       XK_e,           spawn,          {.v = emoji } },
-   	{ MODKEY|ShiftMask,             XK_r,           spawn,          {.v = reboot } },
+   	{ MODKEY,                       XK_r,           spawn,          {.v = rofi } },
+        { MODKEY|ShiftMask,             XK_r,           spawn,          {.v = drun } },
    	{ MODKEY,                       XK_g,           spawn,          {.v = dmenuwebsearch } },
    	{ MODKEY,			XK_f,		spawn,		{.v = flash } },
 	{ MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
@@ -789,7 +793,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		{.v = dmenu_list} },
 	{ MODKEY,			XK_Insert,	spawn,		{.v = passmenu } },
-    	#if FOCUSMASTER_PATCH
+    	{ MODKEY|ShiftMask,             XK_l,           layoutmenu,     {0} }, 
+        #if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
 	#if STACKER_PATCH
@@ -827,7 +832,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,          setmfact,               {.f = +0.05} },
 	#if CFACTS_PATCH
 	{ MODKEY|ShiftMask,             XK_h,          setcfact,               {.f = +0.25} },
-	{ MODKEY|ShiftMask,             XK_l,          setcfact,               {.f = -0.25} },
+	{ MODKEY|ShiftMask,             XK_z,          setcfact,               {.f = -0.25} },
 	{ MODKEY|ShiftMask,             XK_o,          setcfact,               {0} },
 	#endif // CFACTS_PATCH
 	#if ASPECTRESIZE_PATCH
@@ -1167,7 +1172,7 @@ static Button buttons[] = {
         { ClkButton,            0,                   Button1,        spawn,          {.v = dmenu_list } },
         #endif // BAR_STATUSBUTTON_PATCH
 	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,                   Button3,        layoutmenu,     {0} },
+        { ClkLtSymbol,          0,                   Button3,        layoutmenu,     {0} },
 	#if BAR_WINTITLEACTIONS_PATCH
 	{ ClkWinTitle,          0,                   Button1,        togglewin,      {0} },
 	{ ClkWinTitle,          0,                   Button3,        showhideclient, {0} },
