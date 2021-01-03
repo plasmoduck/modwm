@@ -514,6 +514,9 @@ static const Layout layouts[] = {
 	{ "",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID, 0, 0, NULL } }, // gappless grid
 	{ "",      flextile,         { -1, -1, NO_SPLIT, SPIRAL, 0, 0, NULL } }, // fibonacci spiral
         { "",       tatami,           { -1, -1, SPLIT_VERTICAL, 0, NULL } }, // tatami
+#if CYCLELAYOUTS_PATCH
+{ NULL,       NULL,             {0} },
+#endif
 /*
 	#if TILE_LAYOUT
 	{ "[]=",      tile,             {0} },
