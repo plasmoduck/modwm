@@ -41,7 +41,7 @@ volume (){
 #battery (){
 #        sysctl hw.acpi.battery.life | sed -e 's|.*: \([0-9]*\).*|\1|'
 #}
-battery (){
+notify (){
 	_acstat=$(apm -a)
 	_batstat=$(apm -b)
 	# not charging
@@ -51,7 +51,9 @@ battery (){
 			notify-send -u critical "CRITICAL BATTERY LEVEL!!!"
 		fi
 	fi
-	# bat perc
+}
+battery (){
+        # bat perc
 	apm -l
 }
 
@@ -69,6 +71,6 @@ signal (){
 
 while true
 do
-    xsetroot -name "^b#2B2928^^c#FB4934^ ^c#D5C4A1^$(cpu)% ^c#E78A4E^ ^c#D5C4A1^$(cpu_temp)° ^c#FABD2F^ ^c#D5C4A1^$(memory) ^c#B8BB26^ ^c#D5C4A1^$(drive) ^c#83A598^ ^c#D5C4A1^$(volume)% ^c#8EC07C^ ^c#D5C4A1^$(battery)% ^c#D3869B^ ^c#D5C4A1^$(print_date) ^c#665C54^^c#D5C4A1^$(signal)%"
+    xsetroot -name "^b#2B2928^^c#FB4934^ ^c#D5C4A1^$(cpu)% ^c#E78A4E^ ^c#D5C4A1^$(cpu_temp)° ^c#FABD2F^ ^c#D5C4A1^$(memory) ^c#B8BB26^ ^c#D5C4A1^$(drive) ^c#83A598^ ^c#D5C4A1^$(volume)% ^c#8EC07C^ ^c#D5C4A1^$(notify)$(battery)% ^c#D3869B^ ^c#D5C4A1^$(print_date) ^c#665C54^^c#D5C4A1^$(signal)%"
 	sleep 10
 done
