@@ -8,7 +8,7 @@ static char selbordercolor[]             = "#D55B4C";
 static char selfloatcolor[]              = "#005577";
 
 static char titlenormfgcolor[]           = "#D3869B";
-static char titlenormbgcolor[]           = "#2B2928";
+static char titlenormbgcolor[]           = "#322F2E";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
