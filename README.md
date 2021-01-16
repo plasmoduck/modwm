@@ -14,7 +14,6 @@ To include the `alpha` patch module you would only need to flip this setting fro
 
 ## DEPENDENCIES
 Fonts: JetBrains Mono & Siji
-Layout Menu: xmenu
 
 ## CONFIGURE
 Configuration of MODWM is done by its two config files [patches.def.h](https://github.com/plasmoduck/modwm/blob/master/patches.def.h) & [config.def.h](https://github.com/plasmoduck/modwm/blob/master/config.def.h). Simply edit patches.def.h & select which modules you want, then edit config.def.h to configure them.
