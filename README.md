@@ -48,6 +48,8 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 
 ### Changelog:
 
+Please see [github commits](https://github.com/plasmoduck/modwm/commits/master) for a more up-to-date changelog.
+
 2021-01-02 - Added Wireless AP name and signal to /statusbars/gruvbox.statusbar this is the default statusbar now.
 
 2020-12-31 - Added new "underline" window title indicator for tiled windows.
