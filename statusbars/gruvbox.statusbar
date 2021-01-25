@@ -38,28 +38,9 @@ volume (){
 	mixer -s vol | grep -Eo '[0-9]+$'
 }
 
-#battery (){
-#        apm -l
-#        _acstat=$(apm -a)
-#	_batstat=$(apm -b)
-	# not charging
-#	if [ "$_acstat" -eq 0 ]; then
-		# critical bat stat
-#        	if [ "$_batstat" -eq 1 ]; then
-#			notify-send -u critical "🔋 LOW POWER!!!"
-#		fi
-#	fi
-#}
 battery()
 {
-	_batperc=$(apm -l)
-#	_acstat=$(apm -a)
-#	if [ "$_acstat" -eq 0 ]; then
-#		if [ "$_batperc" -le 10 ]; then
-#			notify-send -u critical "Battery Low! $_batperc% remaining 🔋"
-#        fi
-#fi
-printf %s "$_batperc"
+apm -l
 }
 
 print_date (){
@@ -67,14 +48,12 @@ print_date (){
 }
 
 wifi (){
-        ifconfig wlan0 | grep ssid | cut -w -f 3
-}
-signal (){
+#        ifconfig wlan0 | grep ssid | cut -w -f 3
         ifconfig wlan0 | grep txpower | cut -w -f 3
 }
 
 while true
 do
-    xsetroot -name "^b#322F2E^^c#FB4934^ ^c#D5C4A1^$(cpu)% ^c#E78A4E^ ^c#D5C4A1^$(cpu_temp)° ^c#FABD2F^ ^c#D5C4A1^$(memory) ^c#B8BB26^ ^c#D5C4A1^$(drive) ^c#83A598^ ^c#D5C4A1^$(volume)% ^c#8EC07C^ ^c#D5C4A1^$(battery)% ^c#D3869B^ ^c#D5C4A1^$(print_date) ^c#665C54^^c#D5C4A1^$(signal)%"
+    xsetroot -name "^b#322F2E^^c#FB4934^ ^c#D5C4A1^$(cpu)% ^c#E78A4E^ ^c#D5C4A1^$(cpu_temp)° ^c#FABD2F^ ^c#D5C4A1^$(memory) ^c#B8BB26^ ^c#D5C4A1^$(drive) ^c#83A598^ ^c#D5C4A1^$(volume)% ^c#8EC07C^ ^c#D5C4A1^$(battery)% ^c#D3869B^ ^c#D5C4A1^$(print_date) ^c#665C54^^c#D5C4A1^$(wifi)%"
 	sleep 30
 done

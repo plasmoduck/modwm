@@ -26,7 +26,7 @@ static const int swallowfloating         = 1;   /* 1 means swallow floating wind
 static const unsigned int gappih         = 25;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 25;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 25;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 25;  /* vert outer gap between windows and screen edge */
+static const unsigned int gappov         = 20;  /* vert outer gap between windows and screen edge */
 static const int smartgaps               = 0;   /* 1 means no outer gap when there is only one window */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
@@ -83,7 +83,7 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "JetBrains Mono:pixelsize=19" };
+static const char *fonts[]               = { "JetBrains Mono:pixelsize=20" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "JetBrains Mono:size=10";
 
@@ -736,6 +736,7 @@ static const char *emoji[] = { "/home/cjg/bin/emoji", NULL };
 static const char *sfeed[] = { "/home/cjg/bin/sfeed-dmenu", NULL };
 static const char *sfeedcurses[] = { "/home/cjg/bin/sfeed-curses", NULL };
 static const char *surftabbed[] =  { "/home/cjg/bin/surf-tabbed", NULL };
+static const char *surf[] = { "surf", NULL };
 static const char *websearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
 static const char *wallpaper[] = { "/home/cjg/bin/wallpaper", NULL };
 static const char *mpdmenu[] = { "/home/cjg/bin/mpdmenu", NULL };
@@ -755,6 +756,8 @@ static const char *cheese[] = { "/usr/local/bin/cheese", NULL };
 static const char *rofi[] = {"rofi", "-show", "run", NULL };
 static const char *drun[] = {"rofi", "-show", "drun", NULL };
 static const char *layoutsmenu[] = {"/home/cjg/bin/layoutmenu.sh", NULL };
+static const char *dmenu_weechat[] = {"/home/cjg/bin/dmenu_weechat.sh", NULL };
+
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 static const char *statuscmds[] = { "notify-send Mouse$BUTTON" };
@@ -769,7 +772,7 @@ static Key keys[] = {
    	{ MODKEY,                       XK_p,           spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,           togglebar,      {0} },
-	{ MODKEY,                       XK_s,           spawn,          {.v = firefox } },
+	{ MODKEY,                       XK_s,           spawn,          {.v = surf } },
    	{ MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
    	{ MODKEY,                       XK_e,           spawn,          {.v = emoji } },
    	{ MODKEY,                       XK_r,           spawn,          {.v = rofi } },
@@ -786,6 +789,7 @@ static Key keys[] = {
         { NULL,                         XK_F6,          spawn,          {.v = brightnessup } },
         { NULL,                         XK_F7,          spawn,          {.v = cheese } },
 	{ NULL,				XK_F10,		spawn,		{.v = surftabbed } },
+        { NULL,                         XK_F11,         spawn,          {.v = dmenu_weechat } },
         { NULL,                         0xffc9,         spawn,          {.v = mpctgl } },
 	{ MODKEY,                       XK_Print,       spawn,          {.v = screenshot } },
 	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },

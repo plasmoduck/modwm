@@ -755,6 +755,8 @@ static const char *cheese[] = { "/usr/local/bin/cheese", NULL };
 static const char *rofi[] = {"rofi", "-show", "run", NULL };
 static const char *drun[] = {"rofi", "-show", "drun", NULL };
 static const char *layoutsmenu[] = {"/home/cjg/bin/layoutmenu.sh", NULL };
+static const char *dmenu_weechat[] = {"/home/cjg/bin/dmenu_weechat.sh", NULL };
+
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 static const char *statuscmds[] = { "notify-send Mouse$BUTTON" };
@@ -786,6 +788,7 @@ static Key keys[] = {
         { NULL,                         XK_F6,          spawn,          {.v = brightnessup } },
         { NULL,                         XK_F7,          spawn,          {.v = cheese } },
 	{ NULL,				XK_F10,		spawn,		{.v = surftabbed } },
+        { NULL,                         XK_F11,         spawn,          {.v = dmenu_weechat } },
         { NULL,                         0xffc9,         spawn,          {.v = mpctgl } },
 	{ MODKEY,                       XK_Print,       spawn,          {.v = screenshot } },
 	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
