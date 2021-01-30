@@ -791,7 +791,8 @@ static Key keys[] = {
 	{ NULL,				XK_F10,		spawn,		{.v = surftabbed } },
         { NULL,                         XK_F11,         spawn,          {.v = dmenu_weechat } },
         { NULL,                         0xffc9,         spawn,          {.v = mpctgl } },
-	{ MODKEY,                       XK_Print,       spawn,          {.v = screenshot } },
+	{ NULL,                       	XK_Print,       spawn,          {.v = screenshot } },
+	{ NULL,                         XK_Insert,      spawn,          {.v = passmenu } },
 	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
    	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
    	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
@@ -799,8 +800,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_Delete,      spawn,          {.v = shutdown } },
 	{ MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		{.v = dmenu_list} },
-	{ MODKEY,			XK_Insert,	spawn,		{.v = passmenu } },
-    	{ MODKEY|ShiftMask,             XK_l,           layoutmenu,     {0} }, 
+	{ MODKEY|ShiftMask,             XK_l,           layoutmenu,     {0} }, 
         #if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
