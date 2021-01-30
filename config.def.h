@@ -26,7 +26,7 @@ static const int swallowfloating         = 1;   /* 1 means swallow floating wind
 static const unsigned int gappih         = 25;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 25;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 25;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 25;  /* vert outer gap between windows and screen edge */
+static const unsigned int gappov         = 20;  /* vert outer gap between windows and screen edge */
 static const int smartgaps               = 0;   /* 1 means no outer gap when there is only one window */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
@@ -83,7 +83,7 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "JetBrains Mono:pixelsize=19" };
+static const char *fonts[]               = { "JetBrains Mono:pixelsize=20" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "JetBrains Mono:size=10";
 
@@ -263,9 +263,9 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spotify", "-g", "144x41", "-e", "spt", NULL };
-const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "ncmpcpp", NULL };
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "110x30", NULL };
+const char *spcmd2[] = {"st", "-n", "spotify", "-g", "110x30", "-e", "spt", NULL };
+const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "110x30", "-e", "ncmpcpp", NULL };
 static Sp scratchpads[] = {
    /* name          cmd  */
    {"spterm",       spcmd1},
@@ -736,6 +736,7 @@ static const char *emoji[] = { "/home/cjg/bin/emoji", NULL };
 static const char *sfeed[] = { "/home/cjg/bin/sfeed-dmenu", NULL };
 static const char *sfeedcurses[] = { "/home/cjg/bin/sfeed-curses", NULL };
 static const char *surftabbed[] =  { "/home/cjg/bin/surf-tabbed", NULL };
+static const char *surf[] = { "surf", NULL };
 static const char *websearch[] = { "/home/cjg/bin/dmenu_websearch", NULL };
 static const char *wallpaper[] = { "/home/cjg/bin/wallpaper", NULL };
 static const char *mpdmenu[] = { "/home/cjg/bin/mpdmenu", NULL };
@@ -771,7 +772,7 @@ static Key keys[] = {
    	{ MODKEY,                       XK_p,           spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,           togglebar,      {0} },
-	{ MODKEY,                       XK_s,           spawn,          {.v = firefox } },
+	{ MODKEY,                       XK_s,           spawn,          {.v = surf } },
    	{ MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
    	{ MODKEY,                       XK_e,           spawn,          {.v = emoji } },
    	{ MODKEY,                       XK_r,           spawn,          {.v = rofi } },
@@ -790,7 +791,8 @@ static Key keys[] = {
 	{ NULL,				XK_F10,		spawn,		{.v = surftabbed } },
         { NULL,                         XK_F11,         spawn,          {.v = dmenu_weechat } },
         { NULL,                         0xffc9,         spawn,          {.v = mpctgl } },
-	{ MODKEY,                       XK_Print,       spawn,          {.v = screenshot } },
+	{ NULL,                       	XK_Print,       spawn,          {.v = screenshot } },
+	{ NULL,                         XK_Insert,      spawn,          {.v = passmenu } },
 	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = mpdmenu } },
    	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
    	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
@@ -798,8 +800,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_Delete,      spawn,          {.v = shutdown } },
 	{ MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		{.v = dmenu_list} },
-	{ MODKEY,			XK_Insert,	spawn,		{.v = passmenu } },
-    	{ MODKEY|ShiftMask,             XK_l,           layoutmenu,     {0} }, 
+	{ MODKEY|ShiftMask,             XK_l,           layoutmenu,     {0} }, 
         #if FOCUSMASTER_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
