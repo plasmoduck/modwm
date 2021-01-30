@@ -4329,13 +4329,18 @@ main(int argc, char *argv[])
 	#else
 	if (argc == 2 && !strcmp("-v", argv[1]))
 		die("dwm-"VERSION);
-	else if (argc != 1)
+	else if (argc != 1 && strcmp("-s", argv[1]))
 		die("usage: dwm [-v]");
 	#endif // CMDCUSTOMIZE_PATCH
 	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
 		fputs("warning: no locale support\n", stderr);
 	if (!(dpy = XOpenDisplay(NULL)))
 		die("dwm: cannot open display");
+	if (argc > 1 && !strcmp("-s", argv[1])) {
+    			XStoreName(dpy, RootWindow(dpy, DefaultScreen(dpy)), argv[2]);
+    			XCloseDisplay(dpy);
+    			return 0;
+    		}
 	#if SWALLOW_PATCH
 	if (!(xcon = XGetXCBConnection(dpy)))
 		die("dwm: cannot get xcb connection\n");
