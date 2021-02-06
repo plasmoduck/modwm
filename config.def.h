@@ -83,7 +83,7 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "siji:pixelsize=22", "Iosevka:pixelsize=20" };
+static const char *fonts[]               = { "siji:pixelsize=22", "JetBrains Mono:pixelsize=20" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "JetBrains Mono:size=10";
 
@@ -130,7 +130,7 @@ static char selfloatbgcolor[]            = "#117799";
 #endif // BAR_FLEXWINTITLE_PATCH
 
 #if BAR_ALPHA_PATCH
-static const unsigned int baralpha = 0xdd;
+static const unsigned int baralpha = 0xee;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int alphas[][3] = {
 	/*                       fg      bg        border     */
@@ -752,7 +752,7 @@ static const char *brightnessdown[] = { "/home/cjg/bin/brightnessControl.sh", "d
 static const char *dmenu_list[] = { "/home/cjg/bin/dmenu_list", NULL };
 static const char *todo[] = { "/home/cjg/bin/todo", NULL };
 static const char *passmenu[] = { "/home/cjg/bin/passmenu2", NULL };
-static const char *record[] = { "/home/cjg/bin/record.sh", NULL };
+static const char *displayselect[] = { "/home/cjg/bin/displayselect.sh", NULL };
 static const char *rofi[] = {"rofi", "-show", "run", NULL };
 static const char *drun[] = {"rofi", "-show", "drun", NULL };
 static const char *layoutsmenu[] = {"/home/cjg/bin/layoutmenu.sh", NULL };
@@ -788,7 +788,7 @@ static Key keys[] = {
    	{ NULL,                         XK_F1,          spawn,          {.v = mutevol } },
    	{ NULL,                         XK_F5,          spawn,          {.v = brightnessdown } },
         { NULL,                         XK_F6,          spawn,          {.v = brightnessup } },
-        { NULL,                         XK_F7,          spawn,          {.v = record } },
+        { NULL,                         XK_F7,          spawn,          {.v = displayselect } },
 	{ NULL,				XK_F9,		spawn,		{.v = dmenu_list } },
         { NULL,                         XK_F10,         spawn,          {.v = dmenu_weechat } },
 	{ NULL,				XK_F12,		layoutmenu,	{0} },
