@@ -1,4 +1,5 @@
 #!/usr/local/bin/bash
+# Layoutmenu script for dmenu
 
 choice=$(cat <<EOF | dmenu
 [\] Fibonacci
