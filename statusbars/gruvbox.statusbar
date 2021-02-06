@@ -54,6 +54,6 @@ wifi (){
 
 while true
 do
-    dwm -s "^b#322F2E^^c#FB4934^ ^c#D5C4A1^$(cpu)% ^c#E78A4E^ ^c#D5C4A1^$(cpu_temp)° ^c#FABD2F^ ^c#D5C4A1^$(memory) ^c#B8BB26^ ^c#D5C4A1^$(drive) ^c#83A598^ ^c#D5C4A1^$(volume)% ^c#8EC07C^ ^c#D5C4A1^$(battery)% ^c#D3869B^ ^c#D5C4A1^$(print_date) ^c#665C54^^c#D5C4A1^$(wifi)"
-	sleep 30
+    dwm -s "^b#322F2E^^c#FB4934^^c#D5C4A1^$(cpu)% ^c#E78A4E^^c#D5C4A1^$(cpu_temp)° ^c#FABD2F^^c#D5C4A1^$(memory) ^c#B8BB26^^c#D5C4A1^$(drive) ^c#83A598^^c#D5C4A1^$(volume)% ^c#8EC07C^^c#D5C4A1^$(battery)% ^c#D3869B^^c#D5C4A1^$(print_date) ^c#665C54^^c#D5C4A1^$(wifi)"
+	sleep 5
 done

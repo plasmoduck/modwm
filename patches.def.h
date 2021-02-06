@@ -486,7 +486,7 @@
  * the right tag.
  * http://dwm.suckless.org/patches/focusadjacenttag/
  */
-#define FOCUSADJACENTTAG_PATCH 0
+#define FOCUSADJACENTTAG_PATCH 1
 
 /* A simple patch that just puts focus back to the master client.
  * https://dwm.suckless.org/patches/focusmaster/
@@ -839,7 +839,7 @@
  *    - xcb-res
  * https://dwm.suckless.org/patches/swapfocus/
  */
-#define SWAPFOCUS_PATCH 0
+#define SWAPFOCUS_PATCH 1
 
 /* This patch allows swapping the contents of the currently selected tag with another tag using
  * keyboard shortcuts.
@@ -955,7 +955,7 @@
 /* Follow a window to the tag it is being moved to.
  * https://dwm.suckless.org/patches/viewontag/
  */
-#define VIEWONTAG_PATCH 0
+#define VIEWONTAG_PATCH 1
 
 /* By default tags can be changed using MOD+<num> while MOD+Tab toggles between the current and
  * the previous tag. This patch changes this so that if you hit MOD+<num> for the tag you are
