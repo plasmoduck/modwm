@@ -50,7 +50,7 @@ Refer to [https://dwm.suckless.org/](https://dwm.suckless.org/) for details on t
 
 Please see [commits](https://github.com/plasmoduck/modwm/commits/master) for a more up-to-date changelog.
 
-2021-01-30 - Added setstatus patch - https://dwm.suckless.org/patches/setstatus/
+2021-01-30 - Added setstatus patch - Enables to set the status with dwm itself. No more xsetroot bloat! - https://dwm.suckless.org/patches/setstatus/
 
 2021-01-02 - Added Wireless AP name and signal to /statusbars/gruvbox.statusbar this is the default statusbar now.
 
