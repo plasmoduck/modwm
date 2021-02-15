@@ -22,8 +22,8 @@ static char tagsnormbgcolor[]            = "#322F2E";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
-static char tagsselfgcolor[]             = "#FBF1C7";
-static char tagsselbgcolor[]             = "#665C54";
+static char tagsselfgcolor[]             = "#8EC07C";
+static char tagsselbgcolor[]             = "#4C4541";
 static char tagsselbordercolor[]         = "#FABD2F";
 static char tagsselfloatcolor[]          = "#FABD2F";
 
@@ -32,8 +32,8 @@ static char hidbgcolor[]                 = "#222222";
 static char hidbordercolor[]             = "#FABD2F";
 static char hidfloatcolor[]              = "#f76e0c";
 
-static char urgfgcolor[]                 = "#FB4934";
-static char urgbgcolor[]                 = "#322F2E";
+static char urgfgcolor[]                 = "#D3869B";
+static char urgbgcolor[]                 = "#4C4541";
 static char urgbordercolor[]             = "#F92672";
 static char urgfloatcolor[]              = "#db8fd9";
 
