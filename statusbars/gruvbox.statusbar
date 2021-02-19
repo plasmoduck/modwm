@@ -14,33 +14,51 @@
 #  this stuff is worth it, you can buy me a beer in return - Plasmoduck.
 # ---------------------------------------------------------------------------- 
 
-playing () {
-	mpc -h /usr/home/cjg/.mpd/socket | awk 'NR==1 {song = $0} NR==2 {if ($1 == "[playing]") p=1; sub(/.*\//, "")} END {printf("%s %s\n", p?"^c#83A598^ ^c#a89984^":"^c#CE9BA9^ ^c#a89984^", song)}' 
+cpu (){
+       vmstat | awk 'NR==3 {print $(NF-2)}'
+}
+
+cpu_temp (){
+       sysctl dev.cpu.0.temperature | sed -e 's|.*: \([0-9]*\).*|\1|'
 }
 
 memory (){
 	free | awk '(NR == 18) {print $6}'
 }
 
-cpu (){	
-	vmstat | awk 'NR==3 {print $(NF-2)}'
-}
-
 drive (){
 	df -h | grep '/$' | awk '{print $5}'
 }
 
-cpu_temp (){
-	sysctl dev.cpu.0.temperature | sed -e 's|.*: \([0-9]*\).*|\1|'
-}
-
 volume (){
-	mixer -s vol | grep -Eo '[0-9]+$'
+	_vol=$(mixer -s vol | grep -Eo '[0-9]+$')
+        if test "$_vol" -ge 50; then
+                _volicon=
+        elif test "$_vol" -ge 20; then
+                _volicon=
+        elif test "$_vol" -ge 2; then
+                _volicon=
+        elif test "$_vol" -eq 0; then
+                _volicon=
+        fi
+        printf ^c#83A598^%s^c#D5C4A1^%s%% "$_volicon" "$_vol"
 }
 
-battery()
-{
-apm -l
+battery(){
+	_acstat=$(apm -a)	# A/C status, 0 means disconnected, 1 means connected (check apm(1) -a)
+	_battperc=$(apm -l)	# the estimated battery life time in percent (check apm(1) -l)
+	if test "$_acstat" -eq 1; then
+		_batticon=
+	else
+		if test "$_battperc" -ge 60; then
+			_batticon=
+		elif test "$_battperc" -ge 40; then
+			_batticon=
+		elif test "$_battperc" -ge 1; then
+			_batticon=
+		fi
+	fi
+	printf ^c#8EC07C^%s^c#D5C4A1^%s%% "$_batticon" "$_battperc"
 }
 
 print_date (){
@@ -48,12 +66,12 @@ print_date (){
 }
 
 wifi (){
-#        ifconfig wlan0 | grep ssid | cut -w -f 3
-        ifconfig wlan0 | grep txpower | cut -w -f 3
+#       ifconfig wlan0 | grep ssid | cut -w -f 3        # Print wireless SSID name.
+        ifconfig wlan0 | grep txpower | cut -w -f 3     # Print wireless SSID signal strength.
 }
 
 while true
 do
-    dwm -s "^b#322F2E^^c#FB4934^^c#D5C4A1^$(cpu)% ^c#E78A4E^^c#D5C4A1^$(cpu_temp)° ^c#FABD2F^^c#D5C4A1^$(memory) ^c#B8BB26^^c#D5C4A1^$(drive) ^c#83A598^^c#D5C4A1^$(volume)% ^c#8EC07C^^c#D5C4A1^$(battery)% ^c#D3869B^^c#D5C4A1^$(print_date) ^c#665C54^^c#D5C4A1^$(wifi)"
+    dwm -s "^b#322F2E^^c#FB4934^^c#D5C4A1^$(cpu)% ^c#E78A4E^^c#D5C4A1^$(cpu_temp)° ^c#FABD2F^^c#D5C4A1^$(memory) ^c#B8BB26^^c#D5C4A1^$(drive) $(volume) $(battery) ^c#D3869B^^c#D5C4A1^$(print_date)"
 	sleep 5
 done
