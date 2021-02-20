@@ -91,7 +91,7 @@ static const char dmenufont[]            = "JetBrains Mono:size=10";
 static char c000000[]                    = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
 
-#include "colors/gruvbox.h"
+#include "colors.h"
 
 #if BAR_FLEXWINTITLE_PATCH
 static char normTTBbgcolor[]             = "#330000";

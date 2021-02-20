@@ -32,7 +32,7 @@ exec dwm
 MODWM supports color schemes, you can find some examples in the 'colors' directory.
 
 ## STATUSBAR
-MODWM also includes a statusbar. It uses 'siji' to draw glyphs (icons) so please install it. You can customize the statusbar by editing the file in the 'statusbars' directory. Then source it from your ~/.xinitrc like so ``exec /path/to/modwm/statusbars/gruvbox.statusbar &``
+MODWM also includes a statusbar. It uses 'siji' to draw glyphs (icons) so please install it. You can customize the statusbar by editing the file 'statusbar.sh'. Then source it from your ~/.xinitrc like so ``exec /path/to/modwm/statusbar.sh &``
 
 ## EXTRA GOODIES
 For more quality suckless software to complement MODWM, check out my suckless utilities [collection](https://github.com/plasmoduck/suckless/)
@@ -58,8 +58,8 @@ Please see [commits](https://github.com/plasmoduck/modwm/commits/master) for a m
 
 2020-11-30 - Added Tatami layout and layout menu patch. Install xmenu for layout menu to work.
 
-2020-10-23 - Added 'colors' to support changing color schemes on the fly. Source them in config.def.h by #include "colors/gruvbox.h"
-	     Also added 'statusbars' directory to support themed statusbars. Please install 'siji' to see glyphs.
+2020-10-23 - Added 'colors' to support changing color schemes on the fly. Source them in config.def.h by #include "colors.h"
+	     Also added 'statusbar.sh' to support themed statusbars. Please install 'siji' to see glyphs.
 
 2020-10-14 - Changed color scheme and added some extra key bindings for my ~/bin files
 
