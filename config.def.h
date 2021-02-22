@@ -26,7 +26,7 @@ static const int swallowfloating         = 1;   /* 1 means swallow floating wind
 static const unsigned int gappih         = 25;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 25;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 25;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 20;  /* vert outer gap between windows and screen edge */
+static const unsigned int gappov         = 25;  /* vert outer gap between windows and screen edge */
 static const int smartgaps               = 0;   /* 1 means no outer gap when there is only one window */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH

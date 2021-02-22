@@ -15,11 +15,11 @@
 # ---------------------------------------------------------------------------- 
 
 cpu (){
-       vmstat | awk 'NR==3 {print $(NF-2)}'
+       vmstat | awk 'NR==3 {print $(NF-2)}'     # See man vmstat(1)
 }
 
 cpu_temp (){
-       _temp=$(sysctl dev.cpu.0.temperature | sed -e 's|.*: \([0-9]*\).*|\1|')
+       _temp=$(sysctl dev.cpu.0.temperature | sed -e 's|.*: \([0-9]*\).*|\1|')  # See man sysctl(1)
         if test "$_temp" -ge 55; then
                 _tempicon=
         elif test "$_temp" -ge 1; then
@@ -29,7 +29,7 @@ cpu_temp (){
 }
 
 memory (){
-	free | awk '(NR == 18) {print $6}'
+	free | awk '(NR == 18) {print $6}'      # free is a perl script to show free ram on FreeBSD.
 }
 
 drive (){
@@ -37,7 +37,7 @@ drive (){
 }
 
 volume (){
-	_vol=$(mixer -s vol | grep -Eo '[0-9]+$')
+	_vol=$(mixer -s vol | grep -Eo '[0-9]+$')       # FreeBSD uses mixer(1) for audio.
         if test "$_vol" -ge 50; then
                 _volicon=
         elif test "$_vol" -ge 20; then
