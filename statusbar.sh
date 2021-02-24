@@ -38,9 +38,9 @@ drive (){
 
 volume (){
 	_vol=$(mixer -s vol | grep -Eo '[0-9]+$')       # FreeBSD uses mixer(1) for audio.
-        if test "$_vol" -ge 50; then
+        if test "$_vol" -ge 52; then
                 _volicon=
-        elif test "$_vol" -ge 20; then
+        elif test "$_vol" -ge 22; then
                 _volicon=
         elif test "$_vol" -ge 2; then
                 _volicon=
@@ -78,6 +78,6 @@ wifi (){
 
 while true
 do
-    dwm -s "^b#322F2E^^c#FB4934^^c#D5C4A1^$(cpu)% $(cpu_temp) ^c#FABD2F^^c#D5C4A1^$(memory) ^c#B8BB26^^c#D5C4A1^$(drive) $(volume) $(battery) ^c#D3869B^^c#D5C4A1^$(print_date)"
+    dwm -s "^b#322F2E^^c#FB4934^^c#D5C4A1^$(cpu)% $(cpu_temp) ^c#FABD2F^^c#D5C4A1^$(memory) ^c#B8BB26^^c#D5C4A1^$(drive) $(volume) $(battery) ^c#665C54^^c#D5C4A1^$(wifi)% ^c#D3869B^^c#D5C4A1^$(print_date)"
 	sleep 5
 done

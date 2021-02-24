@@ -304,7 +304,7 @@ static Sp scratchpads[] = {
 static char *tagicons[][NUMTAGS] = {
         [DEFAULT_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
         [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
-    	[ALT_TAGS_DECORATION] = { "", "", "", "", "", "", "", "", "" },
+    	[ALT_TAGS_DECORATION]    = { "", "", "", "", "", "", "", "", "" },
 };
 
 #if BAR_TAGGRID_PATCH
