@@ -56,40 +56,52 @@ memory (){
 	_memory=$(free | awk '(NR == 18){ sub(/%$/,"",$6); print $6; }')      # free is a perl script to show free ram on FreeBSD.
         _memoryicon=
         
-        if test "$_memory" -ge 75; then
+        if test "$_memory" -ge 80; then
                 printf ^c#FB4934^%s^c#D5C4A1^%s "$_memoryicon" "$_memory"% "$DELIM"
-        else
+        elif test "$_memory" -ge 60; then
+                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_memoryicon" "$_memory"% "$DELIM"
+        elif test "$_memory" -ge 50; then
                 printf ^c#FABD2F^%s^c#D5C4A1^%s "$_memoryicon" "$_memory"% "$DELIM"
+        elif test "$_memory" -ge 1; then
+                printf ^c#B8BB26^%s^c#D5C4A1^%s "$_memoryicon" "$_memory"% "$DELIM"
         fi
 }
 
 drive (){
-	_drive=$(df -h | grep '/$' | awk '{print $5}')
+	_drive=$(df -h / | awk 'NR==2 { sub(/%$/,"",$5); print($5) }')
         _driveicon=
-        
-        printf ^c#B8BB26^%s^c#D5C4A1^%s "$_driveicon" "$_drive" "$DELIM"
+
+        if test "$_drive" -ge 80; then
+                printf ^c#FB4934^%s^c#D5C4A1^%s "$_driveicon" "$_drive"% "$DELIM"
+        elif test "$_drive" -ge 60; then
+                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_driveicon" "$_drive"% "$DELIM"
+        elif test "$_drive" -ge 50; then
+                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_driveicon" "$_drive"% "$DELIM"
+        elif test "$_drive" -ge 1; then
+                printf ^c#B8BB26^%s^c#D5C4A1^%s "$_driveicon" "$_drive"% "$DELIM"
+        fi
 }
 
 volume (){
 	_vol=$(mixer -s vol | grep -Eo '[0-9]+$')       # FreeBSD uses mixer(1) for audio.
-        if test "$_vol" -ge 52; then
+        if test "$_vol" -ge 80; then
                 _volicon=
-        elif test "$_vol" -ge 22; then
+        elif test "$_vol" -ge 60; then
                 _volicon=
-        elif test "$_vol" -ge 2; then
+        elif test "$_vol" -ge 1; then
                 _volicon=
         elif test "$_vol" -eq 0; then
                 _volicon=
         fi
         
-        if test "$_vol" -ge 90; then
+        if test "$_vol" -ge 80; then
                 printf ^c#FB4934^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
-        elif test "$_vol" -ge 80; then
-                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
         elif test "$_vol" -ge 60; then
                 printf ^c#FABD2F^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
         elif test "$_vol" -ge 1; then
                 printf ^c#83A598^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
+        elif test "$_vol" -eq 0; then
+                printf ^c#665C54^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
         fi
 }
 
@@ -115,13 +127,21 @@ battery(){
         elif test "$_battperc" -ge 1; then
                 printf ^c#FB4934^%s^c#D5C4A1^%s "$_batticon" "$_battperc"% "$DELIM"
         fi
+
+        # Get a notification when battery is low.
+        if test "$_acstat" -eq 0; then
+        if test "$_battperc" -le 15; then
+                notify-send -u critical "Battery low 🔋"
+                fi
+        fi
 }
 
 weather(){
-        LOCATION=Parramatta
+        LOCATION=Parramatta 
         find ~/.cache/weather.txt '!' -newermt '1 hour ago' -exec curl -s -o '{}' wttr.in/$LOCATION?format=1 ';'
         read _weathericon _weather < ~/.cache/weather.txt
-                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_weathericon" "$_weather"
+	_weather=${_weather#+}
+                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_weathericon" "${_weather%C}"
 }
 
 wifi (){

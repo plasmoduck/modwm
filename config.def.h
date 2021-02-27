@@ -758,7 +758,7 @@ static const char *drun[] = {"rofi", "-show", "drun", NULL };
 static const char *layoutsmenu[] = {"/home/cjg/bin/layoutmenu.sh", NULL };
 static const char *dmenu_weechat[] = {"/home/cjg/bin/dmenu_weechat.sh", NULL };
 static const char *wpa_cli[] = {"/home/cjg/bin/dmenu_wpa_cli.sh", NULL };
-static const char *updstat[] = {"/home/cjg/bin/updatestatus", NULL };
+static const char *updstat[] = {"/home/cjg/bin/updatestatus.sh", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
