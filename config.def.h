@@ -758,6 +758,7 @@ static const char *drun[] = {"rofi", "-show", "drun", NULL };
 static const char *layoutsmenu[] = {"/home/cjg/bin/layoutmenu.sh", NULL };
 static const char *dmenu_weechat[] = {"/home/cjg/bin/dmenu_weechat.sh", NULL };
 static const char *wpa_cli[] = {"/home/cjg/bin/dmenu_wpa_cli.sh", NULL };
+static const char *updstat[] = {"/home/cjg/bin/updatestatus", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -783,9 +784,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_g,           spawn,          {.v = gimp } },
    	{ MODKEY|ShiftMask,             XK_f,           spawn,          {.v = files } },
    	{ MODKEY|ShiftMask,             XK_End,         spawn,          {.v = slock } },
-   	{ NULL,                         0xffc0,         spawn,          {.v = upvol   } },
-   	{ NULL,                         0xffbf,         spawn,          {.v = downvol } },
-   	{ NULL,                         XK_F1,          spawn,          {.v = mutevol } },
+   	{ NULL,                         0xffc0,         spawn,          {.v = upvol } },
+   	{ NULL,                         0xffc0,         spawn,          {.v = updstat } },
+        { NULL,                         0xffbf,         spawn,          {.v = downvol } },
+   	{ NULL,                         0xffbf,         spawn,          {.v = updstat } },
+        { NULL,                         XK_F1,          spawn,          {.v = mutevol } },
    	{ NULL,                         XK_F5,          spawn,          {.v = brightnessdown } },
         { NULL,                         XK_F6,          spawn,          {.v = brightnessup } },
         { NULL,                         XK_F7,          spawn,          {.v = displayselect } },
@@ -800,7 +803,7 @@ static Key keys[] = {
    	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
    	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
    	{ MODKEY|ShiftMask,             XK_w,           spawn,          {.v = wallpaper } },
-	{ MODKEY|ControlMask,           XK_Delete,      spawn,          {.v = shutdown } },
+	{ MODKEY,                       XK_Delete,      spawn,          {.v = shutdown } },
 	{ MODKEY|ShiftMask,             XK_p,           spawn,          {.v = dpkg } },
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		{.v = dmenu_list} },
 	

@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh
 
 pidfile=/tmp/statbar-$(id -u)-$DISPLAY
 
@@ -12,23 +12,41 @@ DELIM=' '
 cpu (){
         _cpu=$(vmstat | awk 'NR==3 {print $(NF-2)}')     # See man vmstat(1)
         _cpuicon=
-        printf ^c#FB4934^%s^c#D5C4A1^%s "$_cpuicon" "$_cpu"% "$DELIM"
+        if test "$_cpu" -ge 70; then
+                printf ^c#FB4934^%s^c#D5C4A1^%s "$_cpuicon" "$_cpu"% "$DELIM"
+        else
+        if test "$_cpu" -ge 50; then
+                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_cpuicon" "$_cpu"% "$DELIM"
+        else
+                printf ^c#83A598^%s^c#D5C4A1^%s "$_cpuicon" "$_cpu"% "$DELIM"
+        fi
+fi
 }
 
 cpu_temp (){
        _temp=$(sysctl dev.cpu.0.temperature | sed -e 's|.*: \([0-9]*\).*|\1|')  # See man sysctl(1)
-        if test "$_temp" -ge 55; then
+        if test "$_temp" -ge 60; then
                 _tempicon=
         elif test "$_temp" -ge 1; then
                 _tempicon=
+                fi
+        if test "$_temp" -ge 60; then
+                printf ^c#FB4934^%s^c#D5C4A1^%s "$_tempicon" "$_temp"° "$DELIM"
+        else
+        if test "$_temp" -ge 1; then
+                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_tempicon" "$_temp"° "$DELIM"
+                fi
         fi
-        printf ^c#E78A4E^%s^c#D5C4A1^%s "$_tempicon" "$_temp"° "$DELIM"
 }
 
 memory (){
-	_memory=$(free | awk '(NR == 18) {print $6}')      # free is a perl script to show free ram on FreeBSD.
+	_memory=$(free | awk '(NR == 18){ sub(/%$/,"",$6); print $6; }')      # free is a perl script to show free ram on FreeBSD.
         _memoryicon=
-        printf ^c#FABD2F^%s^c#D5C4A1^%s "$_memoryicon" "$_memory" "$DELIM"
+        if test "$_memory" -ge 75; then
+                printf ^c#FB4934^%s^c#D5C4A1^%s "$_memoryicon" "$_memory"% "$DELIM"
+        else
+                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_memoryicon" "$_memory"% "$DELIM"
+        fi
 }
 
 drive (){
@@ -48,7 +66,15 @@ volume (){
         elif test "$_vol" -eq 0; then
                 _volicon=
         fi
-        printf ^c#83A598^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
+        if test "$_vol" -eq 100; then
+                printf ^c#FB4934^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
+        else
+        if test "$_vol" -ge 80; then
+                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
+        elif test "$_vol" -ge 1; then
+                printf ^c#83A598^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
+                fi
+fi
 }
 
 battery(){
@@ -59,22 +85,29 @@ battery(){
 	else
 		if test "$_battperc" -ge 60; then
 			_batticon=
-		elif test "$_battperc" -ge 40; then
+		elif test "$_battperc" -ge 30; then
 			_batticon=
 		elif test "$_battperc" -ge 1; then
 			_batticon=
 		fi
 	fi
-	printf ^c#8EC07C^%s^c#D5C4A1^%s "$_batticon" "$_battperc"% "$DELIM"
+        if test "$_battperc" -ge 60; then
+                printf ^c#8EC07C^%s^c#D5C4A1^%s "$_batticon" "$_battperc"% "$DELIM"
+        else
+        if test "$_battperc" -ge 30; then
+                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_batticon" "$_battperc"% "$DELIM"
+        elif test "$_battperc" -ge 1; then
+                printf ^c#FB4934^%s^c#D5C4A1^%s "$_batticon" "$_battperc"% "$DELIM"
+                fi
+        fi
 }
 
-weather() {
-        LOCATION=Granville,NSW     # Set your location.
+weather(){
+        LOCATION=Parramatta
         find ~/.cache/weather.txt '!' -newermt '1 hour ago' -exec curl -s -o '{}' wttr.in/$LOCATION?format=1 ';'
-        _weather=$(printf "%s\n""$SEP2""$(tr -d ' ' < ~/.cache/weather.txt)")
-        printf ^c#D5C4A1^%s "$_weather" "$DELIM"
+        read _weathericon _weather < ~/.cache/weather.txt
+        printf ^c#83A598^%s^c#D5C4A1^%s "$_weathericon" "$_weather" "$DELIM"
 }
-                                
 
 wifi (){
 #       ifconfig wlan0 | grep ssid | cut -w -f 3        # Print wireless SSID name.
@@ -86,7 +119,7 @@ wifi (){
 datetime (){
         _date=$(date "+%H:%M")
         _dateicon=
-        printf ^c#D3869B^%s^c#D5C4A1^%s "$_dateicon" "$_date"
+        printf ^c#D3869B^%s^c#D5C4A1^%s "$_dateicon" "$_date" "$DELIM"
 }
 
 status()
@@ -98,8 +131,8 @@ status()
         volume
         battery
         wifi
-        weather
         datetime
+        weather
 }
 
 update()
