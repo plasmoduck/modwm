@@ -60,7 +60,7 @@ static const int horizpadbar             = 0;   /* horizontal padding for status
 static const int vertpadbar              = 3;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[]            = ""; /* dwm icon:   */ 
+static const char buttonbar[]            = ""; /* dwm glyph:   */ 
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
 static const unsigned int systrayspacing = 5;   /* systray spacing */

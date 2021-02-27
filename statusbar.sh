@@ -82,7 +82,7 @@ volume (){
                 _volicon=
         fi
         
-        if test "$_vol" -eq 100; then
+        if test "$_vol" -ge 90; then
                 printf ^c#FB4934^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
         elif test "$_vol" -ge 80; then
                 printf ^c#E78A4E^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
@@ -121,7 +121,7 @@ weather(){
         LOCATION=Parramatta
         find ~/.cache/weather.txt '!' -newermt '1 hour ago' -exec curl -s -o '{}' wttr.in/$LOCATION?format=1 ';'
         read _weathericon _weather < ~/.cache/weather.txt
-                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_weathericon" "$_weather" "$DELIM"
+                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_weathericon" "$_weather"
 }
 
 wifi (){
