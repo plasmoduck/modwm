@@ -137,7 +137,7 @@ battery(){
 }
 
 weather(){
-        LOCATION=Parramatta 
+        LOCATION=albion_park_rail 
         find ~/.cache/weather.txt '!' -newermt '1 hour ago' -exec curl -s -o '{}' wttr.in/$LOCATION?format=1 ';'
         read _weathericon _weather < ~/.cache/weather.txt
 	_weather=${_weather#+}
