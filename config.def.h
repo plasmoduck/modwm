@@ -23,10 +23,10 @@ static const unsigned int snap           = 0;  /* snap pixel */
 static const int swallowfloating         = 1;   /* 1 means swallow floating windows by default */
 #endif // SWALLOW_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih         = 25;  /* horiz inner gap between windows */
-static const unsigned int gappiv         = 25;  /* vert inner gap between windows */
-static const unsigned int gappoh         = 25;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 25;  /* vert outer gap between windows and screen edge */
+static const unsigned int gappih         = 20;  /* horiz inner gap between windows */
+static const unsigned int gappiv         = 20;  /* vert inner gap between windows */
+static const unsigned int gappoh         = 20;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 20;  /* vert outer gap between windows and screen edge */
 static const int smartgaps               = 0;   /* 1 means no outer gap when there is only one window */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
@@ -753,12 +753,13 @@ static const char *dmenu_list[] = { "/home/cjg/bin/dmenu_list", NULL };
 static const char *todo[] = { "/home/cjg/bin/todo", NULL };
 static const char *passmenu[] = { "/home/cjg/bin/passmenu2", NULL };
 static const char *displayselect[] = { "/home/cjg/bin/displayselect.sh", NULL };
-static const char *rofi[] = {"rofi", "-show", "run", NULL };
-static const char *drun[] = {"rofi", "-show", "drun", NULL };
-static const char *layoutsmenu[] = {"/home/cjg/bin/layoutmenu.sh", NULL };
-static const char *dmenu_weechat[] = {"/home/cjg/bin/dmenu_weechat.sh", NULL };
-static const char *wpa_cli[] = {"/home/cjg/bin/dmenu_wpa_cli.sh", NULL };
-static const char *updstat[] = {"/home/cjg/bin/updatestatus.sh", NULL };
+static const char *rofi[] = { "rofi", "-show", "run", NULL };
+static const char *drun[] = { "rofi", "-show", "drun", NULL };
+static const char *layoutsmenu[] = { "/home/cjg/bin/layoutmenu.sh", NULL };
+static const char *dmenu_weechat[] = { "/home/cjg/bin/dmenu_weechat.sh", NULL };
+static const char *wpa_cli[] = { "/home/cjg/bin/dmenu_wpa_cli.sh", NULL };
+static const char *updstat[] = { "/home/cjg/bin/updatestatus.sh", NULL };
+static const char *plumb[] = { "/home/cjg/bin/plumb.sh", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
@@ -789,16 +790,17 @@ static Key keys[] = {
         { NULL,                         0xffbf,         spawn,          {.v = downvol } },
    	{ NULL,                         0xffbf,         spawn,          {.v = updstat } },
         { NULL,                         XK_F1,          spawn,          {.v = mutevol } },
-   	{ NULL,                         XK_F5,          spawn,          {.v = brightnessdown } },
+   	{ NULL,                         XK_F4,          spawn,          {.v = mpctgl } },
+        { NULL,                         XK_F5,          spawn,          {.v = brightnessdown } },
         { NULL,                         XK_F6,          spawn,          {.v = brightnessup } },
         { NULL,                         XK_F7,          spawn,          {.v = displayselect } },
-	{ NULL,				XK_F9,		spawn,		{.v = dmenu_list } },
+        { NULL,                         XK_F8,          spawn,          {.v = wpa_cli } },
+        { NULL,				XK_F9,		spawn,		{.v = dmenu_list } },
         { NULL,                         XK_F10,         spawn,          {.v = dmenu_weechat } },
-	{ NULL,				XK_F12,		layoutmenu,	{0} },
-        { NULL,                         XK_F4,          spawn,          {.v = mpctgl } },
+        { NULL,				XK_F12,		layoutmenu,	{0} },
 	{ NULL,                       	XK_Print,       spawn,          {.v = screenshot } },
 	{ NULL,                         XK_Insert,      spawn,          {.v = passmenu } },
-	{ NULL,                         XK_F8,          spawn,          {.v = wpa_cli } },
+        { ShiftMask,                    XK_Tab,         spawn,          {.v = plumb } },
         { MODKEY|ControlMask,           XK_s,           spawn,          {.v = mpdmenu } },
    	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
    	{ MODKEY,                       XK_w,           spawn,          {.v = websearch } },
@@ -968,7 +970,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_t,          unfloatvisible,         {.v = &layouts[0]} },
 	#endif // UNFLOATVISIBLE_PATCH
 	#if TOGGLEFULLSCREEN_PATCH
-	{ MODKEY,                       XK_y,          togglefullscreen,       {0} },
+	{ MODKEY,                       X66 = F13'  K_y,          togglefullscreen,       {0} },
 	#endif // TOGGLEFULLSCREEN_PATCH
 	#if !FAKEFULLSCREEN_PATCH && FAKEFULLSCREEN_CLIENT_PATCH
 	{ MODKEY|ShiftMask,             XK_y,          togglefakefullscreen,   {0} },

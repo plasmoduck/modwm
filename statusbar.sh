@@ -44,11 +44,11 @@ fan (){
         _fanicon=
 
         if test "$_fan" -le 3400; then
-                printf ^c#83A598^%s^c#D5C4A1^%s "$_fanicon" "$_fan"rpm "$DELIM"
+                printf ^c#83A598^%s^c#D5C4A1^%s "$_fanicon" "$_fan" "$DELIM"
         elif test "$_fan" -ge 3500; then
-                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_fanicon" "$_fan"rpm "$DELIM"
+                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_fanicon" "$_fan" "$DELIM"
         else
-                printf ^c#FB4934^%s^c#D5C4A1^%s "$_fanicon" "$_fan"rpm "$DELIM"
+                printf ^c#FB4934^%s^c#D5C4A1^%s "$_fanicon" "$_fan" "$DELIM"
         fi
 }
 
@@ -137,7 +137,7 @@ battery(){
 }
 
 weather(){
-        LOCATION=albion_park_rail 
+        LOCATION=Parramatta 
         find ~/.cache/weather.txt '!' -newermt '1 hour ago' -exec curl -s -o '{}' wttr.in/$LOCATION?format=1 ';'
         read _weathericon _weather < ~/.cache/weather.txt
 	_weather=${_weather#+}
