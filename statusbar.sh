@@ -137,12 +137,36 @@ battery(){
 }
 
 weather(){
-        LOCATION=Parramatta 
+        LOCATION=Guildford,NSW 
         find ~/.cache/weather.txt '!' -newermt '1 hour ago' -exec curl -s -o '{}' wttr.in/$LOCATION?format=1 ';'
         read _weathericon _weather < ~/.cache/weather.txt
 	_weather=${_weather#+}
-                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_weathericon" "${_weather%C}"
+        case "$_weathericon" in
+	*⛅*)
+		_color="83A598"
+		;;
+	*🌦*)
+                _color="83A598"
+                ;;
+        *🌩*)
+                _color="FB4934"
+                ;;
+        *⛈*)
+                _color="FB4934"
+                ;;
+        *☀*)
+                _color="FABD2F"
+                ;;
+        *☁️*)
+                _color="837967"
+                ;;
+        *)
+		_color="D5C4A1"
+		;;
+	esac
+	printf '^c#%s^%s^c#D5C4A1^%s' "$_color" "$_weathericon" "${_weather%C}"                
 }
+
 
 wifi (){
 #       ifconfig wlan0 | grep ssid | cut -w -f 3        # Print wireless SSID name.
@@ -155,7 +179,7 @@ wifi (){
                 _wifiicon=
         else
                 _wifiicon=
-                fi
+        fi
         
         if test "$_wifiperc" -ge 90; then
                 printf ^c#665C54^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
