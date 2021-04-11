@@ -137,7 +137,7 @@ battery(){
 }
 
 weather(){
-        LOCATION=Guildford,NSW 
+        LOCATION=Parramatta 
         find ~/.cache/weather.txt '!' -newermt '1 hour ago' -exec curl -s -o '{}' wttr.in/$LOCATION?format=1 ';'
         read _weathericon _weather < ~/.cache/weather.txt
 	_weather=${_weather#+}
@@ -182,11 +182,11 @@ wifi (){
         fi
         
         if test "$_wifiperc" -ge 90; then
-                printf ^c#665C54^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
+                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
         elif test "$_wifiperc" -ge 70; then
-                printf ^c#665C54^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
+                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
         elif test "$_wifiperc" -ge 1; then
-                printf ^c#665C54^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
+                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
         else
                 printf ^c#665C54^%s^c#D5C4A1^%s "$_wifiicon" "$DELIM"
         fi

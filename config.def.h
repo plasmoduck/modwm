@@ -1217,11 +1217,11 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,                   Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,              Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,              Button3,        toggletag,      {0} },
-    { ClkStatusText,        0,                   Button4,        spawn,          {.v = upvol } },
-    { ClkStatusText,        0,                   Button4,        spawn,          {.v = downvol } }, 
-	{ ClkWinTitle,          0,                   Button4,        spawn,          {.v = upvol } },
-    { ClkWinTitle,          0,                   Button5,        spawn,          {.v = downvol } },
-    { ClkWinTitle,          0,                   Button3,        spawn,          {.v = surftabbed } },
+        { ClkStatusText,        0,                   Button9,        spawn,          {.v = mpctgl } },
+        { ClkWinTitle,          0,                   Button4,        spawn,          {.v = upvol } },
+        { ClkWinTitle,          0,                   Button5,        spawn,          {.v = downvol } },
+        { ClkWinTitle,          0,                   Button3,        spawn,          {.v = surftabbed } },
+        { ClkWinTitle,          0,                   Button1,        spawn,          {.v = mpctgl } },
 };
 
 #if DWMC_PATCH
