@@ -39,19 +39,6 @@ cpu_temp (){
         fi
 }
 
-fan (){
-        _fan=$(sysctl -n dev.acpi_ibm.0.fan_speed)
-        _fanicon=
-
-        if test "$_fan" -le 3400; then
-                printf ^c#83A598^%s^c#D5C4A1^%s "$_fanicon" "$_fan" "$DELIM"
-        elif test "$_fan" -ge 3500; then
-                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_fanicon" "$_fan" "$DELIM"
-        else
-                printf ^c#FB4934^%s^c#D5C4A1^%s "$_fanicon" "$_fan" "$DELIM"
-        fi
-}
-
 memory (){
 	_memory=$(free | awk '(NR == 18){ sub(/%$/,"",$6); print $6; }')      # free is a perl script to show free ram on FreeBSD.
         _memoryicon=
@@ -170,7 +157,7 @@ weather(){
 
 wifi (){
 #       ifconfig wlan0 | grep ssid | cut -w -f 3        # Print wireless SSID name.
-        _wifiperc=$(ifconfig wlan0 | grep txpower | cut -w -f 3)     # Print wireless SSID signal strength - see ifconfig(1).
+        _wifiperc=$(ifconfig wlan0 | grep txpower | cut -w -f 7)     # Print wireless SSID signal strength - see ifconfig(1).
         if test "$_wifiperc" -ge 90; then
                 _wifiicon=
         elif test "$_wifiperc" -ge 70; then
@@ -184,9 +171,9 @@ wifi (){
         if test "$_wifiperc" -ge 90; then
                 printf ^c#FABD2F^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
         elif test "$_wifiperc" -ge 70; then
-                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
+                printf ^c#E78A4E^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
         elif test "$_wifiperc" -ge 1; then
-                printf ^c#FABD2F^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
+                printf ^c#FB4934^%s^c#D5C4A1^%s "$_wifiicon" "$_wifiperc"% "$DELIM"
         else
                 printf ^c#665C54^%s^c#D5C4A1^%s "$_wifiicon" "$DELIM"
         fi
@@ -202,7 +189,6 @@ status()
 {
         cpu
         cpu_temp
-#        fan
         memory
         drive
         volume
