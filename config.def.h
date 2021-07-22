@@ -91,6 +91,7 @@ static const char dmenufont[]            = "JetBrains Mono:size=10";
 static char c000000[]                    = "#000000"; // placeholder value
 #endif // BAR_FLEXWINTITLE_PATCH
 
+/* Define colors in this file */
 #include "colors.h"
 
 #if BAR_FLEXWINTITLE_PATCH
@@ -303,7 +304,7 @@ static Sp scratchpads[] = {
  */
 static char *tagicons[][NUMTAGS] = {
         [DEFAULT_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-        [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
+        [ALTERNATIVE_TAGS]    = { "", "", "", "", "", "", "", "", "" }, 
     	[ALT_TAGS_DECORATION]    = { "", "", "", "", "", "", "", "", "" },
 };
 
@@ -356,7 +357,7 @@ static const Rule rules[] = {
         RULE(.title = "sfeed_curses", .tags = 1 << 5, .monitor = 0)
         RULE(.title = "neomutt", .tags = 1 << 8, .monitor = 0)
         RULE(.title = "irc", .tags = 1 << 3, .monitor = 0)
-        RULE(.title = "youtube-viewer", .tags = 1 << 6, .monitor = 0)
+        RULE(.title = "pipe-viewer", .tags = 1 << 6, .monitor = 0)
         RULE(.title = "spt", .tags = 1 << 7, .monitor = 0) 
         RULE(.title = "finchy", .tags = 1 << 2, .monitor = 0)
         RULE(.class = "Hexchat", .tags = 1 << 3, .monitor = 0)
@@ -796,7 +797,7 @@ static Key keys[] = {
         { NULL,                         XK_F7,          spawn,          {.v = displayselect } },
         { NULL,                         XK_F8,          spawn,          {.v = wpa_cli } },
         { NULL,				XK_F9,		spawn,		{.v = dmenu_list } },
-        { NULL,                         XK_F10,         spawn,          {.v = dmenu_weechat } },
+        { NULL,                         XK_F10,         spawn,          {.v = rofi } },
         { NULL,				XK_F12,		layoutmenu,	{0} },
 	{ NULL,                       	XK_Print,       spawn,          {.v = screenshot } },
 	{ NULL,                         XK_Insert,      spawn,          {.v = passmenu } },

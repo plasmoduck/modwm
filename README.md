@@ -28,8 +28,8 @@ Then you can put something like this at the end of your ~/.xinitrc file:
 exec dwm
 ```
 
-## THEMES
-MODWM supports color schemes, you can find some examples in the 'colors' directory.
+## COLORS
+MODWM supports color schemes, you can define your scheme by editing 'colors.h'.
 
 ## STATUSBAR
 MODWM also includes a statusbar. It uses 'siji' to draw glyphs (icons) so please install it. You can customize the statusbar by editing the file 'statusbar.sh'. Then source it from your ~/.xinitrc like so ``exec /path/to/modwm/statusbar.sh &``
