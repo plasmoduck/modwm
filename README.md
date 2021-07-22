@@ -29,7 +29,7 @@ exec dwm
 ```
 
 ## COLORS
-MODWM supports color schemes, you can define your scheme by editing 'colors.h'.
+MODWM supports color schemes, you can define your scheme by editing [colors.h](https://github.com/plasmoduck/modwm/blob/master/colors.h).
 
 ## STATUSBAR
 MODWM also includes a statusbar. It uses 'siji' to draw glyphs (icons) so please install it. You can customize the statusbar by editing the file 'statusbar.sh'. Then source it from your ~/.xinitrc like so ``exec /path/to/modwm/statusbar.sh &``
