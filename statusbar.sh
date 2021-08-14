@@ -185,8 +185,13 @@ datetime (){
                 printf ^c#D3869B^%s^c#D5C4A1^%s "$_dateicon" "$_date" "$DELIM"
 }
 
+shutdown (){
+        _shutdownicon=
+                printf ^c#FB4934^%s^c#D5C4A1^%s "$_shutdownicon"
+}
+
 status()
-{
+{       
         cpu
         cpu_temp
         memory
@@ -196,6 +201,7 @@ status()
         wifi
         datetime
         weather
+        shutdown
 }
 
 update()

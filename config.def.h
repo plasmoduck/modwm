@@ -13,7 +13,7 @@
 
 /* appearance */
 #if ROUNDED_CORNERS_PATCH
-static const unsigned int borderpx       = 0;   /* border pixel of windows */
+static const unsigned int borderpx       = 5;   /* border pixel of windows */
 static const int corner_radius           = 5;
 #else
 static const unsigned int borderpx       = 3;  /* border pixel of windows */
@@ -366,8 +366,8 @@ static const Rule rules[] = {
         RULE(.class = "Thunar", .tags = 1 << 4)
 	RULE(.class = "Gimp", .tags = 1 << 5)
         RULE(.class = "vlc", .tags = 1 << 6, .monitor = 1)
-	RULE(.class = "st-256color", .tags = 0, .isterminal = 1)
-        RULE(.class = "Sxiv", .tags = 0, .isterminal = 1, .iscentered = 1, .isfloating = 1)
+	RULE(.class = "st-256color", .tags = 0)
+        RULE(.class = "Sxiv", .tags = 0, .iscentered = 1, .isfloating = 1)
         RULE(.class = "TelegramDesktop", .tags = 1 << 2, .monitor = 0)
         RULE(.title = "telegramtui", .tags = 1 << 2, .monitor = 0)
         RULE(.class = "Gcolor2", .tags = 0, .iscentered = 1, .isfloating = 1)
@@ -761,11 +761,13 @@ static const char *dmenu_weechat[] = { "/home/cjg/bin/dmenu_weechat.sh", NULL };
 static const char *wpa_cli[] = { "/home/cjg/bin/dmenu_wpa_cli.sh", NULL };
 static const char *updstat[] = { "/home/cjg/bin/updatestatus.sh", NULL };
 static const char *plumb[] = { "/home/cjg/bin/plumb.sh", NULL };
+static const char *ebooks[] = { "/home/cjg/bin/ebooks.sh", NULL };
+static const char *htop[] = { "st", "htop", NULL };
 
 #if BAR_STATUSCMD_PATCH && !BAR_DWMBLOCKS_PATCH
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
-static const char *statuscmds[] = { "notify-send Mouse$BUTTON" };
-static char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
+static const char *statuscmds[] = { "shutdown", 1 };
+static char *statuscmd[] = { "shutdown", "1", NULL, NULL };
 #endif // BAR_STATUSCMD_PATCH | DWMBLOCKS_PATCH
 
 static Key keys[] = {
@@ -779,7 +781,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_s,           spawn,          {.v = surf } },
    	{ MODKEY,                       XK_x,           spawn,          {.v = hexchat } },
    	{ MODKEY,                       XK_e,           spawn,          {.v = emoji } },
-   	{ MODKEY,                       XK_r,           spawn,          {.v = rofi } },
+   	{ MODKEY,                       XK_r,           spawn,          {.v = ebooks } },
         { MODKEY|ShiftMask,             XK_r,           spawn,          {.v = drun } },
    	{ MODKEY,                       XK_g,           spawn,          {.v = dmenuwebsearch } },
    	{ MODKEY,			XK_f,		spawn,		{.v = flash } },
@@ -797,10 +799,12 @@ static Key keys[] = {
         { NULL,                         XK_F7,          spawn,          {.v = displayselect } },
         { NULL,                         XK_F8,          spawn,          {.v = wpa_cli } },
         { NULL,				XK_F9,		spawn,		{.v = dmenu_list } },
-        { NULL,                         XK_F10,         spawn,          {.v = rofi } },
+        { NULL,                         XK_F10,         spawn,          {.v = dmenucmd } },
         { NULL,				XK_F12,		layoutmenu,	{0} },
 	{ NULL,                       	XK_Print,       spawn,          {.v = screenshot } },
 	{ NULL,                         XK_Insert,      spawn,          {.v = passmenu } },
+        { MODKEY,                       XK_F4,          spawn,          {.v = mpcnxt } },
+        { MODKEY|ShiftMask,             XK_F4,          spawn,          {.v = mpcprv } },
         { ShiftMask,                    XK_Tab,         spawn,          {.v = plumb } },
         { MODKEY|ControlMask,           XK_s,           spawn,          {.v = mpdmenu } },
    	{ MODKEY|Mod1Mask,              XK_s,           spawn,          {.v = sfeed } },
@@ -1184,7 +1188,7 @@ static Command commands[] = {
 static Button buttons[] = {
 	/* click                event mask           button          function        argument */
 	#if BAR_STATUSBUTTON_PATCH
-	{ ClkButton,            0,                   Button3,        spawn,          {.v = dmenucmd } },
+	{ ClkButton,            0,                   Button3,        spawn,          {.v = shutdown } },
         { ClkButton,            0,                   Button1,        spawn,          {.v = dmenu_list } },
         #endif // BAR_STATUSBUTTON_PATCH
 	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
@@ -1199,9 +1203,9 @@ static Button buttons[] = {
 	{ ClkStatusText,        0,                   Button2,        sigdwmblocks,   {.i = 2 } },
 	{ ClkStatusText,        0,                   Button3,        sigdwmblocks,   {.i = 3 } },
 	#elif BAR_STATUSCMD_PATCH
-	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = mpcnxt } },
+	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = shutdown } },
         { ClkStatusText,        0,                   Button2,        spawn,          {.v = mpdmenu } },
-        { ClkStatusText,        0,                   Button3,        spawn,          {.v = mpcprv } },
+        { ClkStatusText,        0,                   Button3,        spawn,          {.v = htop } },
         #else
 	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = termcmd } },
 	#endif // BAR_STATUSCMD_PATCH

@@ -22,8 +22,8 @@ X11INC = /usr/local/include
 X11LIB = /usr/local/lib
 
 # Xinerama, comment if you don't want it
-XINERAMALIBS  = -lXinerama
-XINERAMAFLAGS = -DXINERAMA
+#XINERAMALIBS  = -lXinerama
+#XINERAMAFLAGS = -DXINERAMA
 
 # freetype
 FREETYPELIBS = -lfontconfig -lXft
@@ -33,7 +33,7 @@ FREETYPEINC = ${X11INC}/freetype2
 KVMLIB = -lkvm
 
 # Uncomment this for the alpha patch / BAR_ALPHA_PATCH
-XRENDER = -lXrender
+#XRENDER = -lXrender
 
 # Uncomment this for the mdpcontrol patch / MDPCONTROL_PATCH
 #MPDCLIENT = -lmpdclient
@@ -47,10 +47,10 @@ XRENDER = -lXrender
 #YAJLINC = /usr/include/yajl
 
 # Uncomment this for the rounded corners patch / ROUNDED_CORNERS_PATCH
-XEXTLIB = -lXext
+#XEXTLIB = -lXext
 
 # Uncomment this for the swallow patch / SWALLOW_PATCH
-XCBLIBS = -lX11-xcb -lxcb -lxcb-res ${KVMLIB}
+#XCBLIBS = -lX11-xcb -lxcb -lxcb-res ${KVMLIB}
 
 # includes and libs
 INCS = -I${X11INC} -I${FREETYPEINC} ${PANGOINC} ${YAJLLIBS}
