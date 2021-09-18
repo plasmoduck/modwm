@@ -83,7 +83,7 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "siji:pixelsize=22", "JetBrains Mono:pixelsize=20" };
+static const char *fonts[]               = { "siji:pixelsize=20", "JetBrainsMono:pixelsize=18:antialias=true:autohint=true" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "JetBrains Mono:size=10";
 
@@ -355,16 +355,21 @@ static const Rule rules[] = {
         RULE(.class = "tabbed", .tags = 1 << 1, .monitor = 0)
         RULE(.class = "Surf", .tags = 0, .monitor = 0, .iscentered = 1, .isfloating = 1, .floatpos = "1596W 904H")
         RULE(.title = "sfeed_curses", .tags = 1 << 5, .monitor = 0)
-        RULE(.title = "neomutt", .tags = 1 << 8, .monitor = 0)
-        RULE(.title = "irc", .tags = 1 << 3, .monitor = 0)
-        RULE(.title = "pipe-viewer", .tags = 1 << 6, .monitor = 0)
+        RULE(.title = "tuir", .tags = 1 << 5, .monitor = 0)
+        RULE(.title = "MAIL", .tags = 1 << 8, .monitor = 0)
+        RULE(.title = "Mail", .tags = 1 << 8, .monitor = 0)
+	RULE(.title = "neomutt", .tags = 1 << 8, .monitor = 0)
+	RULE(.title = "irc", .tags = 1 << 3, .monitor = 0)
+        RULE(.title = "youtube-viewer", .tags = 1 << 6, .monitor = 0)
         RULE(.title = "spt", .tags = 1 << 7, .monitor = 0) 
-        RULE(.title = "finchy", .tags = 1 << 2, .monitor = 0)
+        RULE(.title = "ncspot", .tags = 1 << 7, .monitor = 0)
+	RULE(.title = "finchy", .tags = 1 << 2, .monitor = 0)
         RULE(.class = "Hexchat", .tags = 1 << 3, .monitor = 0)
         RULE(.class = "Pidgin", .tags = 1 << 2, .monitor = 0)
         RULE(.title = "finchy", .tags = 1 << 2, .monitor = 0)
         RULE(.class = "Thunar", .tags = 1 << 4)
-	RULE(.class = "Gimp", .tags = 1 << 5)
+	RULE(.title = "ranger", .tags = 1 << 4)
+        RULE(.class = "Gimp", .tags = 1 << 5)
         RULE(.class = "vlc", .tags = 1 << 6, .monitor = 1)
 	RULE(.class = "st-256color", .tags = 0)
         RULE(.class = "Sxiv", .tags = 0, .iscentered = 1, .isfloating = 1)

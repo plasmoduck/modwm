@@ -30,7 +30,7 @@ FREETYPELIBS = -lfontconfig -lXft
 FREETYPEINC = /usr/include/freetype2
 # OpenBSD (uncomment)
 FREETYPEINC = ${X11INC}/freetype2
-KVMLIB = -lkvm
+#KVMLIB = -lkvm
 
 # Uncomment this for the alpha patch / BAR_ALPHA_PATCH
 #XRENDER = -lXrender

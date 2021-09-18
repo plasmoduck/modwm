@@ -22,7 +22,7 @@ cpu (){
         fi
 }
 
-cpu_temp (){
+temp (){
         _temp=$(sysctl dev.cpu.0.temperature | sed -e 's|.*: \([0-9]*\).*|\1|')  # See man sysctl(1)
         if test "$_temp" -ge 60; then
                 _tempicon=
@@ -82,8 +82,8 @@ volume (){
         fi
         
         if test "$_vol" -ge 80; then
-                printf ^c#FB4934^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
-        elif test "$_vol" -ge 60; then
+		printf ^c#FB4934^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
+	elif test "$_vol" -ge 60; then
                 printf ^c#FABD2F^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
         elif test "$_vol" -ge 1; then
                 printf ^c#83A598^%s^c#D5C4A1^%s "$_volicon" "$_vol"% "$DELIM"
@@ -151,9 +151,8 @@ weather(){
 		_color="D5C4A1"
 		;;
 	esac
-	printf '^c#%s^%s^c#D5C4A1^%s' "$_color" "$_weathericon" "${_weather%C}"                
+	printf ^c#%s^%s^c#D5C4A1^%s "$_color" "$_weathericon" "${_weather%C}"
 }
-
 
 wifi (){
 #       ifconfig wlan0 | grep ssid | cut -w -f 3        # Print wireless SSID name.
@@ -185,23 +184,17 @@ datetime (){
                 printf ^c#D3869B^%s^c#D5C4A1^%s "$_dateicon" "$_date" "$DELIM"
 }
 
-shutdown (){
-        _shutdownicon=
-                printf ^c#FB4934^%s^c#D5C4A1^%s "$_shutdownicon"
-}
-
 status()
 {       
-        cpu
-        cpu_temp
+	cpu
+        temp
         memory
         drive
-        volume
+	volume
         battery
         wifi
         datetime
         weather
-        shutdown
 }
 
 update()
